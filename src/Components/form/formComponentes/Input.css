@@ -1,0 +1,20 @@
+.inputClass {
+  display: grid;
+  margin: 5px;
+}
+.inputClass input {
+  height: 5vh;
+  width: 40vw;
+  margin: 10px;
+  box-shadow: 2px 2px black;
+  background-color: #a3a2a254;
+  border-radius: 5px;
+}
+.inputClass input:hover {
+  background-color: aliceblue;
+}
+.inputClass label {
+  margin: 2px;
+  color: white;
+  font-size: 20px;
+}
