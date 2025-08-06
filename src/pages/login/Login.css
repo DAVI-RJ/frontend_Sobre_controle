@@ -1,0 +1,30 @@
+.pagesLoginClass{
+  justify-items: center;
+  margin: 2rem;
+}
+.pagesLoginClass h1 {
+  color: white;
+  
+}
+.pagesLoginClass p {
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 16px; 
+  line-height: 1.5; 
+  text-align: justify; 
+  text-indent: 20px; 
+  margin-bottom: 1em; 
+
+}
+.backimg {
+  position: relative;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+.animate {
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+  background-color: blue;
+}
+

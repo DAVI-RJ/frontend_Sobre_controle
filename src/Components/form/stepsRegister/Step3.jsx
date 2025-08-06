@@ -1,0 +1,30 @@
+import React from 'react';
+import InputComponent from '../formComponentes/Input';
+
+const Step3 = () => {
+  return (
+    <div>
+      <h2>Segurança</h2>
+      
+      <InputComponent 
+        id="password"
+        name="password"
+        type="password"
+        placeholder="digita sua senha "
+        label="Senha:"
+        required
+      />
+
+      <InputComponent 
+        id="confirmPassword"
+        name="confirmPassword"
+        type="password" 
+        placeholder="digita sua senha novamente "
+        label="Confirma a Senha:"
+        required
+      />
+    </div>
+  );
+};
+
+export default Step3;
