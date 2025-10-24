@@ -24,7 +24,7 @@ export default function Home(){
   };
 
   return (
-    <div className="Home-page-class">
+    <div className="pageHomeClass">
       <div>
         <SidebarComponent setView={setView}/>
       </div>

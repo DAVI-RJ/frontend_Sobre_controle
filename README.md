@@ -2,6 +2,8 @@
 
 Pequeno sistema front-end em React para gerenciamento simples de produtos e cadastro multi-step.
 
+Designer atomic para desenvolvimento do projeto
+
 ## Visão geral
 Aplicação construída com Vite + React. Possui páginas de Login, Registro (formulário em etapas) e uma Home com listagem e formulário de produtos.
 

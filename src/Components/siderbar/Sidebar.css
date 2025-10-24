@@ -1,0 +1,7 @@
+.sidebarClass {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  height: auto;
+  left: 0;
+}

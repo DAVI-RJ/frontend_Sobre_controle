@@ -1,0 +1,6 @@
+.pageHomeClass {
+  display: grid;
+  grid-template-columns: auto;
+  height: 100%;
+  width: 100%;
+}
