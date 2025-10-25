@@ -8,12 +8,49 @@ import "./Home.css"
 
 
 export default function Home(){
+
   const [view, setView] = useState("list")
   const [ products, setProducts] = useState([
     {id: 1, name: "cafe"}
   ]);
 
- 
+  const addProducts = (name) => {
+    const newProduct = {
+      id: products.length + 1,
+      name: name
+    };
+    setProducts([...products, newProduct]);
+  };
+
+
+  return (
+    <div className="pageHomeClass">
+      <header>
+        Ola meu povo
+      </header>
+
+      <SidebarComponent setView = {setView}></SidebarComponent>
+      <main>
+
+
+
+      <div>
+        {view === "form" && <ProductForm onAdd={addProducts}/>}
+        {view === "list" && products.map((product) => (
+        <CardComponent key={product.id} product={product}/>))}
+      </div>
+
+      </main>
+    </div>
+  )
+}
+
+
+  /*
+  const [view, setView] = useState("list")
+  const [ products, setProducts] = useState([
+    {id: 1, name: "cafe"}
+  ]);
 
   const addProducts = (name) => {
     const newProduct = {
@@ -23,18 +60,4 @@ export default function Home(){
     setProducts([...products, newProduct]);
   };
 
-  return (
-    <div className="pageHomeClass">
-      <div>
-        <SidebarComponent setView={setView}/>
-      </div>
-    
-      <main className="main-class">
-        {view === "form" && <ProductForm onAdd={addProducts} />}
-        {view === "list" && products.map((product) => (
-          <CardComponent key={product.id} product={product}/>
-        ))}
-      </main>
-    </div>
-  )
-}
+*/
