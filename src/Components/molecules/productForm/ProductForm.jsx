@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import Form from "../Form";
-import InputComponent from "../../form/formComponentes/Input";
+import Form from "../form/Form";
+import InputComponent from "../../atoms/inputs/Input";
 
 export default function ProductForm (){
 

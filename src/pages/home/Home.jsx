@@ -1,8 +1,8 @@
 import React, { Children, useState } from "react"
 
-import CardComponent from "../../Components/Cards/Card"
-import SidebarComponent from "../../Components/siderbar/Sidebar"
-import ProductForm from "../../Components/form/productForm/ProductForm"
+import CardComponent from "../../Components/molecules/cards/Card";
+import SidebarComponent from "../../Components/organisms/siderbar/Sidebar";
+import ProductForm from "../../Components/molecules/productForm/ProductForm";
 
 import "./Home.css"
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import InputComponent from '../../form/formComponentes/Input'; 
+import InputComponent from "../../atoms/inputs/Input"; 
 
 const Step1 = () => {
 

@@ -2,13 +2,13 @@
 
 import React, { useState } from 'react';
 
-import Form from '../../Components/form/Form';
+import Form from "../../Components/molecules/form/Form";
 
-import Step1 from '../../Components/form/stepsRegister/Step1';
-import Step2 from '../../Components/form/stepsRegister/Step2';
-import Step3 from '../../Components/form/stepsRegister/Step3';
+import Step1 from "../../Components/molecules/stepsRegister/Step1";
+import Step2 from "../../Components/molecules/stepsRegister/Step2";
+import Step3 from "../../Components/molecules/stepsRegister/Step3";
 
-import ButtonComponent from '../../Components/form/formComponentes/Button';
+import ButtonComponent from "../../Components/atoms/button/Button";
 
 import './Register.css'
 
@@ -51,51 +51,3 @@ export default function Register() {
     </div>
   );
 }
-
-/*import React, {useState} from 'react';
-
-import Form from '../Components/form/Form';
-
-import Step1 from '../Components/form/stepsRegister/Step1';
-import Step2 from '../Components/form/stepsRegister/Step2'
-import Step3 from '../Components/form/stepsRegister/Step3'
-
-
-export default function Register() {
-  const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({})
-
-  const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1)
-
-  const onSubmit = async (data) => { 
-  const allData = {...formData, ...data}; 
-
-    if(step < 3){
-      setFormData(allData);
-    }else {
-      console.log(data)
-    }    
-  };
-
-  return (
-    <div className='pagesClass'>
-      <h2>Cadastro</h2>
-      <Form onSubmit={onSubmit()}>
-        {step === 1 && <Step1 />}
-        {step === 2 && <Step2 />}
-        {step === 3 && <Step3 />}
-      </Form>
-      <div >
-        {step > 1 && <button onClick={prevStep}>Voltar</button>}
-
-      <button onClick={nextStep}>
-        {step === 3 ? 'Finalizar Cadastro' : 'Próximo'}
-      </button>
-      </div>
-
-    </div>
-  )
-}
-
-*/
