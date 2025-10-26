@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'
 
 import Form from "../../Components/molecules/form/Form";
-import WaveBackground from "../../Components/organisms/container/container";
+import WaveBackground from "../../Components/organisms/container/Container";
 import InputComponent from "../../Components/atoms/inputs/Input";
 
 import "./Login.css"

@@ -33,3 +33,11 @@ const WaveBackground = () => {
 };
 
 export default WaveBackground;
+
+const ContainerComponent = () => {
+  return (
+    <main>
+      
+    </main>
+  )
+}

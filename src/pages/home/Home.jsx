@@ -1,5 +1,7 @@
 import React, { Children, useState } from "react"
 
+import HomeLayout from "../../Components/templates/HomeLayout";
+
 import CardComponent from "../../Components/molecules/cards/Card";
 import SidebarComponent from "../../Components/organisms/siderbar/Sidebar";
 import ProductForm from "../../Components/molecules/productForm/ProductForm";
@@ -24,24 +26,13 @@ export default function Home(){
 
 
   return (
-    <div className="pageHomeClass">
-      <header>
-        Ola meu povo
-      </header>
-
-      <SidebarComponent setView = {setView}></SidebarComponent>
-      <main>
-
-
-
-      <div>
+    <HomeLayout className="pageHomeClass">
+     <div setView = {setView}>
         {view === "form" && <ProductForm onAdd={addProducts}/>}
         {view === "list" && products.map((product) => (
         <CardComponent key={product.id} product={product}/>))}
       </div>
-
-      </main>
-    </div>
+    </HomeLayout>
   )
 }
 
@@ -60,4 +51,16 @@ export default function Home(){
     setProducts([...products, newProduct]);
   };
 
+    <SidebarComponent setView = {setView}></SidebarComponent>
+      <main>
+
+
+
+      <div>
+        {view === "form" && <ProductForm onAdd={addProducts}/>}
+        {view === "list" && products.map((product) => (
+        <CardComponent key={product.id} product={product}/>))}
+      </div>
+
+      </main>
 */
