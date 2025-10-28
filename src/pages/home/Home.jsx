@@ -25,7 +25,7 @@ export default function Home(){
   return (
     <HomeLayout >
       <SidebarComponent setView = {setView} />
-      <section>
+      <section className="section-content">
         {view === "form" && <ProductForm onAdd={addProducts}/>}
         {view === "list" && products.map((product) => (
         <CardComponent key={product.id} product={product}/>))}

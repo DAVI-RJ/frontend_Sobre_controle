@@ -7,13 +7,13 @@ import "./HomeLayout.css"
 
 export default function HomeLayout ({children}) {
   return (
-    <div>
-      <HeaderComponent className="pageHomeClass"/>
-      <div>
+    <div className="home-layout">
+      <HeaderComponent className="header-class"/>
+      <main className="home-main">
         <ContainerComponent>
           {children}
         </ContainerComponent> 
-      </div>
+      </main>
       <FooterComponent />
     </div>
   )

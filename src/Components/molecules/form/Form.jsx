@@ -13,7 +13,7 @@ export default function Form({ onSubmit, children, defaultValues = {} }) {
   return (
     <FormProvider {...methods}>
       <form 
-        onSubmit={methods.handleSubmit(onSubmit)} className="formClass"
+        onSubmit={methods.handleSubmit(onSubmit)} className="form-class"
         noValidate // previne validação nativa do browser
       >
         {children}

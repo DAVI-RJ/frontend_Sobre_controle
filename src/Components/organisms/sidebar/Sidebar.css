@@ -1,7 +1,19 @@
-.sidebarClass {
+.sidebar{
+  background: var(--surface);
+  border-radius: var(--radius);
+  width: 20%;
+  padding: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.nav-button {
   display: flex;
   flex-direction: column;
-  width: 30vw;
-  height: 100%;
-  left: 0;
+  width: 100%;
+  gap: 8px;
+}
+
+@media (max-width:480px){
+  .sidebar{ display:flex; flex-direction:row; gap:8px; overflow:auto; padding:8px; }
+  .nav-button{ flex-direction:row; }
 }

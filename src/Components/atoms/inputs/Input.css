@@ -1,20 +1,32 @@
-.inputClass {
-  display: grid;
-  margin: 5px;
+.input-class {
+  display:flex; 
+  flex-direction:column; 
+  gap:6px;
 }
-.inputClass input {
-  height: 5vh;
-  width: 40vw;
-  margin: 10px;
-  box-shadow: 2px 2px black;
-  background-color: #a3a2a254;
+.input-class label {
+  font-size:14px; 
+  color:var(--identification);
+}
+
+.input-class input,
+.input-wrapper select, 
+.input-wrapper textarea{
+  padding:8px 10px;
+  border: 1px solid #d1d5db;
   border-radius: 5px;
+  font-size:14px;
+  box-shadow: 0px 2px black;
+  background:white;
 }
-.inputClass input:hover {
+.input-class input:focus{
   background-color: aliceblue;
+  outline: none;
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
 }
-.inputClass label {
-  margin: 2px;
-  color: white;
-  font-size: 20px;
+.error-message{ 
+  color:var(--danger);
+  font-size:12px;
+  margin-top:4px; 
 }
+

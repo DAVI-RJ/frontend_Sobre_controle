@@ -7,7 +7,7 @@ function ButtonComponent({
   children
   }) {
   return (
-    <button className='buttonClass' 
+    <button className='button-class' 
     onClick={onClick}
     type= {type}
     >

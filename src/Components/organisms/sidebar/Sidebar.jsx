@@ -24,16 +24,18 @@ export default function SidebarComponent ({setView}) {
   funcObject.find(func => func.id === setOptionId);
 
   return (
-  <div className="sidebarClass">
-      {funcObject.map((func) => (
-      <ButtonComponent 
-        key={func.id}
-        type="button"
-        onClick={() => func.view(setView)}
-      >
-        {func.id}
-    </ButtonComponent>
-    ))}
-    </div>
+    <aside className="sidebar">
+      <nav className="nav-button">
+        {funcObject.map((func) => (
+        <ButtonComponent 
+          key={func.id}
+          type="button"
+          onClick={() => func.view(setView)}
+        >
+          {func.id}
+      </ButtonComponent>
+      ))}
+      </nav>
+    </aside>
   )
 }

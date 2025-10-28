@@ -1,5 +1,5 @@
 import React from 'react';
-import "./container.css"
+import "./Container.css"
 
 // src/components/WaveBackground.jsx
 /*
@@ -36,7 +36,7 @@ export default WaveBackground;
 */
 const ContainerComponent = ({children}) => {
   return (
-    <main>
+    <main className="container">
       {children}
     </main>
   )

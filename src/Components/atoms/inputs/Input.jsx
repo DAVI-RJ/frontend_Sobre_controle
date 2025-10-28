@@ -5,7 +5,7 @@ import "./Input.css";
 function InputComponent({ 
     label, 
     name, 
-    type = 'text', 
+    type, 
     placeholder,
     rules = {} 
   }) {
@@ -13,7 +13,7 @@ function InputComponent({
     const { register, formState: { errors } } = useFormContext();
 
   return (
-    <div className='inputClass'>
+    <div className='input-class'>
       {label && <label htmlFor={name}>{label}</label>}
       <input 
         {...register(name, {
@@ -24,7 +24,7 @@ function InputComponent({
         placeholder={placeholder}
       />
       {errors[name] && (
-        <p className="errorMessage">
+        <p className="error-message">
           {errors[name].message || 'Campo obrigatório'}
         </p>
       )}
