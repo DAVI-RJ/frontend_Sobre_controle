@@ -1,13 +1,11 @@
-import React, { Children, useState } from "react"
+import React, { useState } from "react"
 
 import HomeLayout from "../../Components/templates/HomeLayout";
-
 import CardComponent from "../../Components/molecules/cards/Card";
-import SidebarComponent from "../../Components/organisms/siderbar/Sidebar";
+import SidebarComponent from "../../Components/organisms/sidebar/Sidebar";
 import ProductForm from "../../Components/molecules/productForm/ProductForm";
 
 import "./Home.css"
-
 
 export default function Home(){
 
@@ -24,14 +22,14 @@ export default function Home(){
     setProducts([...products, newProduct]);
   };
 
-
   return (
-    <HomeLayout className="pageHomeClass">
-     <div setView = {setView}>
+    <HomeLayout >
+      <SidebarComponent setView = {setView} />
+      <section>
         {view === "form" && <ProductForm onAdd={addProducts}/>}
         {view === "list" && products.map((product) => (
         <CardComponent key={product.id} product={product}/>))}
-      </div>
+      </section>
     </HomeLayout>
   )
 }

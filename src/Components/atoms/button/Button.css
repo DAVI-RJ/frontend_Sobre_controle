@@ -1,6 +1,5 @@
 .buttonClass{
   cursor: pointer;
-  margin: 0em;
-  display: inline-block;
+  padding: 10px;
   background-color: lightblue;
 }

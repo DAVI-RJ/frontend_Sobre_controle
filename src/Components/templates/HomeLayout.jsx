@@ -1,20 +1,17 @@
-import React, { Children } from "react";
-
+import React from "react";
 import HeaderComponent from "../organisms/header/Header";
-import SidebarComponent from "../organisms/siderbar/Sidebar";
 import ContainerComponent from "../organisms/container/Container"
 import FooterComponent from "../organisms/footer/Footer";
 
 import "./HomeLayout.css"
 
-export default function HomeLayout () {
+export default function HomeLayout ({children}) {
   return (
     <div>
-      <HeaderComponent />
+      <HeaderComponent className="pageHomeClass"/>
       <div>
-        <SidebarComponent />
         <ContainerComponent>
-          {Children}
+          {children}
         </ContainerComponent> 
       </div>
       <FooterComponent />

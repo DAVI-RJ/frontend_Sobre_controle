@@ -2,7 +2,7 @@ import React from 'react';
 import "./container.css"
 
 // src/components/WaveBackground.jsx
-
+/*
 const WaveBackground = () => {
   return (
     <svg
@@ -33,11 +33,13 @@ const WaveBackground = () => {
 };
 
 export default WaveBackground;
-
-const ContainerComponent = () => {
+*/
+const ContainerComponent = ({children}) => {
   return (
     <main>
-      
+      {children}
     </main>
   )
 }
+
+export default ContainerComponent; 

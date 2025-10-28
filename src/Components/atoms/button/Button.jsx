@@ -3,13 +3,15 @@ import "./Button.css"
 
 function ButtonComponent({
   onClick, 
-  type 
+  type,
+  children
   }) {
   return (
     <button className='buttonClass' 
     onClick={onClick}
     type= {type}
     >
+      {children}
     </button>  
   );
 }

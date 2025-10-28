@@ -7,8 +7,6 @@ export default function ProductForm (){
 
   return (
     <div>
-      <h1>Ola mundo</h1>
-    
       <Form>
         <InputComponent
           name="email"
