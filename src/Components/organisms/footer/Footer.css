@@ -1,0 +1,10 @@
+.footer-class {
+  display: grid;
+  grid-template-columns:repeat(4, 1fr);
+  text-align: justify;
+}
+
+.politic {
+  grid-column: 4 span;
+  text-align: center;
+}

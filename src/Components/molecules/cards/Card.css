@@ -1,0 +1,14 @@
+.card{
+  background: #ccc;
+  border-radius:8px;
+  padding:12px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:12px;
+  width: 200px;
+  height: 200px;
+}
+.card .title{ font-weight:600; }

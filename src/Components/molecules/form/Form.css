@@ -1,9 +1,12 @@
 .form-class {
-  align-items: center;
-  justify-items: center;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 2px 3px;
-  border: 2px solid black;
+  flex-direction:column;
+  gap:12px;
+  align-items:stretch;
+  width:100%;
+  max-width:640px;
 }
 
+.form-class * {
+  gap:8px;
+  margin-top:8px;
+}

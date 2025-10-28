@@ -1,10 +1,9 @@
 import React, {useState} from "react";
 import Form from "../form/Form";
 import InputComponent from "../../atoms/inputs/Input";
+import ButtonComponent from "../../atoms/button/Button"
 
 export default function ProductForm (){
-
-
   return (
     <div>
       <Form>
@@ -21,6 +20,7 @@ export default function ProductForm (){
             }
           }}
         />
+        <ButtonComponent>Submit</ButtonComponent>
       </Form>
     </div>
   );
