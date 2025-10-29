@@ -2,38 +2,40 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Form from "../form/Form";
 import InputComponent from "../../atoms/inputs/Input";
-import ButtonComponent from "../../atoms/button/Button"
+import ButtonComponent from "../../atoms/button/Button";
+import { productModel, productFields, validationRules, getInputType } from "../../../services/Hooks/ProductService";
 
 export default function ProductForm({ onAdd }) {
   const methods = useForm({
-    defaultValues: {
-      product: ""
-    }
+    defaultValues: productModel,
+    mode: "onChange"
   });
 
   const onSubmit = (data) => {
-    if (data.product.trim()) {
-      onAdd(data.product.trim());
-      methods.reset(); // limpa o formulário após submissão
-    }
+    console.log('Form data:', data);  // debug
+    onAdd(data);
+    methods.reset();
   };
 
   return (
-    <Form onSubmit={onSubmit}>
-      <InputComponent
-        name="product"
-        type="text"
-        label="Produto:"
-        placeholder="Digite o nome do produto"
-        rules={{ 
-          required: "Nome do produto é obrigatório",
-          minLength: {
-            value: 3,
-            message: "Mínimo de 3 caracteres"
-          }
-        }}
-      />
-      <ButtonComponent type="submit">Adicionar</ButtonComponent>
-    </Form>
+    <section>
+      <h2>Cadastro de Produtos</h2>
+      <Form onSubmit={onSubmit}>
+        {productFields.map((field) => (
+          <InputComponent
+            key={field.id}
+            name={field}
+            type={getInputType(productModel[field])}
+            label={field}
+            placeholder={`Digite o ${field}`}
+            rules={validationRules[field]}
+          />
+        ))}
+        <ButtonComponent
+          type="submit"
+          >Submit
+        </ButtonComponent>
+      </Form>
+    </section>
   );
 }

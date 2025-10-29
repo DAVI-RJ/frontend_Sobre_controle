@@ -4,19 +4,19 @@ import HomeLayout from "../../Components/templates/HomeLayout";
 import CardComponent from "../../Components/molecules/cards/Card";
 import SidebarComponent from "../../Components/organisms/sidebar/Sidebar";
 import ProductForm from "../../Components/molecules/productForm/ProductForm";
-import indexProducts from "../../services/Hooks/ProductService";
+import initialProducts from "../../services/Hooks/ProductService";
 
 import "./Home.css"
 
 export default function Home(){
 
   const [view, setView] = useState("list")
-  const [ products, setProducts] = useState(indexProducts);
+  const [ products, setProducts] = useState(initialProducts);
 
-  const addProduct = (name) => {
+  const addProduct = (data) => {
     const newProduct = {
       id: products.length + 1,
-      name
+      ...data
     }  
     setProducts(prev => [...prev, newProduct]);
     setView("list");
