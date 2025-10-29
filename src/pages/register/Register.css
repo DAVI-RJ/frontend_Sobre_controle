@@ -1,16 +1,17 @@
-/*.pagesRegisterClass{
+.register-class{
   justify-items: center;
   position: relative;
   border: 2px solid black;
   padding: 10px;
   height: 100vh;
+  background-color: blue;
 }
 
-.pagesRegisterClass h1 {
+.register-class h1 {
   color: white;
   
 }
-.pagesRegisterClass p {
+.register-class p {
   color: white;
   font-family: Arial, sans-serif;
   font-size: 16px; 
@@ -20,9 +21,8 @@
   margin-bottom: 1em; 
 }
 
-.navigationClass {
+.navigation-class {
   position: fixed;
   bottom: 10px;
   left: 10px;
 }
-*/

@@ -36,7 +36,7 @@ export default function Register() {
     }
   };
   return (
-    <div className='pagesRegisterClass'>
+    <div className='register-class'>
       <h2>Cadastro</h2>
         <Form onSubmit={handleRegister}>
           {currentStep()}

@@ -1,9 +1,9 @@
 import React from 'react';
-
 import { useNavigate } from 'react-router-dom'
 
 import Form from "../../Components/molecules/form/Form";
-import WaveBackground from "../../Components/organisms/container/Container";
+import WaveBackground from "../../Components/organisms/wave/Wave";
+import ButtonComponent from '../../Components/atoms/button/Button';
 import InputComponent from "../../Components/atoms/inputs/Input";
 
 import "./Login.css"
@@ -20,7 +20,7 @@ export default function Login() {
     <div className='backimg'>
       <div className='animate'>
         <WaveBackground />
-          <div className='pagesLoginClass'> 
+          <div className='login-class'> 
             <h1> Login Sobre Controle</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, adipisci</p>
           <Form onSubmit={handleLogin}>
@@ -48,11 +48,11 @@ export default function Login() {
                   minLength: { value: 6, message: "A senha deve ter pelo menos 6 caracteres" }
                 }}
               />
-
-            <button type="submit" onClick={() => navigate('/Home')}>Entrar</button>
-            <button type="button" onClick={() => navigate('/register')}>
+            
+            <ButtonComponent type="submit" onClick={() => navigate('/Home')}>Entrar</ButtonComponent>
+            <ButtonComponent type="button" onClick={() => navigate('/register')}>
               Não tenho cadastro
-            </button>
+            </ButtonComponent>
           </Form>
         </div>  
       </div>

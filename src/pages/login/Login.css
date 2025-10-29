@@ -1,22 +1,25 @@
-/*.pagesLoginClass{
+.login-class{
   display: grid;
   justify-items: center;
   margin: 2rem;
 }
-.pagesLoginClass h1 {
+.login-class  {
+  gap: 8px;
+}
+
+.login-class h1 {
   color: white;
   
 }
-.pagesLoginClass p {
+.login-class p {
   color: white;
   font-family: Arial, sans-serif;
   font-size: 16px; 
   line-height: 1.5; 
   text-align: justify; 
   text-indent: 20px; 
-  margin-bottom: 1em; 
-
 }
+
 .backimg {
   position: relative;
   min-height: 100vh;
@@ -29,4 +32,3 @@
   background-color: blue;
 }
 
-*/

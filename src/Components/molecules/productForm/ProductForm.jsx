@@ -1,27 +1,39 @@
-import React, {useState} from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 import Form from "../form/Form";
 import InputComponent from "../../atoms/inputs/Input";
 import ButtonComponent from "../../atoms/button/Button"
 
-export default function ProductForm (){
+export default function ProductForm({ onAdd }) {
+  const methods = useForm({
+    defaultValues: {
+      product: ""
+    }
+  });
+
+  const onSubmit = (data) => {
+    if (data.product.trim()) {
+      onAdd(data.product.trim());
+      methods.reset(); // limpa o formulário após submissão
+    }
+  };
+
   return (
-    <div>
-      <Form>
-        <InputComponent
-          name="email"
-          type="email"
-          label="Email:"
-          placeholder="Digite seu email"
-          rules={{
-            required: { value: true, message: "O email é obrigatório" },
-            pattern: {
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: "Digite um email válido"
-            }
-          }}
-        />
-        <ButtonComponent>Submit</ButtonComponent>
-      </Form>
-    </div>
+    <Form onSubmit={onSubmit}>
+      <InputComponent
+        name="product"
+        type="text"
+        label="Produto:"
+        placeholder="Digite o nome do produto"
+        rules={{ 
+          required: "Nome do produto é obrigatório",
+          minLength: {
+            value: 3,
+            message: "Mínimo de 3 caracteres"
+          }
+        }}
+      />
+      <ButtonComponent type="submit">Adicionar</ButtonComponent>
+    </Form>
   );
 }
