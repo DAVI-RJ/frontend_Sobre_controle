@@ -1,45 +1,25 @@
 import React from 'react';
-
 import InputComponent from "../../atoms/inputs/Input"; 
+import AddressFields from '../../../services/models/AddressService';
 
 const Step2 = () => {
 
   return (
     <div>
       <h2>Endereço</h2>
-      <InputComponent 
-        id="street"
-        name="street"
-        type="text" 
-        placeholder="Rua"
-        label="Rua:"
-        
-      />
-
-      <InputComponent 
-        id="number"
-        name="number"
-        type="text"
-        placeholder="Number" 
-        label="Numero:"
-      />
-
-      <InputComponent 
-        id="city"
-        name="city"
-        type="text" 
-        placeholder="Cidade"
-        label="Cidade:"
-      />
-
-      <InputComponent 
-        id="zip"
-        name="zip"
-        type="text" 
-        placeholder="CEP"
-        label="CEP:"
-      />
-
+      {AddressFields.map((field) => 
+        <InputComponent 
+          key={field.name}
+          id={field.name}
+          name={field.name}
+          type={field.type}
+          placeholder={`Digite o nome ${field.name}`}
+          label={field.label}
+          rules={{
+            required: `${field.label.replace(':', " ")} é obrigatório`,
+          }}
+        />  
+      )} 
     </div>
   );
 };

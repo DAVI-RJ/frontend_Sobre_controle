@@ -1,5 +1,6 @@
 .section-content {
   display: grid;
+  background: blue;
   width: 100%;
   background: var(--surface);
   border-radius: var(--radius);

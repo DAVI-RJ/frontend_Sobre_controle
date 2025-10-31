@@ -1,13 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./Card.css"
 
-
-
 export default function CardComponent({product}){
-  if(!product) return null; 
 
-  return (  
+  return (
     <div className="card">
       <div>
         <h3>{product?.name}</h3>

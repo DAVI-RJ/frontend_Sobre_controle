@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Form from "../form/Form";
 import InputComponent from "../../atoms/inputs/Input";
 import ButtonComponent from "../../atoms/button/Button";
-import { productModel, productFields, validationRules, getInputType } from "../../../services/Hooks/ProductService";
+import { productModel} from "../../../services/models/ProductService";
 
 export default function ProductForm({ onAdd }) {
   const methods = useForm({
@@ -21,14 +21,20 @@ export default function ProductForm({ onAdd }) {
     <section>
       <h2>Cadastro de Produtos</h2>
       <Form onSubmit={onSubmit}>
-        {productFields.map((field) => (
+        {productModel.map((field) => (
           <InputComponent
-            key={field.id}
-            name={field}
-            type={getInputType(productModel[field])}
-            label={field}
-            placeholder={`Digite o ${field}`}
-            rules={validationRules[field]}
+            key={field.name}
+            name={field.name}
+            type={field.type}
+            label={field.label}
+            placeholder={field.placeholder}
+            rules={{
+              required: `${field.label} é obrigatório`,
+              minLength: field.minLength && {
+                value: field.minLength,
+                message: `Mínimo de ${field.minLength} caracteres`
+              }
+            }}
           />
         ))}
         <ButtonComponent
