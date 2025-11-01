@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import InputComponent from "../../atoms/inputs/Input";
 import { companyFields } from '../../../services/models/CompanyService';
+import { customersFildes } from '../../../services/models/CustomersService';
+import { supplierFildes } from "../../../services/models/SupplierService"; 
 
-const Step1 = () => {
+const Step1 = ({formType}) => {
+  const [ formFields, setFormFields] = useState([]);
+    
+  useEffect(() => {
+    if(formType === "company"){
+      setFormFields(companyFields)
+    }else if (formType === "customer"){
+      setFormFields(customersFildes)
+    }else if (formType === "supplier")
+      setFormFields(supplierFildes)
+  },[formType]); 
+  
+
   return (
-    <div>
-      <h2>Dados da Empresa</h2>
-      {companyFields.map((field) => 
+    <>
+      {formFields.map((field) => 
         <InputComponent 
           key={field.name}
           id={field.name}
@@ -19,7 +32,7 @@ const Step1 = () => {
           }}
         />  
       )} 
-    </div>
+    </>
     );
   };
 

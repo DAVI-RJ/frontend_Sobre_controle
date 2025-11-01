@@ -29,7 +29,7 @@ export default function Register() {
   };
   const currentStep = () => {
     switch (step) {
-      case 1: return <Step1 />;
+      case 1: return <Step1 formType="company"/>;
       case 2: return <Step2 />;
       case 3: return <Step3 />;
       default: return <Step1 />;

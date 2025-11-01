@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import statesList from "../../../context/statesList";
+import AddressService from "../../../services/api/AddressApi";
 
 function SelectComponent() {
   const [selectedOption, setSelectedOption] = useState("");

@@ -5,7 +5,7 @@ import AddressFields from '../../../services/models/AddressService';
 const Step2 = () => {
 
   return (
-    <div>
+    <>
       <h2>Endereço</h2>
       {AddressFields.map((field) => 
         <InputComponent 
@@ -13,14 +13,14 @@ const Step2 = () => {
           id={field.name}
           name={field.name}
           type={field.type}
-          placeholder={`Digite o nome ${field.name}`}
+          placeholder={`Digite ${field.label.replace(':', " ")}`}
           label={field.label}
           rules={{
             required: `${field.label.replace(':', " ")} é obrigatório`,
           }}
         />  
       )} 
-    </div>
+    </>
   );
 };
 

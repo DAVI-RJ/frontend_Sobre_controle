@@ -5,7 +5,9 @@ import InputComponent from "../../atoms/inputs/Input";
 import ButtonComponent from "../../atoms/button/Button";
 import { productModel} from "../../../services/models/ProductService";
 
-export default function ProductForm({ onAdd }) {
+import "./ProductForm.css"
+
+export default function ProductComponent({ onAdd }) {
   const methods = useForm({
     defaultValues: productModel,
     mode: "onChange"
@@ -18,8 +20,8 @@ export default function ProductForm({ onAdd }) {
   };
 
   return (
-    <section>
-      <h2>Cadastro de Produtos</h2>
+    <section className="form-product">
+      <h3>Cadastro de Produtos</h3>
       <Form onSubmit={onSubmit}>
         {productModel.map((field) => (
           <InputComponent

@@ -1,7 +1,7 @@
 .home-layout{
   display: grid;
   grid-template-rows: auto 1fr auto; /* header | main | footer */
-  padding: 10px;
+  gap: 10px;
   width: 100%;
   min-height: 100vh;
 }

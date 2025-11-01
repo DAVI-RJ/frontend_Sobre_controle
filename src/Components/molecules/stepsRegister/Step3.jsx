@@ -3,7 +3,7 @@ import InputComponent from "../../atoms/inputs/Input";
 
 const Step3 = () => {
   return (
-    <div>
+    <>
       <h2>Segurança</h2>
       
       <InputComponent 
@@ -23,7 +23,7 @@ const Step3 = () => {
         label="Confirma a Senha:"
         required
       />
-    </div>
+    </>
   );
 };
 

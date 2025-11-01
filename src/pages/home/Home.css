@@ -1,10 +1,7 @@
 .section-content {
   display: grid;
-  background: blue;
   width: 100%;
   background: var(--surface);
   border-radius: var(--radius);
-  padding: 16px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  min-height: 300px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.562);
 }

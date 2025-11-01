@@ -10,5 +10,3 @@ const AddressService = () => {
 }
 
 export default AddressService; 
-
-console.log(AddressService())

@@ -1,8 +1,13 @@
 import React, { useState } from "react"
+
 import HomeLayout from "../../Components/templates/HomeLayout";
 import CardComponent from "../../Components/molecules/cards/Card";
 import SidebarComponent from "../../Components/organisms/sidebar/Sidebar";
-import ProductForm from "../../Components/molecules/productForm/ProductForm";
+
+import ProductComponent from "../../Components/molecules/productForm/ProductForm";
+import CustomerComponent from "../../Components/molecules/customerForm/CustomerForm";
+import SupplierComponent from "../../Components/molecules/supplierForm/SupplierForm"
+
 import initialProducts from "../../services/models/ProductService";
 
 import "./Home.css"
@@ -32,11 +37,12 @@ export default function Home(){
   return (
     <HomeLayout >
       <SidebarComponent setView = {setView} />
-      <section className="section-content">
-        {view === "formProduto" && <ProductForm onAdd={addProduct} />}
-        {view === "list" && renderProductList()}
-        {view === "list" && <CustomerForm />}
-      </section>
+      <div className="section-content">
+        {view === "New Produtct" && <ProductComponent onAdd={addProduct} />}
+        {view === "list Product" && renderProductList()}
+        {view === "New customer" && <CustomerComponent />}
+        {view === "New Supplier" && <SupplierComponent />}
+      </div>
     </HomeLayout>
   )
 }
