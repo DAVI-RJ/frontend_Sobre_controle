@@ -1,5 +1,8 @@
 // src/components/WaveBackground.jsx
-const WaveBackground = () => {
+import "./WaveComponent.css"; 
+
+
+const WaveComponent = () => {
   return (
     <svg
       viewBox="0 0 1440 320"
@@ -8,7 +11,7 @@ const WaveBackground = () => {
       className='svgClass'
      
     >
-      <path fill="cyan" >
+      <path fill="white" >
         <animate 
           attributeName="d" 
           dur="20s" 
@@ -28,4 +31,4 @@ const WaveBackground = () => {
   );
 };
 
-export default WaveBackground;
+export default WaveComponent;

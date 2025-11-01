@@ -1,11 +1,3 @@
-.login-class{
-  display: grid;
-  justify-items: center;
-  margin: 2rem;
-}
-.login-class  {
-  gap: 8px;
-}
 
 .login-class h1 {
   color: white;
@@ -18,16 +10,5 @@
   line-height: 1.5; 
   text-align: justify; 
   text-indent: 20px; 
-}
-
-.backimg {
-  position: relative;
-  min-height: 100vh;
-  min-width: 100vw;
-}
-.animate {
-  padding: 2rem;
-  position: relative;
-  z-index: 1;
 }
 
