@@ -1,8 +1,7 @@
-.form-supplier {
+.register-layout{
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  background: rgb(247, 216, 216);
   justify-content: center;
   align-items: center;
+  background-image: url("../../../assets/bg-login.png");
 }

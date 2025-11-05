@@ -2,10 +2,12 @@ import React from 'react';
 import InputComponent from "../../atoms/inputs/Input"; 
 import AddressFields from '../../../services/models/AddressService';
 
+import "./StepClass.css"; 
+
 const Step2 = () => {
 
   return (
-    <>
+    <div className='step-class'>
       <h2>Endereço</h2>
       {AddressFields.map((field) => 
         <InputComponent 
@@ -20,7 +22,7 @@ const Step2 = () => {
           }}
         />  
       )} 
-    </>
+    </div>
   );
 };
 

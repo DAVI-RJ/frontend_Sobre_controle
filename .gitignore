@@ -9,6 +9,8 @@ dist-ssr
 # Security
 auth
 .env
+api/
+ApiConnection.jsx
 
 # Build directories
 db.json

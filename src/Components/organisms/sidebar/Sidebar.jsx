@@ -22,7 +22,7 @@ export default function SidebarComponent ({setView}) {
   return (
     <aside className="sidebar">
       <nav className="nav-button">
-        <h3>PRODUTOS</h3>
+        <h4>PRODUTOS</h4>
         {menuItems.products.map((item) => (
         <ButtonComponent 
           key={item.id}
@@ -34,7 +34,7 @@ export default function SidebarComponent ({setView}) {
         ))}
       </nav>
       <nav className="nav-button">
-        <h3>CLIENTES</h3>
+        <h4>CLIENTES</h4>
         {menuItems.customers.map((item) => (
         <ButtonComponent 
           key={item.id}
@@ -46,7 +46,7 @@ export default function SidebarComponent ({setView}) {
         ))}
       </nav>       
        <nav className="nav-button">
-        <h3>FORNECEDORES</h3>
+        <h4>FORNECEDORES</h4>
         {menuItems.supplier.map((item) => (
         <ButtonComponent 
           key={item.id}

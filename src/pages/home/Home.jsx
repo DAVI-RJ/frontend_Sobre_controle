@@ -35,7 +35,7 @@ export default function Home(){
   };
 
   return (
-    <HomeLayout >
+    <HomeLayout>
       <SidebarComponent setView = {setView} />
       <div className="section-content">
         {view === "New Produtct" && <ProductComponent onAdd={addProduct} />}

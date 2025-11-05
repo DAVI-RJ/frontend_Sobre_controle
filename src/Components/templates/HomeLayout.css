@@ -9,22 +9,7 @@
   height: 400px;
 }
 
-.home-main{
-  display: grid;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  height: 100%;
-  width: 100%;
-}
-
 .footer-layout {
   margin-bottom: 0;
 }
 
-/* breakpoint: mobile -> collapse sidebar */
-@media (max-width: 480px){
-  .home-main{
-    grid-template-columns: 1fr;
-    padding: var(--gap);
-  }
-}

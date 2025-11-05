@@ -11,11 +11,9 @@ export default function HomeLayout ({children}) {
     <div className="home-layout">
       <HeaderComponent className="header-layout"/>
       <DashboardComponent className="dashboard-layout"/>
-      <main className="home-main">
         <ContainerComponent>
           {children}
         </ContainerComponent> 
-      </main>
       <FooterComponent className="footer-layout"/>
     </div>
   )

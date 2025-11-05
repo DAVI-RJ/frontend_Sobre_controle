@@ -1,0 +1,11 @@
+
+.step-class {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.step-class h2 {
+  grid-column: span 2;
+  text-align: center;
+}
+

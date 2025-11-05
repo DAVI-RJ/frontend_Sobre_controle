@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 
 import Form from "../../Components/molecules/form/Form";
-
+import RegisterLayout from '../../Components/templates/registerlayout/RegisterLayout';
 import Step1 from "../../Components/molecules/stepsRegister/Step1";
 import Step2 from "../../Components/molecules/stepsRegister/Step2";
 import Step3 from "../../Components/molecules/stepsRegister/Step3";
@@ -36,18 +36,20 @@ export default function Register() {
     }
   };
   return (
-    <div className='register-class'>
-      <h2>Cadastro</h2>
+    <RegisterLayout>
+      <div className='register-class'>
+        <h1>Cadastro</h1>
         <Form onSubmit={handleRegister}>
-          {currentStep()}
+            {currentStep()}
 
-        <ButtonComponent type="submit">
-          {step === 3 ? 'Finalizar Cadastro' : 'Próximo'}
-        </ButtonComponent>
+          <nav className='option-register'>
+            <ButtonComponent type="submit">
+              {step === 3 ? 'Finalizar Cadastro' : 'Próximo'}
+            </ButtonComponent>
+            {step > 1 && <ButtonComponent onClick={prevStep}>Voltar</ButtonComponent>}
+          </nav> 
         </Form>
-        <nav className='navigationClass'>
-          {step > 1 && <ButtonComponent onClick={prevStep}>Voltar</ButtonComponent>}
-        </nav>
-    </div>
+      </div>
+    </RegisterLayout>
   );
 }
