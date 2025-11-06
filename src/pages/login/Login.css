@@ -1,12 +1,16 @@
 .login-class {
-  min-width: 250px;
+  display: grid;
+  grid-template-columns: minmax(300px, 600px);
   padding: 50px;
+  height: 80%;
+  max-width: 100%;
+  margin: 0 auto;
 }
 .login-class h1 {
   color: white;
   text-align: center;
 }
-.login-class p {
+.login-class > p {
   color: white;
   font-family: Arial, sans-serif;
   font-size: 16px; 
@@ -17,4 +21,12 @@
 .option-login {
   display: flex;
   justify-content: space-between;
+}
+
+
+@media (max-width: 768px) {
+  .login-class {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
 }

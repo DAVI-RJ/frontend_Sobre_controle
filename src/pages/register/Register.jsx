@@ -1,13 +1,9 @@
-'use client'
-
-import React, { useState } from 'react';
-
+import { useState } from 'react';
 import Form from "../../Components/molecules/form/Form";
 import RegisterLayout from '../../Components/templates/registerlayout/RegisterLayout';
 import Step1 from "../../Components/molecules/stepsRegister/Step1";
 import Step2 from "../../Components/molecules/stepsRegister/Step2";
 import Step3 from "../../Components/molecules/stepsRegister/Step3";
-
 import ButtonComponent from "../../Components/atoms/button/Button";
 
 import './Register.css'
@@ -20,13 +16,14 @@ export default function Register() {
   const prevStep = () => setStep(prev => prev - 1);
   
   const handleRegister = (data) => {
-  setFormData(prev => ({...prev, ...data}));
-    if (step < 3) {
-      nextStep();
-    } else {
-      console.log("meu objeto vem aqui",{...formData, ...data});
-    }
-  };
+    setFormData(prev => ({...prev, ...data}));
+      if (step < 3) {
+        nextStep();
+      } else {
+        console.log("log:",{...formData, ...data});
+      }
+    };
+
   const currentStep = () => {
     switch (step) {
       case 1: return <Step1 formType="company"/>;

@@ -15,11 +15,13 @@ const Step2 = () => {
           id={field.name}
           name={field.name}
           type={field.type}
-          placeholder={`Digite ${field.label.replace(':', " ")}`}
+          placeholder={field.placeholder}
           label={field.label}
           rules={{
-            required: `${field.label.replace(':', " ")} é obrigatório`,
-          }}
+            required: { 
+                value: true,
+                message: `${field.label} field is required` }
+            }}
         />  
       )} 
     </div>

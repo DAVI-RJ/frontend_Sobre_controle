@@ -10,8 +10,8 @@ const WaveComponent = () => {
 
       className='svgClass'
      
-    >
-      <path fill="white" >
+    > 
+      <path fill="blue" >
         <animate 
           attributeName="d" 
           dur="20s" 
@@ -26,6 +26,7 @@ const WaveComponent = () => {
             M0,80 C480,150 960,10 1440,80 L1440,320 L0,320 Z
           "
         />
+       
       </path>
     </svg>
   );

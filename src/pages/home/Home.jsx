@@ -19,10 +19,10 @@ export default function Home(){
 
   const addProduct = (data) => {
     const newProduct = {
-      id: crypto.randomUUID(),
+      productModel,
       ...data
     }  
-    setProducts(prev => [...prev, newProduct]);
+    prev => [...prev, newProduct];
     setView("list");
   };
 

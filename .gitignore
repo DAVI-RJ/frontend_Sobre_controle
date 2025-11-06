@@ -17,4 +17,4 @@ db.json
 vite.config.js
 package-lock.json
 # lint configuraçoes 
-eslint_config.js
+eslint.config.js

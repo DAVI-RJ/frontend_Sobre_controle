@@ -9,6 +9,6 @@
 }
 
 .button-class:hover{
-  transition: 0.2s ease-in-out;
+  transition: 0.2s;
   transform: scale(1.05) translateX(4px);
 }

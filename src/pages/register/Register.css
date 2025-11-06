@@ -1,14 +1,17 @@
 .register-class{
-  padding: 50px;
-  min-width: 250px;
-  width: 70%;
+  display: grid;
+  grid-template-columns: minmax(300px, 600px);
+  padding: 20px;
+  height: 100vh;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .register-class h1 {
   color: white;
   text-align: center;
 }
-.register-class p {
+.register-class > p {
   color: white;
   font-family: Arial, sans-serif;
   font-size: 16px; 
@@ -19,4 +22,16 @@
 .option-register{
   display: flex;
   justify-content: space-between;
+}
+
+
+@media (max-width: 768px) {
+  .register-class {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  
+  .option-register {
+    flex-direction: column;
+  }
 }

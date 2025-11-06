@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
 import Form from "../form/Form";
 import Step1 from "../stepsRegister/Step1";
 import Step2 from "../stepsRegister/Step2";

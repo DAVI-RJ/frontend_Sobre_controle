@@ -5,8 +5,3 @@
   width:100%;
   max-width:640px;
 }
-
-.form-class * {
-  gap:8px;
-  margin-top:8px;
-}

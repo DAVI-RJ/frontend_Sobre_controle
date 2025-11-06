@@ -10,7 +10,7 @@ function InputComponent({
     placeholder,
     rules = {} 
   }) {
-  
+    
   const { register, formState: { errors } } = useFormContext();
 
   return (
@@ -27,7 +27,7 @@ function InputComponent({
       />
       {errors[name] && (
         <p className="error-message">
-          {errors[name].message || 'Campo obrigatório'}
+          {errors[name].message }
         </p>
       )}
     </div>    

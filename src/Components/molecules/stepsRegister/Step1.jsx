@@ -19,21 +19,23 @@ const Step1 = ({formType}) => {
 
   return (
     <>
-      {formFields.map((field) => 
-        <InputComponent 
-          key={field.name}
-          id={field.name}
-          name={field.name}
-          type={field.type}
-          placeholder={`Digite o nome ${field.name}`}
-          label={field.label}
-          rules={{
-            required: `${field.label.replace(':', " ")} é obrigatório`,
+    {formFields.map((field) => 
+      <InputComponent 
+        key={field.name}
+        id={field.name}
+        name={field.name}
+        type={field.type}
+        placeholder={field.placeholder}
+        label={field.label}         
+        rules={{
+            required: { 
+              value: true,
+              message: `${field.label} field is required` }
           }}
-        />  
-      )} 
-    </>
-    );
-  };
+      />  
+    )} 
+  </>
+  );
+};
 
 export default Step1;

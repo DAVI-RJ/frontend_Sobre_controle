@@ -1,11 +1,8 @@
-import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
-
 import Form from "../../Components/molecules/form/Form";
 import LoginLayout from "../../Components/templates/loginLayout /LoginLayout";
 import ButtonComponent from '../../Components/atoms/button/Button';
 import InputComponent from "../../Components/atoms/inputs/Input";
-
 import connection from '../../services/api/ApiConnection';
 
 import "./Login.css"
@@ -15,18 +12,15 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleLogin =  async (data) => {
-    /*const {email, password} = data; 
-    try {
-      const response = await connection.post("/login", {
-        email, 
-        password
-      });
-      console.log('Login:', response.data);
+    //try {
+   //   const response = await connection.post("/login", data);
+      
+     // console.log('Login:', response.data);
+      
       navigate("/Home")
-    }catch(error){
-      console.log(error)
-    }*/
-    navigate("/Home")
+   // }catch(error){
+    //  console.log("erro na conexão",error)
+   //
   }
     
   return (
@@ -41,7 +35,7 @@ export default function Login() {
             label="Email:"
             placeholder="Digite seu email"
             rules={{
-              required: { value: true, message: "O email é obrigatório" },
+              required: { value: true, message: "This field is required" },
               pattern: {
                 value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                 message: "Digite um email válido"
@@ -55,12 +49,13 @@ export default function Login() {
             label="Senha:"
             placeholder="Digite sua senha"
             rules={{
-              required: { value: true, message: "A senha é obrigatória" },
-              minLength: { value: 6, message: "A senha deve ter pelo menos 6 caracteres" }
-            }}
+              required: { 
+                value: true, 
+                message: "This field is required"}
+              }}
           />
           <nav className='option-login'>
-            <ButtonComponent type="submit" onClick={() => handleLogin()}>Entrar</ButtonComponent>
+            <ButtonComponent type="submit" onClick={handleLogin}>Entrar</ButtonComponent>
             <ButtonComponent type="button" onClick={() => navigate('/register')}>
               Não tenho cadastro
             </ButtonComponent>

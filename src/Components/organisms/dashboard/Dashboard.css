@@ -1,4 +1,9 @@
 .dashboard-class {
   background: var(--cards-box);
   text-align: center;
+  margin-bottom: 10px;
+}
+
+.dashboard-class h1 {
+  z-index: 1;
 }

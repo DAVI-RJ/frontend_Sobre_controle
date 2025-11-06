@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from "react";
-
 import "./Card.css"
 
 export default function CardComponent({product}){

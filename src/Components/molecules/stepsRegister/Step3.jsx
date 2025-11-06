@@ -10,18 +10,29 @@ const Step3 = () => {
         id="password"
         name="password"
         type="password"
-        placeholder="digita sua senha "
+        placeholder="Enter your password"
         label="Senha:"
-        required
+        rules={{
+          require: "Enter your password",
+          minLength: {
+            value: 8,
+            message: "Password must be a minimum of 8 characters.",  
+          }, 
+          pattern: { 
+            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+[\]{};':"\\|,.<>/?]).*$/,
+            message: "Must include uppercase, lowercase, numbers, and special characters.",
+          },
+        }
+      }
       />
 
       <InputComponent 
         id="confirmPassword"
         name="confirmPassword"
         type="password" 
-        placeholder="digita sua senha novamente "
+        placeholder="Confirm password "
         label="Confirma a Senha:"
-        required
+                
       />
     </>
   );

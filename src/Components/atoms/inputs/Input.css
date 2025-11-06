@@ -1,9 +1,10 @@
 .input-class {
   display:flex; 
   flex-direction:column; 
-  gap:6px;
+  margin-bottom: 16px;
 }
 .input-class label {
+  padding: 2px 16px;
   font-size:14px; 
   color:var(--identification);
 }
@@ -11,12 +12,12 @@
 .input-class input,
 .input-wrapper select, 
 .input-wrapper textarea{
-  padding:8px 10px;
+  padding: 8px 16px;
   border: 1px solid #d1d5db;
   border-radius: 5px;
   font-size:14px;
   box-shadow: 0px 2px black;
-  background:white;
+  background: var(--cards-box);
 }
 .input-class input:focus{
   background-color: aliceblue;
@@ -27,6 +28,6 @@
 .error-message{ 
   color:var(--error);
   font-size:12px;
-  margin-top:4px; 
+  padding: 2px 16px;
 }
 

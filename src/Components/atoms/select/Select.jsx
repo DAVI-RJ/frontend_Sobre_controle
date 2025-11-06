@@ -11,11 +11,7 @@ function SelectComponent() {
   return (
     <select value={selectedOption} onChange={handleChange}>
       <option value="">Selecione um estado</option>
-      {statesList.map((estado) => (
-        <option key={estado.id} value={estado.uf}>
-          {estado.uf}
-        </option>
-      ))}
+      
     </select>
   );
 }
