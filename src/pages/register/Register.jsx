@@ -5,6 +5,7 @@ import Step1 from "../../Components/molecules/stepsRegister/Step1";
 import Step2 from "../../Components/molecules/stepsRegister/Step2";
 import Step3 from "../../Components/molecules/stepsRegister/Step3";
 import ButtonComponent from "../../Components/atoms/button/Button";
+import connection from "../../services/api/ApiConnection"; 
 
 import './Register.css'
 
@@ -15,12 +16,19 @@ export default function Register() {
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
   
-  const handleRegister = (data) => {
+  const handleRegister = async (data) => {
     setFormData(prev => ({...prev, ...data}));
       if (step < 3) {
         nextStep();
       } else {
-        console.log("log:",{...formData, ...data});
+        try {
+          const response = await connection.post("/register")
+          console.log("log:",{...formData, ...data, response});
+
+        }catch(error){
+          console.log("error conection: ", error)
+        }
+        
       }
     };
 

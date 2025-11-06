@@ -5,9 +5,10 @@ function ButtonComponent({
   onClick, 
   type,
   children,
+  className, 
   }) {
   return (
-    <button className='button-class' 
+    <button className={`button-class ${className}`}
     onClick={onClick}
     type= {type}
     >

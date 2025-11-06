@@ -7,6 +7,7 @@ function InputComponent({
     label, 
     name, 
     type, 
+    className,
     placeholder,
     rules = {} 
   }) {
@@ -14,7 +15,7 @@ function InputComponent({
   const { register, formState: { errors } } = useFormContext();
 
   return (
-    <div className='input-class'>
+    <div className={`input-class ${className}`}>
       {label && <label htmlFor={id}>{label}</label>}
       <input 
         {...register(name, {

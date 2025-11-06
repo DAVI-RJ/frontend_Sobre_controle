@@ -56,7 +56,10 @@ export default function Login() {
           />
           <nav className='option-login'>
             <ButtonComponent type="submit" onClick={handleLogin}>Entrar</ButtonComponent>
-            <ButtonComponent type="button" onClick={() => navigate('/register')}>
+            <ButtonComponent 
+              type="button" 
+              onClick={() => navigate('/register')}
+              className="register-button">
               Não tenho cadastro
             </ButtonComponent>
           </nav>

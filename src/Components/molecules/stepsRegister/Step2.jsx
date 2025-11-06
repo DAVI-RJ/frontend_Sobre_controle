@@ -7,10 +7,19 @@ import "./StepClass.css";
 const Step2 = () => {
 
   return (
-    <div className='step-class'>
+    <div className= "step-class">
       <h2>Endereço</h2>
       {AddressFields.map((field) => 
-        <InputComponent 
+        <InputComponent
+          className={
+            field.name === "street" ? "span-2" :
+            field.name === "number" ? "col-1" :
+            field.name === "neighborhood" ? "col-2" :
+            field.name === "city" ? "col-1" :
+            field.name === "state" ? "col-2" :
+            ""
+          }
+           
           key={field.name}
           id={field.name}
           name={field.name}

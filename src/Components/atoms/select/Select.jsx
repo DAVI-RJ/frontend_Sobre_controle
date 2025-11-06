@@ -9,10 +9,9 @@ function SelectComponent() {
   };
 
   return (
-    <select value={selectedOption} onChange={handleChange}>
+    <div value={selectedOption} onChange={handleChange}>
       <option value="">Selecione um estado</option>
-      
-    </select>
+    </div>
   );
 }
 

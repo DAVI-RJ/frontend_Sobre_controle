@@ -23,6 +23,15 @@
   justify-content: space-between;
 }
 
+.register-button {
+  background: none;
+}
+
+.register-button:hover {
+  transition: 1s ease-in;
+  background: lightblue;
+}
+
 
 @media (max-width: 768px) {
   .login-class {
