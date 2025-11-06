@@ -1,9 +1,14 @@
 :root{
-  --bg: #f6f7f9;
-  --surface: #ffffff;
+  --bg: #F7F9FC;
+  --first-color:  lightblue;
+  --second-color: #00c853;
+  --sidebar-color: #34495E; 
+  --cards-box: #FFFFFF;
+  --list-color: #EEEEEE;
+  --light-shadows: 0 4px 8px rgba(0,0,0,0.08);
   --identification: #232a38;
-  --focus: black;
-  --error: #ef4444;
+  --focus: lightblue;
+  --error: #D50000;
   --sidebar-width: 240px;
   --gap: 16px;
   --radius: 6px;

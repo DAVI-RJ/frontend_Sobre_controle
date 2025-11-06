@@ -41,7 +41,7 @@ export default function ProductComponent({ onAdd }) {
         ))}
         <ButtonComponent
           type="submit"
-          >Submit
+          >Adicionar
         </ButtonComponent>
       </Form>
     </section>

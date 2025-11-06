@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 
 import Form from "../../Components/molecules/form/Form";
@@ -6,16 +6,29 @@ import LoginLayout from "../../Components/templates/loginLayout /LoginLayout";
 import ButtonComponent from '../../Components/atoms/button/Button';
 import InputComponent from "../../Components/atoms/inputs/Input";
 
+import connection from '../../services/api/ApiConnection';
+
 import "./Login.css"
 
 export default function Login() {
   
   const navigate = useNavigate();
 
-  const handleLogin = (data) => {
-    console.log('Login:', data);
-  };
-
+  const handleLogin =  async (data) => {
+    /*const {email, password} = data; 
+    try {
+      const response = await connection.post("/login", {
+        email, 
+        password
+      });
+      console.log('Login:', response.data);
+      navigate("/Home")
+    }catch(error){
+      console.log(error)
+    }*/
+    navigate("/Home")
+  }
+    
   return (
     <LoginLayout>
       <div className='login-class'>
@@ -47,7 +60,7 @@ export default function Login() {
             }}
           />
           <nav className='option-login'>
-            <ButtonComponent type="submit" onClick={() => navigate('/Home')}>Entrar</ButtonComponent>
+            <ButtonComponent type="submit" onClick={() => handleLogin()}>Entrar</ButtonComponent>
             <ButtonComponent type="button" onClick={() => navigate('/register')}>
               Não tenho cadastro
             </ButtonComponent>

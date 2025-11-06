@@ -8,14 +8,14 @@ import ProductComponent from "../../Components/molecules/productForm/ProductForm
 import CustomerComponent from "../../Components/molecules/customerForm/CustomerForm";
 import SupplierComponent from "../../Components/molecules/supplierForm/SupplierForm"
 
-import initialProducts from "../../services/models/ProductService";
+import { useProducts, productModel } from "../../services/models/ProductService";
 
 import "./Home.css"
 
 export default function Home(){
 
   const [view, setView] = useState("list")
-  const [ products, setProducts] = useState(initialProducts);
+  const products = useProducts()
 
   const addProduct = (data) => {
     const newProduct = {

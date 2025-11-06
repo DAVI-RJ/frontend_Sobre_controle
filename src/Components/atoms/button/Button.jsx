@@ -4,7 +4,7 @@ import "./Button.css"
 function ButtonComponent({
   onClick, 
   type,
-  children
+  children,
   }) {
   return (
     <button className='button-class' 

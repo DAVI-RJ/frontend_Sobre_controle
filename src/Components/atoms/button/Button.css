@@ -2,7 +2,13 @@
   cursor: pointer;
   appearance:none;
   padding: 8px 12px;
-  border-radius:4px;
+  border-radius: 10px;
+  box-shadow: var(--light-shadows);
   border:1px solid rgba(0,0,0,0.08);
-  background-color: lightblue;
+  background-color: var(--first-color);
+}
+
+.button-class:hover{
+  transition: 0.2s ease-in-out;
+  transform: scale(1.05) translateX(4px);
 }

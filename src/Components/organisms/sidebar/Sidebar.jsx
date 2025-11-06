@@ -1,62 +1,101 @@
 import React, { useState } from "react";
-import ButtonComponent from "../../atoms/button/Button"
+import ButtonComponent from "../../atoms/button/Button";
 
-import "./Sidebar.css"
+import "./Sidebar.css";
 
-//funcionalidade
-
+// Itens do menu
 const menuItems = {
   products: [
     { id: "list-products", label: "Lista de Produtos", view: "list Product" },
-    { id: "new-product", label: "Novo Produto", view: "New Produtct" }
+    { id: "new-product", label: "Novo Produto", view: "New Product" }
   ],
   customers: [
-    { id: "new-customer", label: "Novo Cliente", view: "New customer" }
+    { id: "new-customer", label: "Novo Cliente", view: "New Customer" }
   ],
   supplier: [
-    {id: "new-supplier", label: "Novo Fornecedor", view: "New Supplier"}
+    { id: "new-supplier", label: "Novo Fornecedor", view: "New Supplier" }
   ]
 };
 
-export default function SidebarComponent ({setView}) {
+export default function SidebarComponent({ setView }) {
+  // Estado para controlar seções abertas
+  const [openSections, setOpenSections] = useState({
+    products: false,
+    customers: false,
+    supplier: false
+  });
+
+  // Alterna visibilidade da seção
+  const toggleSection = (section) => {
+    setOpenSections((prev) => ({
+      ...prev,
+      [section]: !prev[section], 
+    }));
+  };
+
   return (
     <aside className="sidebar">
-      <nav className="nav-button">
-        <h4>PRODUTOS</h4>
-        {menuItems.products.map((item) => (
+      {/* PRODUTOS */}
+      <nav className={`nav-button ${openSections.products ? "ativado" : ""}`}>
         <ButtonComponent 
-          key={item.id}
-          type="button"
-          onClick={() => setView(item.view)}
+        onClick={() => toggleSection("products")}
         >
-          {item.label}
+          PRODUTOS {openSections.products ? "▼" : "▶"} 
         </ButtonComponent>
-        ))}
+        {openSections.products && (
+          <>
+            {menuItems.products.map((item) => (
+              <ButtonComponent
+                key={item.id}
+                type="button"
+                onClick={() => setView(item.view)}
+              >
+                {item.label}
+              </ButtonComponent>
+            ))}
+          </>
+        )}
       </nav>
-      <nav className="nav-button">
-        <h4>CLIENTES</h4>
-        {menuItems.customers.map((item) => (
-        <ButtonComponent 
-          key={item.id}
-          type="button"
-          onClick={() => setView(item.view)}
-        >
-          {item.label}
+
+      {/* CLIENTES */}
+      <nav className={`nav-button ${openSections.products ? "ativado" : ""}`}>
+        <ButtonComponent onClick={() => toggleSection("customers")}>
+          CLIENTES {openSections.customers ? "▼" : "▶"} 
         </ButtonComponent>
-        ))}
-      </nav>       
-       <nav className="nav-button">
-        <h4>FORNECEDORES</h4>
-        {menuItems.supplier.map((item) => (
-        <ButtonComponent 
-          key={item.id}
-          type="button"
-          onClick={() => setView(item.view)}
-        >
-          {item.label}
+        {openSections.customers && (
+          <>
+            {menuItems.customers.map((item) => (
+              <ButtonComponent
+                key={item.id}
+                type="button"
+                onClick={() => setView(item.view)}
+              >
+                {item.label}
+              </ButtonComponent>
+            ))}
+          </>
+        )}
+      </nav>
+
+      {/* FORNECEDORES */}
+      <nav className={`nav-button ${openSections.products ? "ativado" : ""}`}>
+        <ButtonComponent onClick={() => toggleSection("supplier")}>
+          FORNECEDORES {openSections.supplier ? "▼" : "▶"} 
         </ButtonComponent>
-        ))}
-      </nav>       
+        {openSections.supplier && (
+          <>
+            {menuItems.supplier.map((item) => (
+              <ButtonComponent
+                key={item.id}
+                type="button"
+                onClick={() => setView(item.view)}
+              >
+                {item.label}
+              </ButtonComponent>
+            ))}
+          </>
+        )}
+      </nav>
     </aside>
-  )
+  );
 }
