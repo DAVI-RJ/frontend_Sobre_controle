@@ -1,27 +1,28 @@
 import React, { useState } from "react"
-
 import HomeLayout from "../../Components/templates/HomeLayout";
 import CardComponent from "../../Components/molecules/cards/Card";
 import SidebarComponent from "../../Components/organisms/sidebar/Sidebar";
-
 import ProductComponent from "../../Components/molecules/productForm/ProductForm";
 import CustomerComponent from "../../Components/molecules/customerForm/CustomerForm";
-import SupplierComponent from "../../Components/molecules/supplierForm/SupplierForm"
+import SupplierComponent from "../../Components/molecules/supplierForm/SupplierForm";
+import { productModel } from "../../models/ProductService";
+import { useProducts } from "../../hooks/ProductsHooks"; 
 
-import { useProducts, productModel } from "../../services/models/ProductService";
 
 import "./Home.css"
+
 
 export default function Home(){
 
   const [view, setView] = useState("list")
   const products = useProducts()
 
-  const addProduct = (data) => {
+  const addProduct =  (data) => {
     const newProduct = {
       productModel,
       ...data
-    }  
+    };
+
     prev => [...prev, newProduct];
     setView("list");
   };
@@ -38,10 +39,10 @@ export default function Home(){
     <HomeLayout>
       <SidebarComponent setView = {setView} />
       <div className="section-content">
-        {view === "New Produtct" && <ProductComponent onAdd={addProduct} />}
-        {view === "list Product" && renderProductList()}
-        {view === "New customer" && <CustomerComponent />}
-        {view === "New Supplier" && <SupplierComponent />}
+        {view === "new-product" && <ProductComponent onAdd={addProduct} />}
+        {view === "list-products" && renderProductList()}
+        {view === "new-customer" && <CustomerComponent />}
+        {view === "new-supplier" && <SupplierComponent />}
       </div>
     </HomeLayout>
   )

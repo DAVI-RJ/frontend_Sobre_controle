@@ -1,6 +1,6 @@
 .login-class {
   display: grid;
-  grid-template-columns: minmax(300px, 600px);
+  grid-template-columns: minmax(300px, 500px);
   padding: 50px;
   height: 80%;
   max-width: 100%;
