@@ -1,10 +1,10 @@
 import React, { useState } from "react"
-import HomeLayout from "../../Components/templates/HomeLayout";
-import CardComponent from "../../Components/molecules/cards/Card";
-import SidebarComponent from "../../Components/organisms/sidebar/Sidebar";
-import ProductComponent from "../../Components/molecules/productForm/ProductForm";
-import CustomerComponent from "../../Components/molecules/customerForm/CustomerForm";
-import SupplierComponent from "../../Components/molecules/supplierForm/SupplierForm";
+import HomeLayout from "../../components/templates/HomeLayout";
+import CardComponent from "../../components/molecules/cards/Card";
+import SidebarComponent from "../../components/organisms/sidebar/Sidebar";
+import ProductComponent from "../../components/molecules/productForm/ProductForm";
+import CustomerComponent from "../../components/molecules/customerForm/CustomerForm";
+import SupplierComponent from "../../components/molecules/supplierForm/SupplierForm";
 import { productModel } from "../../models/ProductService";
 import { useProducts } from "../../hooks/ProductsHooks"; 
 

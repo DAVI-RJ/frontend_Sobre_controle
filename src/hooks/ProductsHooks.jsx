@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import connection from "../api/ApiConnection";
+import connection from "../services/api/ApiConnection";
 
 export const useProducts = () => {
   const [ products, setProducts] = useState([]);

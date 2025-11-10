@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
 // configuração de erro e autenticação
-import { useAuth } from "../auth/Auth";
-import { useAxiosErrorHandler } from "../../context/ErrorContext";
+import { useAuth } from "../../context/auth/Auth";
+import { useAxiosErrorHandler } from "../../context/error/ErrorContext";
 
 // componentes 
-import Form from "../../Components/molecules/form/Form";
-import LoginLayout from "../../Components/templates/loginLayout/LoginLayout";
-import ButtonComponent from '../../Components/atoms/button/Button';
-import InputComponent from "../../Components/atoms/inputs/Input";
+import Form from "../../components/molecules/form/Form";
+import LoginLayout from "../../components/templates/loginLayout/LoginLayout";
+import ButtonComponent from '../../components/atoms/button/Button';
+import InputComponent from "../../components/atoms/inputs/Input";
 import { ErrorMessage } from "../../context/error/ErrorMessage"
 import LoadingComponent from "../../utils/LoadingComponent"; 
 

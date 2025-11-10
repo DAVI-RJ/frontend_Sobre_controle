@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import InputComponent from "../../atoms/inputs/Input";
-import { companyFields } from '../../../services/models/CompanyService';
-import { customersFildes } from '../../../services/models/CustomersService';
-import { supplierFildes } from "../../../services/models/SupplierService"; 
+import { companyFields } from "../../../models/CompanyService";
+import { customersFildes } from "../../../models/CustomersService";
+import { supplierFildes } from "../../../models/SupplierService"; 
 
 const Step1 = ({formType}) => {
   const [ formFields, setFormFields] = useState([]);

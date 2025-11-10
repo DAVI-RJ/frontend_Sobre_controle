@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import Form from "../form/Form";
 import InputComponent from "../../atoms/inputs/Input";
 import ButtonComponent from "../../atoms/button/Button";
-import { productModel} from "../../../services/models/ProductService";
+import { productModel} from "../../../models/ProductService";
 import { useProducts } from "../../../hooks/ProductsHooks";
 
 import "./ProductForm.css"
