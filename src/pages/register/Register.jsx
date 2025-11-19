@@ -1,10 +1,14 @@
 import { useState } from 'react';
+
+// componentes 
 import Form from "../../components/molecules/form/Form";
 import RegisterLayout from '../../components/templates/registerlayout/RegisterLayout';
 import Step1 from "../../components/molecules/stepsRegister/Step1";
 import Step2 from "../../components/molecules/stepsRegister/Step2";
 import Step3 from "../../components/molecules/stepsRegister/Step3";
 import ButtonComponent from "../../components/atoms/button/Button";
+
+// Api backend
 import connection from "../../services/api/ApiConnection"; 
 
 import './Register.css'

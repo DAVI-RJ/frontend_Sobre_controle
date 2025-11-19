@@ -1,32 +1,50 @@
-import { useEffect, useState } from "react";
-import connection from "../services/api/ApiConnection";
+import { useState } from "react";
+import { useProductsServices } from "../services/products/ProductServices"; 
 
-export const useProducts = () => {
+// hook responsável pela lógica de interface e estado
+const useProducts = () => {
   const [ products, setProducts] = useState([]);
   const [ loading, setLoading] = useState(false);
   const [ errorMessage, setErrorMessage] = useState(null);
 
-  async function handleProducts() {
+  // hook responsável pela comunicação com o backend
+  const { getProducts, createProduct } = useProductsServices();
+
+  // requisição GET/ 
+  const handleProducts =  async () => {
+    setLoading(true);
+    
     try {
-      setLoading(true)
-      const response = await connection.get("/products");
-      setProducts(response.data)
-      setErrorMessage(null)
+      const data = await getProducts();
+      setProducts(data || []);
+      
     }catch(error){
-      setTimeout(() => {setErrorMessage(error)}, 5000)
+      setErrorMessage(error.message || "Erro ao carregar a lista de produtos")  
+
     }finally{
-      setTimeout(() => {setLoading(false)}, 1000);
+
+      setLoading(false);
     }
   }
-  useEffect(() => {
-    handleProducts();
-  },[]);
 
-  return (
-    products, 
-    loading, 
-    errorMessage, 
-    setProducts, 
-    handleProducts
-  )
+  // cadastro de produtos, POST/
+  const addProduct = async (data) => {
+    try {
+      const newProduct = await createProduct(data); 
+      setProducts((prev) => [ newProduct, ...prev])
+      
+    }catch(error){
+      setErrorMessage(error.message || "Erro ao cadastrar o produto" )
+    }
+  }
+
+   return {
+    products,
+    loading,
+    errorMessage,
+    handleProducts,
+    addProduct,
+  }
 };
+
+export default useProducts; 

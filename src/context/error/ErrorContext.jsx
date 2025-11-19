@@ -4,11 +4,9 @@ export function useAxiosErrorHandler() {
   const [ errorMessage, setErrorMessage, ] = useState(null);
 
   function handleError(error){
-    console.log("Erro: ", error); 
-
-    if(error.response){
-      const status = error.response.status;
-
+    const status = error?.response?.status;
+   
+    if(status){
       const message = {
         400: "Request failure", 
         401: "Credentials invalid",
@@ -27,6 +25,7 @@ export function useAxiosErrorHandler() {
       setErrorMessage(null);
     }, 5000)
   }
+  
   return {
     errorMessage, 
     setErrorMessage,

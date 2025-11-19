@@ -2,7 +2,7 @@
 
 Pequeno sistema front-end em React para gerenciamento simples de produtos e cadastro multi-step.
 
-Designer atomic para desenvolvimento do projeto
+Designer atomic para desenvolvimento do projeto.
 
 ## Visão geral
 Aplicação construída com Vite + React. Possui páginas de Login, Registro (formulário em etapas) e uma Home com listagem e formulário de produtos.
@@ -49,7 +49,6 @@ npm run dev
 - Home: alterna entre lista e formulário de produtos via [`SidebarComponent`](src/Components/siderbar/Sidebar.jsx).
 
 ## Como contribuir / próximos passos
-- Validar e enviar o cadastro para um backend (ex.: json-server ou API real).
 - Adicionar testes unitários para componentes e hooks.
 - Melhorar validação dos formulários usando `yup` + `react-hook-form` (já presente nas dependências).
 - Internacionalização / estilos responsivos.

@@ -1,5 +1,5 @@
 import InputComponent from "../../atoms/inputs/Input"; 
-import AddressFields from "../../../models/AddressService";
+import AddressFields from "../../../models/AddressModel";
 
 import "./StepClass.css"; 
 

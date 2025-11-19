@@ -1,4 +1,4 @@
-import { AuthProvider } from "../src/context/auth/SectionAutentication.jsx";
+import { AuthProvider } from "./context/auth/SectionAuthentication.jsx";
 import AppRoutes from "../src/config/routes/Routes.jsx";
 
 function App() {

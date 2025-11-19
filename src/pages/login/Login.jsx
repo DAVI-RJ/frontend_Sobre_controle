@@ -17,22 +17,23 @@ import "./Login.css"
 
 export default function Login() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login } = useAuth()
   const { errorMessage, setErrorMessage, handleError } = useAxiosErrorHandler(); 
   const [ loading, setLoading] = useState(false)
 
   async function handleLogin(data){
     setErrorMessage(null)
+    setLoading(true); 
+   
     try {
       await login(data)
       navigate("/home")
-      setLoading(true); 
-
-    }catch (err) {
-      handleError(err)
+            
+    }catch (error) {
+      handleError(error)
     }
     finally {
-      setTimeout(() => setLoading(false), 1000)
+      setLoading(false)
     }
   }
 

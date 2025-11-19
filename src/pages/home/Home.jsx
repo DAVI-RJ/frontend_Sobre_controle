@@ -1,40 +1,34 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react";
 import HomeLayout from "../../components/templates/HomeLayout";
 import CardComponent from "../../components/molecules/cards/Card";
 import SidebarComponent from "../../components/organisms/sidebar/Sidebar";
 import ProductComponent from "../../components/molecules/productForm/ProductForm";
 import CustomerComponent from "../../components/molecules/customerForm/CustomerForm";
 import SupplierComponent from "../../components/molecules/supplierForm/SupplierForm";
-import { productModel } from "../../models/ProductService";
-import { useProducts } from "../../hooks/ProductsHooks"; 
-
+import useProducts from "../../hooks/ProductsHooks"; 
 
 import "./Home.css"
 
+export default function Home() {
+  const { products, addProduct, handleProducts} = useProducts();
+  const [view, setView] = useState("list-products");
 
-export default function Home(){
+  // carrega a lista de products ao logar 
+  useEffect(() => {
+    handleProducts();
+  },[]);
 
-  const [view, setView] = useState("list")
-  const products = useProducts()
+  const renderProductList = () =>
+    products.length > 0 ? (
+      products.map((product) => 
+      <CardComponent 
+        key={product.id} 
+        product={product} />)
+    ) : (
+      <p>Lista vazia</p>
+    );
 
-  const addProduct =  (data) => {
-    const newProduct = {
-      productModel,
-      ...data
-    };
-
-    prev => [...prev, newProduct];
-    setView("list");
-  };
-
-
-  const renderProductList = () => {
-    if (products.length === 0) return <p>Lista vazia</p>;
-    return products.map((product) => (
-      <CardComponent key={product.id} product={product} />
-    ));
-  };
-
+  // ProductComponent = FormProduct
   return (
     <HomeLayout>
       <SidebarComponent setView = {setView} />
