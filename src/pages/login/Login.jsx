@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
 // configuração de erro e autenticação
-import { useAuth } from "../../context/auth/Auth";
 import { useAxiosErrorHandler } from "../../context/error/ErrorContext";
+import { login } from "../../context/auth/SectionAuthentication";
 
 // componentes 
 import Form from "../../components/molecules/form/Form";
@@ -17,7 +17,6 @@ import "./Login.css"
 
 export default function Login() {
   const navigate = useNavigate();
-  const { login } = useAuth()
   const { errorMessage, setErrorMessage, handleError } = useAxiosErrorHandler(); 
   const [ loading, setLoading] = useState(false)
 

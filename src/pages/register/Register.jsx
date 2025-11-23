@@ -9,7 +9,7 @@ import Step3 from "../../components/molecules/stepsRegister/Step3";
 import ButtonComponent from "../../components/atoms/button/Button";
 
 // Api backend
-import connection from "../../services/api/ApiConnection"; 
+import {axiosInstance} from "../../services/api/axiosInstance"; 
 
 import './Register.css'
 
@@ -26,7 +26,7 @@ export default function Register() {
         nextStep();
       } else {
         try {
-          const response = await connection.post("/register")
+          const response = await axiosInstance.post("/register")
           console.log("log:",{...formData, ...data, response});
 
         }catch(error){

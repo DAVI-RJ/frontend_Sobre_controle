@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useProductsServices } from "../services/products/ProductServices"; 
+import { useState, useCallback} from "react";
+import { useProductsServices } from "../services/productsApi/ProductServices"; 
 
 // hook responsável pela lógica de interface e estado
 const useProducts = () => {
@@ -11,32 +11,36 @@ const useProducts = () => {
   const { getProducts, createProduct } = useProductsServices();
 
   // requisição GET/ 
-  const handleProducts =  async () => {
-    setLoading(true);
-    
-    try {
-      const data = await getProducts();
-      setProducts(data || []);
-      
-    }catch(error){
-      setErrorMessage(error.message || "Erro ao carregar a lista de produtos")  
-
-    }finally{
-
-      setLoading(false);
-    }
-  }
+  const handleProducts = useCallback(
+    async () => {
+      setLoading(true);
+      setErrorMessage(null);
+      try {
+        const data = await getProducts();
+        setProducts(data || []);    
+      }catch(error){
+        setErrorMessage(error.message || "Erro ao carregar a lista de produtos")  
+      }finally{
+        setLoading(false);
+      }
+    },
+    [ getProducts ]
+  );
 
   // cadastro de produtos, POST/
-  const addProduct = async (data) => {
-    try {
-      const newProduct = await createProduct(data); 
-      setProducts((prev) => [ newProduct, ...prev])
-      
-    }catch(error){
-      setErrorMessage(error.message || "Erro ao cadastrar o produto" )
-    }
-  }
+  const addProduct = useCallback(
+    async (data) => {
+      try {
+        const newProduct = await createProduct(data); 
+        setProducts((prev) => [ newProduct, ...prev])
+        return newProduct;
+
+      }catch(error){
+        setErrorMessage(error.message || "Erro ao cadastrar o produto" )
+      }
+    },
+    [createProduct]
+  );
 
    return {
     products,

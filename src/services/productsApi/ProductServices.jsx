@@ -1,4 +1,4 @@
-import connection from "../api/ApiConnection"; 
+import {axiosInstance} from "../api/axiosInstance"; 
 import { useAxiosErrorHandler } from "../../context/error/ErrorContext";
 
 export function useProductsServices() {
@@ -7,7 +7,7 @@ export function useProductsServices() {
   //carrega a lista de produtos
   const getProducts = async () => {
     try {
-      const response = await connection.get("/company/:companyId/products")
+      const response = await axiosInstance.get("/company/:companyId/products")
       return response.data;
 
     }catch(error){
@@ -18,9 +18,8 @@ export function useProductsServices() {
   //cadastro de produtos
   const createProduct = async (data) => {
     try{
-      const response = await connection.post("/company/:companyId/products", data, {
-        method: "post", 
-      });
+      const companyId = data.companyId;
+      const response = await axiosInstance.post(`/company/${companyId}/products`, data)
       return response.data;
 
     }catch(error){
