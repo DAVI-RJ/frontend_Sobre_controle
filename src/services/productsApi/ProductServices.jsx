@@ -18,8 +18,7 @@ export function useProductsServices() {
   //cadastro de produtos
   const createProduct = async (data) => {
     try{
-      const companyId = data.companyId;
-      const response = await axiosInstance.post(`/company/${companyId}/products`, data)
+      const response = await axiosInstance.post(`/company/:companyId/products`, data)
       return response.data;
 
     }catch(error){
