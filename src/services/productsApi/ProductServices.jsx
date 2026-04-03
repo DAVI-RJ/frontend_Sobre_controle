@@ -1,7 +1,7 @@
 import {axiosInstance} from "../api/axiosInstance"; 
 import { useAxiosErrorHandler } from "../../context/error/ErrorContext";
 
-export function useProductsServices() {
+export function ProductsServices() {
   const { handleError } = useAxiosErrorHandler(); 
 
   //carrega a lista de produtos

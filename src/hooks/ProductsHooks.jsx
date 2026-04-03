@@ -1,5 +1,5 @@
 import { useState, useCallback} from "react";
-import { useProductsServices } from "../services/productsApi/ProductServices"; 
+import { ProductsServices } from "../services/productsApi/ProductServices"; 
 
 // hook responsável pela lógica de interface e estado
 const useProducts = () => {
@@ -8,7 +8,7 @@ const useProducts = () => {
   const [ errorMessage, setErrorMessage] = useState(null);
 
   // hook responsável pela comunicação com o backend
-  const { getProducts, createProduct } = useProductsServices();
+  const { getProducts, createProduct } = ProductsServices();
 
   // requisição GET/ 
   const handleProducts = useCallback(

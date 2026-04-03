@@ -8,7 +8,7 @@ import './CustomerForm.css'
 
 export default function CustomerComponent() {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({});
+  const [stepData, setFormData] = useState({});
   
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
@@ -18,7 +18,7 @@ export default function CustomerComponent() {
     if (step < 2) {
       nextStep();
     } else {
-      console.log("meu objeto vem aqui",{...formData, ...data});
+      console.log("meu objeto vem aqui",{...stepData, ...data});
     }
   };
   const currentStep = () => {
