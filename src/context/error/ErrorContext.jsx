@@ -3,6 +3,7 @@ import { useState } from "react";
 export function useAxiosErrorHandler() {
   const [ errorMessage, setErrorMessage, ] = useState(null);
 
+  // Hook para capturar erros e lançar componente visual. 
   function handleError(error){
     const status = error?.response?.status;
    

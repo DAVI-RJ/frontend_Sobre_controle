@@ -26,13 +26,17 @@ export default function Login() {
    
     try {
       await login(data)
-      navigate("/home")
-            
+      setTimeout(() => {
+        navigate("/home")
+      }, 500);
+
     }catch (error) {
+      console.log("Erro capturado:", error); // Debug
       handleError(error)
-    }
-    finally {
-      setLoading(false)
+      setTimeout(() => {
+        setLoading(false)
+      }, 500);
+      console.log("loading",loading);
     }
   }
 
@@ -41,8 +45,11 @@ export default function Login() {
       <div className='login-class'>
         <h1>Sobre Controle</h1>
         <p>Mantenha no seu alcançe dados importantes da sua empresa</p>
+
+        <LoadingComponent isLoading={loading} />
+
         <Form onSubmit={handleLogin}>
-          <LoadingComponent isLoading={loading} />
+          
           <InputComponent
             name="email"
             type="email"

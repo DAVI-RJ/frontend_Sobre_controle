@@ -10,18 +10,22 @@ export default function SupplierComponent() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({});
 
+  // STEPS FORMULARIOS
   const nextStep = () => setStep (prev => prev + 1); 
   const prevStep = () => setStep (prev => prev - 1); 
 
+  // Função da chamada para registrar Fornecedores
   const handleRegister = (data) => {
     setFormData(prev => ({...prev, ...data}));
     if(step > 2){
       nextStep; 
     }else{
+      // Verificação se todos os campos obrigatorio estão sendo passado
       console.log("dados do fornecedor", ...formData,...data)
     }
   }
   
+  // Verificar parte do furmulario e atualizar.
   const currentStep = () => {
     switch (step) {
       case 1: return <Step1 formType="supplier"/>

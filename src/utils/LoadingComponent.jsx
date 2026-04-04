@@ -1,5 +1,6 @@
 import "./LoadingClass.css"; 
 
+// recebe um booleano como props e exibe o componente 
 export default function LoadingComponent({isLoading}){
   if(!isLoading) return null
 

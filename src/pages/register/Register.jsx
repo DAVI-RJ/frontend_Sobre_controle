@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // componentes 
 import Form from "../../components/molecules/form/Form";
@@ -17,6 +18,7 @@ import './Register.css'
 export default function Register() {
   const [step, setStep] = useState(1);
   const [stepData, setStepData] = useState();
+  const navigate = useNavigate();
   const { createCompany } = useCompanyServices();
   const { createAddress } = useAddressServices();
   
@@ -60,7 +62,10 @@ export default function Register() {
           };
 
           await createCompany(dataCompany);
-          console.log("criando empresa: ", dataCompany);
+          
+          setTimeout(() => {
+            navigate("/"); 
+          }, 1000); 
         }
           
       }catch(error){

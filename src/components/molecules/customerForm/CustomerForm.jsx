@@ -10,17 +10,24 @@ export default function CustomerComponent() {
   const [step, setStep] = useState(1);
   const [stepData, setFormData] = useState({});
   
+  // STEPS FORMULARIOS
   const nextStep = () => setStep(prev => prev + 1);
   const prevStep = () => setStep(prev => prev - 1);
   
+  // Função de chamada para registrar Clientes
   const handleRegister = (data) => {
   setFormData(prev => ({...prev, ...data}));
     if (step < 2) {
       nextStep();
     } else {
+
+      // Verificação se todos os campos obrigatorio estão sendo passado
       console.log("meu objeto vem aqui",{...stepData, ...data});
     }
   };
+
+
+  // Verificar parte do furmulario e atualizar.
   const currentStep = () => {
     switch (step) {
       case 1: return <Step1 formType="customer" />;
