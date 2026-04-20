@@ -1,12 +1,19 @@
-import React, { useEffect, useState } from "react";
-import HomeLayout from "../../components/templates/HomeLayout";
-import CardComponent from "../../components/molecules/cards/Card";
-import SidebarComponent from "../../components/organisms/sidebar/Sidebar";
-import ProductComponent from "../../components/molecules/productForm/ProductForm";
-import CustomerComponent from "../../components/molecules/customerForm/CustomerForm";
-import SupplierComponent from "../../components/molecules/supplierForm/SupplierForm";
-import useProducts from "../../hooks/ProductsHooks"; 
+// HOOKS
 
+import React, { useEffect, useState } from "react";
+import useProducts from "@/features/products/hooks/ProductsHooks"; 
+
+// COMPONENTES
+import HomeLayout from "@/components/templates/HomeLayout";
+import CardComponent from "@/components/molecules/cards/Card";
+import SidebarComponent from "@/components/organisms/sidebar/Sidebar";
+import ProductComponent from "@/components/molecules/productForm/ProductForm";
+import CustomerComponent from "@/components/molecules/customerForm/CustomerForm";
+import SupplierComponent from "@/components/molecules/supplierForm/SupplierForm";
+
+import ListComponent from "@/components/molecules/listComponent/ListGroup.jsx";
+
+// CSS
 import "./Home.css"
 
 export default function Home() {
@@ -32,9 +39,10 @@ export default function Home() {
   return (
     <HomeLayout>
       <SidebarComponent setView = {setView} />
-      <div className="section-content">
+      <div className={`section-content ${view === "list-products" ? "list-products" : ""}`} >
         {view === "new-product" && <ProductComponent onAdd={addProduct} />}
         {view === "list-products" && renderProductList()}
+        {view === "list-customer" && <ListComponent />} 
         {view === "new-customer" && <CustomerComponent />}
         {view === "new-supplier" && <SupplierComponent />}
       </div>

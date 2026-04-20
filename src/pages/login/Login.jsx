@@ -11,7 +11,7 @@ import LoginLayout from "../../components/templates/loginLayout/LoginLayout";
 import ButtonComponent from '../../components/atoms/button/Button';
 import InputComponent from "../../components/atoms/inputs/Input";
 import { ErrorMessage } from "../../context/error/ErrorMessage"
-import LoadingComponent from "../../utils/LoadingComponent"; 
+import LoadingComponent from "../../components/organisms/loading/LoadingComponent"; 
 
 import "./Login.css"
 

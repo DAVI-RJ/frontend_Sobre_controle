@@ -10,6 +10,7 @@ const menuItems = {
     { id: "new-product", label: "Novo Produto", view: "new-product" }
   ],
   customers: [
+    { id: "list-customer", label: "Lista de Clientes", view: "list-customer" },
     { id: "new-customer", label: "Novo Cliente", view: "new-customer" }
   ],
   supplier: [

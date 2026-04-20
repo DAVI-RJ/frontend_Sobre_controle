@@ -9,8 +9,11 @@ dist-ssr
 
 # Security
 auth
-.env
+.env.development.local
 db.json
+
+#config
+jsconfig.json
 
 # Build directories
 vite.config.js

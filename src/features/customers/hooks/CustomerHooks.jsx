@@ -3,12 +3,30 @@ import {CustomerServices} from "../services/customerApi/CustomerServices";
 
 // Ganchos uteis para intanciar o cliente 
 export function useCustomerHooks(){
-  const [customer, setCustomer] = useState(null); // Objeto ou Null
+  const [customer, setCustomer] = useState([]); // Objeto ou Null
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null); 
-  const {createCustomer} = CustomerServices(); 
+  const {getCustomers, createCustomer} = CustomerServices(); 
 
-  // Função para usar a API de criação, lançar erros, UI. 
+  // Metódo para usar a API de criação, lançar erros, UI. 
+  const handleListCustomers = useCallback(
+    async () => {
+      setLoading(true); 
+      try{
+        const listCustomer = await getCustomers();
+        if(listCustomer){
+          setCustomer(listCustomer); 
+        }
+        
+      }catch(error){
+        console.log("error ao carregar a lista")
+        const message = error.response?.data?.message || error.message || "Error carregar a lista"; 
+        setErrorMessage(message)
+      } finally{
+        setLoading(false);
+      }
+    }, [getCustomers])
+
   const handleCustomer = useCallback(
     async (dataCustomer) => {
       setLoading(true); 
@@ -28,6 +46,7 @@ export function useCustomerHooks(){
       customer, 
       loading, 
       errorMessage,
+      handleListCustomers,
       handleCustomer
     }
   }

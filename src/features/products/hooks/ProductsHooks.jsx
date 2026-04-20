@@ -1,5 +1,5 @@
 import { useState, useCallback} from "react";
-import { ProductsServices } from "../services/productsApi/ProductServices"; 
+import { ProductsServices } from "../../../services/productsApi/ProductServices"; 
 
 // hook responsável pela lógica de interface e estado
 const useProducts = () => {
