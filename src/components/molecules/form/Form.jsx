@@ -1,6 +1,6 @@
-import { useForm, FormProvider } from 'react-hook-form'
+import { useForm, FormProvider } from "react-hook-form";
 
-import './Form.css'
+import "./form.css";
 
 export default function Form({ onSubmit, children, defaultValues = {} }) {
   const methods = useForm({ 

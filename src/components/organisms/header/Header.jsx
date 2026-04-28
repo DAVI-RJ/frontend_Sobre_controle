@@ -1,17 +1,21 @@
 import "react";
 
-import { useHeader } from "@/hooks/headerHooks";
+import { useHeader } from "@/hooks/useHeader";
 
-import "./Header.css";
+import { ErrorMessage } from "@/context/error/ErrorMessage";
+
+import "./header.css";
+
 
 export default function HeaderComponent(){
   
-  const { nameCompany, handleLogout } = useHeader(); 
-
+  const { companyName, errorMessage, handleLogout } = useHeader(); 
+ 
   return (
     <header className="header-class">
       <div className="logo-perfil">
-         <p>{nameCompany}</p>
+         {(companyName) ? <p>nome {companyName ?? '—'}</p> : 
+         <ErrorMessage message={errorMessage} />}
       </div>
       <div>
         <nav >

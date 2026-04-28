@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 
-import "./Input.css";
+import "./input.css";
 
 function InputComponent({ 
     id,

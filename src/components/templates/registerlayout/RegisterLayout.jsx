@@ -1,4 +1,4 @@
-import "./RegisterLayout.css"; 
+import "./register-layout.css"; 
 
 export default function RegisterLayout({children}) {
   return (

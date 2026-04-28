@@ -1,7 +1,6 @@
 // HOOKS
-
 import React, { useEffect, useState } from "react";
-import useProducts from "@/features/products/hooks/ProductsHooks"; 
+import useProducts from "@/features/products/hooks/useProducts"; 
 
 // COMPONENTES
 import HomeLayout from "@/components/templates/HomeLayout";
@@ -14,7 +13,7 @@ import SupplierComponent from "@/components/molecules/supplierForm/SupplierForm"
 import ListComponent from "@/components/molecules/listComponent/ListGroup.jsx";
 
 // CSS
-import "./Home.css"
+import "./home-style.css"
 
 export default function Home() {
   const { products, addProduct, handleProducts} = useProducts();

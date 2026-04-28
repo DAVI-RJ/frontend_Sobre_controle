@@ -1,6 +1,6 @@
 import { useEffect} from "react";
 import { axiosInstance } from "../api/axiosInstance"
-import { useAxiosErrorHandler } from "../../context/error/ErrorContext";
+import { useAxiosErrorHandler } from "../../context/error/useErrorContext";
 
 export function useAddressServices(){
   const {handleError} = useAxiosErrorHandler();

@@ -1,4 +1,4 @@
-const AddressFields = [
+const addressFields = [
   { name: "street", label: "Rua:", type: "text", required: true },
   { name: "number", label: "Numero:", type: "text"},
   { name: "neighborhood", label: "Bairro:", type: "text"},
@@ -7,4 +7,4 @@ const AddressFields = [
   { name: "zip", label: "CEP:", type: "number"}
 ]
 
-export default AddressFields; 
+export default addressFields; 

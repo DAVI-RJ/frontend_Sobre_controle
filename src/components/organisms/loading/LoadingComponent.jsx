@@ -1,4 +1,4 @@
-import "./LoadingClass.css"; 
+import "./loading-class.css"; 
 
 // recebe um booleano como props e exibe o componente 
 export default function LoadingComponent({isLoading}){

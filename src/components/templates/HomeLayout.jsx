@@ -4,7 +4,7 @@ import DashboardComponent from "../organisms/dashboard/Dashboard";
 import ContainerComponent from "../organisms/container/Container"
 import FooterComponent from "../organisms/footer/Footer";
 
-import "./HomeLayout.css"
+import "./home-layout.css"
 
 export default function HomeLayout ({children}) {
   return (

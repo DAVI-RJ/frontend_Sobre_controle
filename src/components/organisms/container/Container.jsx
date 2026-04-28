@@ -1,6 +1,6 @@
 import React from 'react';
 
-import "./Container.css"
+import "./container.css"
 
 const ContainerComponent = ({children}) => {
   return (

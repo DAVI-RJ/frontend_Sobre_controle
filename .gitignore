@@ -21,3 +21,6 @@ package-lock.json
 
 # lint configuraçoes 
 eslint.config.js
+
+# prettier configuraçoes
+.prettierrc

@@ -1,25 +1,25 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // componentes 
-import Form from "../../components/molecules/form/Form";
-import RegisterLayout from '../../components/templates/registerlayout/RegisterLayout';
-import Step1 from "../../components/molecules/stepsRegister/Step1";
-import Step2 from "../../components/molecules/stepsRegister/Step2";
-import Step3 from "../../components/molecules/stepsRegister/Step3";
-import ButtonComponent from "../../components/atoms/button/Button";
+import Form from "@/components/molecules/form/Form";
+import RegisterLayout from "@/components/templates/registerlayout/RegisterLayout";
+import Step1 from "@/components/molecules/stepsRegister/Step1";
+import Step2 from "@/components/molecules/stepsRegister/Step2";
+import Step3 from "@/components/molecules/stepsRegister/Step3";
+import ButtonComponent from "@/components/atoms/button/Button";
 
 // Api backend
-import {useCompanyServices} from '../../services/companyApi/CompanyServices';
-import { useAddressServices } from '../../services/addressApi/AddressApi';
+import { createCompany } from "@/features/company/companyApi/createCompany";
+import { useAddressServices } from "@/services/addressApi/AddressApi";
 
-import './Register.css'
+import "./register-style.css";
 
 export default function Register() {
   const [step, setStep] = useState(1);
   const [stepData, setStepData] = useState();
   const navigate = useNavigate();
-  const { createCompany } = useCompanyServices();
+
   const { createAddress } = useAddressServices();
   
   const nextStep = () => setStep(prev => prev + 1);

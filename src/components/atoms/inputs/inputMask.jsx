@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 import InputMask from 'react-input-mask';
-import "./Input.css";
+import "./input.css";
 
 function InputComponentMask({ 
   id,

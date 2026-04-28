@@ -1,14 +1,14 @@
 import { useState, useCallback} from "react";
-import { ProductsServices } from "../../../services/productsApi/ProductServices"; 
 
-// hook responsável pela lógica de interface e estado
+import { useAxiosErrorHandler } from "@/context/error/useErrorContext";
+import { getProducts } from "../productsApi/listProducts";
+import { createProduct } from "../productsApi/createProduct";
+
+// hook responsável pela interface, erros e estado
 const useProducts = () => {
   const [ products, setProducts] = useState([]);
   const [ loading, setLoading] = useState(false);
-  const [ errorMessage, setErrorMessage] = useState(null);
-
-  // hook responsável pela comunicação com o backend
-  const { getProducts, createProduct } = ProductsServices();
+  const { errorMessage, setErrorMessage } = useAxiosErrorHandler();
 
   // requisição GET/ 
   const handleProducts = useCallback(
@@ -19,13 +19,11 @@ const useProducts = () => {
         const data = await getProducts();
         setProducts(data || []);    
       }catch(error){
-        setErrorMessage(error.message || "Erro ao carregar a lista de produtos")  
+        setErrorMessage(errorMessage == error.message || "error loarding list products")  
       }finally{
         setLoading(false);
       }
-    },
-    [ getProducts ]
-  );
+    },[getProducts]);
 
   // cadastro de produtos, POST/
   const addProduct = useCallback(

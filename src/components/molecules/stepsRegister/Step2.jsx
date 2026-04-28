@@ -1,14 +1,14 @@
 import InputComponent from "../../atoms/inputs/Input"; 
-import AddressFields from "../../../models/AddressModel";
+import addressFields from "@/models/addressModel";
 
-import "./StepClass.css"; 
+import "./steps.css"; 
 
 const Step2 = () => {
 
   return (
     <div className= "step-class">
       <h2>Endereço</h2>
-      {AddressFields.map((field) => 
+      {addressFields.map((field) => 
 
       // Formulario organizado lado a lado 
         <InputComponent

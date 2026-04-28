@@ -1,4 +1,4 @@
-import "./LoginLayout.css"; 
+import "./login-layout.css"; 
 
 export default function LoginLayout({children}){
 

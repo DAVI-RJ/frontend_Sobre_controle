@@ -1,6 +1,5 @@
 // src/components/WaveBackground.jsx
-import "./WaveComponent.css"; 
-
+import "./wave.css"; 
 
 const WaveComponent = () => {
   return (

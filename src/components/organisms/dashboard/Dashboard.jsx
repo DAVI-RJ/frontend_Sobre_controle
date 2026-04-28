@@ -1,7 +1,7 @@
 import React from "react";
 import WaveComponent from "../wave/WaveComponent"; 
 
-import "./Dashboard.css"
+import "./dashboard.css"
 
 export default function DashboardComponent() {
   return (

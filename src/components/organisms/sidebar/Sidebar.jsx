@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ButtonComponent from "../../atoms/button/Button";
 
-import "./Sidebar.css";
+import "./sidebar.css";
 
 // Itens do menu
 const menuItems = {

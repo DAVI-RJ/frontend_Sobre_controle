@@ -1,20 +1,19 @@
-import { useForm } from "react-hook-form";
 import Form from "../form/Form";
 import InputComponent from "../../atoms/inputs/Input";
 import ButtonComponent from "../../atoms/button/Button";
-import { productModel} from "../../../models/ProductModel";
+import { productModel } from "@/models/productModel";
 
-import "./ProductForm.css"
+import "./product-form.css";
 
 export default function ProductComponent({ onAdd }) {
-  const methods = useForm({
+  /*   const methods = useForm({
     defaultValues: productModel,
     mode: "onChange"
   });
-
+ */
   const onSubmit = (data) => {
     onAdd(data);
-    methods.reset();
+    //ethods.reset();
   };
 
   return (
@@ -29,18 +28,15 @@ export default function ProductComponent({ onAdd }) {
             label={field.label}
             placeholder={field.placeholder}
             rules={{
-              required: `${field.label} é obrigatório`,
+              required: `${field.label} is required`,
               minLength: field.minLength && {
                 value: field.minLength,
-                message: `Mínimo de ${field.minLength} caracteres`
-              }
+                message: `Minimum of ${field.minLength} characters required`,
+              },
             }}
           />
         ))}
-        <ButtonComponent
-          type="submit"
-          >Adicionar
-        </ButtonComponent>
+        <ButtonComponent type="submit">Adicionar</ButtonComponent>
       </Form>
     </section>
   );

@@ -1,32 +1,15 @@
-import { useState } from 'react';
 import Form from "../form/Form";
 import Step1 from "../stepsRegister/Step1";
 import Step2 from "../stepsRegister/Step2";
 import ButtonComponent from "../../atoms/button/Button";
 
-import './CustomerForm.css'
+import { useMultiStep } from '@/hooks/useMultiStep';
+
+import './customer-form.css'
 
 export default function CustomerComponent() {
-  const [step, setStep] = useState(1);
-  const [stepData, setFormData] = useState({});
+  const { step, prevStep, handleRegister} = useMultiStep(); 
   
-  // STEPS FORMULARIOS
-  const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
-  
-  // Função de chamada para registrar Clientes
-  const handleRegister = (data) => {
-  setFormData(prev => ({...prev, ...data}));
-    if (step < 2) {
-      nextStep();
-    } else {
-
-      // Verificação se todos os campos obrigatorio estão sendo passado
-      console.log("meu objeto vem aqui",{...stepData, ...data});
-    }
-  };
-
-
   // Verificar parte do furmulario e atualizar.
   const currentStep = () => {
     switch (step) {
@@ -41,10 +24,13 @@ export default function CustomerComponent() {
       <Form onSubmit={handleRegister}>
         {currentStep()}
 
-      <ButtonComponent type="submit">
-        {step === 2 ? 'Finalizar Cadastro' : 'Próximo'}
-      </ButtonComponent>
-        {step > 1 && <ButtonComponent onClick={prevStep}>Voltar</ButtonComponent>}
+        <ButtonComponent type="submit">
+          {step === 2 ? 'Finalizar Cadastro' : 'Próximo'}
+        </ButtonComponent>
+        {step > 1 && 
+          <ButtonComponent onClick={prevStep}>
+            Voltar
+          </ButtonComponent>}
       </Form>
     </section>
   );
