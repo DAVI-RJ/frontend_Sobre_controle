@@ -15,7 +15,7 @@ import "./login-style.css";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { login, loading, errorMessage } = useAuth();
+  const { login, loading } = useAuth();
 
   async function onSuccessLogin(data) {
     try {
@@ -74,7 +74,7 @@ export default function Login() {
               Não tenho cadastro
             </ButtonComponent>
           </nav>
-          <ErrorMessage message={errorMessage} />
+          <ErrorMessage />
         </Form>
       </div>
     </LoginLayout>

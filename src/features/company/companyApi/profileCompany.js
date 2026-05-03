@@ -11,7 +11,7 @@ export async function getProfileCompany() {
         feature: "header",
       }
     );
-    return response.data.data.name;
+    return response.data.name;
   } catch (error) {
     log.info(error);
     throw error;

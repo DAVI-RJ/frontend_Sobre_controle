@@ -4,7 +4,7 @@ import { axiosInstance } from "@/services/api/axiosInstance";
 export async function getProducts() {
   try {
     const response = await axiosInstance.get("/company/:companyId/products")
-    return response.data;
+    return response;
 
   }catch(error){
     console.log(error)

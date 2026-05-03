@@ -1,5 +1,7 @@
 # Tratamentos de erros
 
+## Erros de Infraestrutura/Rede, Erros de Negócio e Erros de Interface (UI)
+
 ### Inteceptadores de erros
 
 No começo do projeto ja havia pensado em como centralizar os erros, pois tive experiência
