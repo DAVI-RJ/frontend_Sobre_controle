@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router-dom";
 
 // configuração de erro e autenticação
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/shared/hooks/useAuth";
 
 // componentes
-import Form from "@/components/molecules/form/Form";
-import LoginLayout from "@/components/templates/loginLayout/LoginLayout";
-import ButtonComponent from "@/components/atoms/button/Button";
-import InputComponent from "@/components/atoms/inputs/Input";
-import { ErrorMessage } from "@/context/error/ErrorMessage";
-import LoadingComponent from "@/components/organisms/loading/LoadingComponent";
+import Form from "@/shared/components/molecules/form/Form";
+import LoginLayout from "@/shared/components/templates/loginLayout/LoginLayout";
+import ButtonComponent from "@/shared/components/atoms/button/Button";
+import InputComponent from "@/shared/components/atoms/inputs/Input";
+import { ErrorMessage } from "@/shared/components/atoms/errors/ErrorMessage";
+import LoadingComponent from "@/shared/components/organisms/loading/LoadingComponent";
 
 import "./login-style.css";
 
@@ -18,14 +18,10 @@ export default function Login() {
   const { login, loading } = useAuth();
 
   async function onSuccessLogin(data) {
-    try {
-      await login(data);
-      setTimeout(() => {
-        navigate("/home");
-      }, 500);
-    } catch (error) {
-      console.log("Erro capturado:", error); // Debug
-    }
+    await login(data);
+    setTimeout(() => {
+      navigate("/home");
+    }, 500);
   }
 
   return (

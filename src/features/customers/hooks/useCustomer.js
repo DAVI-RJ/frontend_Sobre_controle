@@ -1,9 +1,9 @@
 import { useCallback, useState } from "react";
 
-import { createCustomer } from "../customerApi/createCustomer";
-import { getCustomers } from "../customerApi/listCustomers";
-import log from "@/services/logger/logger";
-import { useError } from "@/context/error/ErrorProvider";
+import { createCustomer } from "../api/createCustomer";
+import { getCustomers } from "../api/listCustomers";
+import log from "@/core/logger/logger";
+import { useError } from "@/core/context/error/ErrorProvider";
 
 // Ganchos uteis para intanciar o cliente
 export function useCustomers() {
@@ -28,18 +28,21 @@ export function useCustomers() {
     }
   }, [handleError]);
 
-  const handleCustomer = useCallback(async (dataCustomer) => {
-    setLoading(true);
-    try {
-      const newCustomer = await createCustomer(dataCustomer);
-      setCustomer(newCustomer);
-    } catch (error) {
-      handleError(error);
-      log.info("error ao carregar a lista, useCustomer");
-    } finally {
-      setLoading(false);
-    }
-  }, [handleError]);
+  const handleCustomer = useCallback(
+    async (dataCustomer) => {
+      setLoading(true);
+      try {
+        const newCustomer = await createCustomer(dataCustomer);
+        setCustomer(newCustomer);
+      } catch (error) {
+        handleError(error);
+        log.info("error ao carregar a lista, useCustomer");
+      } finally {
+        setLoading(false);
+      }
+    },
+    [handleError]
+  );
 
   return {
     customer,

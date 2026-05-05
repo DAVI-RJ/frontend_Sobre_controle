@@ -1,0 +1,29 @@
+import { useEffect } from "react";
+import { axiosInstance } from "../../../core/http/axiosInstance";
+import { useError } from "@/core/context/error/ErrorProvider";
+
+export function useAddressServices() {
+  const { handleError } = useError();
+
+  const AddressService = ({ setEstados }) => {
+    useEffect(() => {
+      fetch(import.meta.env.VITE_API_IBGE)
+        .then((res) => res.json())
+        .then((data) => setEstados(data))
+        .catch((err) => console.error("Erro ao buscar estados:", err));
+    });
+  };
+
+  const createAddress = async (dataAddress) => {
+    try {
+      const responseAddress = await axiosInstance.post("/company/address", dataAddress);
+      const addressId = responseAddress.data.id;
+
+      return addressId;
+    } catch (error) {
+      handleError(error);
+    }
+  };
+
+  return { AddressService, createAddress };
+}

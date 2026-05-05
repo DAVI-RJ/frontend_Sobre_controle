@@ -17,7 +17,7 @@ atuais.
 
 ⚙️ [Padrões do Projeto](./docs/designer-pattener.md);
 
-🗄️ Estrutura do Projeto
+🗄️ [Estrutura do Projeto](./docs/project-infro.md); 
 
 🧱 Componentes e Estilo
 

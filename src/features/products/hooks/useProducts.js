@@ -1,8 +1,8 @@
 import { useState, useCallback } from "react";
 
-import { getProducts } from "../productsApi/listProducts";
-import { createProduct } from "../productsApi/createProduct";
-import { useError } from "@/context/error/ErrorProvider";
+import { getProducts } from "../api/listProducts";
+import { createProduct } from "../api/createProduct";
+import { useError } from "@/core/context/error/ErrorProvider";
 
 // hook responsável pela interface, erros e estado
 const useProducts = () => {
