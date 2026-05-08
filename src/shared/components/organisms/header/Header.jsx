@@ -7,12 +7,12 @@ import { ErrorMessage } from "@/shared/components/atoms/errors/ErrorMessage";
 import "./header.css";
 
 export default function HeaderComponent() {
-  const { companyName, errorMessage, handleLogout } = useHeader();
+  const { companyName, handleLogout } = useHeader();
 
   return (
     <header className="header-class">
       <div className="logo-perfil">
-        {companyName ? <p>nome {companyName ?? "—"}</p> : <ErrorMessage message={errorMessage} />}
+        {companyName ? <p>nome {companyName ?? "—"}</p> : <ErrorMessage /> }
       </div>
       <div>
         <nav>

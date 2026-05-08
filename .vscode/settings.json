@@ -16,5 +16,5 @@
   "eslint.validate": ["javascript", "javascriptreact"],
   "editor.formatOnSave": true,
   "cSpell.enabledFileTypes": ["javascript"],
-  "cSpell.language": ["en","pt","pt_BR"]
+  "cSpell.language": ["en","pt","pt_BR"],
 }

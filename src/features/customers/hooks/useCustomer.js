@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 
 import { createCustomer } from "../api/createCustomer";
-import { getCustomers } from "../api/listCustomers";
+import { listCustomers } from "../api/listCustomers";
 import log from "@/core/logger/logger";
 import { useError } from "@/core/context/error/ErrorProvider";
 
@@ -12,14 +12,16 @@ export function useCustomers() {
   const { handleError } = useError();
 
   // Metódo para usar a API de criação, lançar erros, UI.
-  const handleListCustomers = useCallback(async () => {
+  const fetchListCustomers = useCallback(async () => {
     setLoading(true);
     try {
-      const listCustomer = await getCustomers();
+      const listCustomer = await listCustomers();
       if (listCustomer) {
         setCustomer(listCustomer);
-        log.info("scesso ao carregar a lista, useCustomer");
+        log.info("sucesso ao carregar a lista, useCustomer");
+        return listCustomer;
       }
+      return [];
     } catch (error) {
       log.info("error ao carregar a lista, useCustomer");
       handleError(error);
@@ -28,7 +30,7 @@ export function useCustomers() {
     }
   }, [handleError]);
 
-  const handleCustomer = useCallback(
+  const submitRegisterCustomer = useCallback(
     async (dataCustomer) => {
       setLoading(true);
       try {
@@ -47,7 +49,7 @@ export function useCustomers() {
   return {
     customer,
     loading,
-    handleListCustomers,
-    handleCustomer,
+    fetchListCustomers,
+    submitRegisterCustomer,
   };
 }

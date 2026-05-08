@@ -9,8 +9,7 @@ import SidebarComponent from "@/shared/components/organisms/sidebar/Sidebar";
 import ProductComponent from "@/shared/components/molecules/productForm/ProductForm";
 import CustomerComponent from "@/shared/components/molecules/customerForm/CustomerForm";
 import SupplierComponent from "@/shared/components/molecules/supplierForm/SupplierForm";
-
-import ListComponent from "@/shared/components/molecules/listComponent/ListGroup.jsx";
+import ListCustomersComponent from "@/features/customers/components/ListCustomers";
 
 // CSS
 import "./home-style.css";
@@ -38,7 +37,7 @@ export default function Home() {
       <div className={`section-content ${view === "list-products" ? "list-products" : ""}`}>
         {view === "new-product" && <ProductComponent onAdd={addProduct} />}
         {view === "list-products" && renderProductList()}
-        {view === "list-customer" && <ListComponent />}
+        {view === "list-customer" && <ListCustomersComponent />}
         {view === "new-customer" && <CustomerComponent />}
         {view === "new-supplier" && <SupplierComponent />}
       </div>
