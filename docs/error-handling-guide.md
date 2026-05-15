@@ -1,8 +1,11 @@
 # Tratamentos de erros
 
-## Erros de Infraestrutura/Rede, Erros de Negócio e Erros de Interface (UI)
+## Topicos abordados: 
+  * Erros de Infraestrutura/Rede.
+  * Erros de Interface (UI)
+  * Erros de Negócio.
 
-### Inteceptadores de erros
+### 1.Inteceptadores de erros
 
 No começo do projeto ja havia pensado em como centralizar os erros, pois tive experiência
 semelhantes no desenvolvimento beckend, como tratar os erros e passar para o usuário mensagens
@@ -47,13 +50,13 @@ referência veio da documentação
 [solarwinds - loggly](https://www.loggly.com/blog/best-practices-for-client-side-logging-and-error-handling-in-react/),
 [logleverl](https://www.npmjs.com/package/loglevel?activeTab=readme#developing--contributing).
 
-### Configurando ambiente de erro!
+### 2.Configurando ambiente de erro!
 
-Foi preciso aprofundar em pesquisa, como a de limitar os erros, para isso iría usar o ErrorBoundary,
-verifiquei na documentação react como usar esse componente, e complementar a camada de [performace],
+Foi preciso aprofundar em pesquisa, como à de como limitar os erros que quebram minha aplicação durante o uso, para isso usei o **ErrorBoundary**,
+verifiquei na documentação react como usar esse componente, bem como posso complementar a camada de `perfomace`, (veja em [performace](./docs/performace.md)),
 alinhada com a lib useQuery.
 
-Portanto nesse projeto estou trabalhando com as seguintes bibliotecas:
+* Portanto nesse projeto estou trabalhando com as seguintes bibliotecas:
 
 | Componente | Propósito | Runtime | O que trata | Manter no dev |
 | :--------- | :-------: | ------: | ----------- | ------------: |
@@ -62,14 +65,13 @@ Portanto nesse projeto estou trabalhando com as seguintes bibliotecas:
 | React Query | Orquestrar fetches, cache e estados isLoading/error | Runtime dados remotos | Erros de rede e retry; fornece onError/onSettled | Sim — reduz boilerplate e facilita testes |
 | Logger centralizado | Registrar erros para investigação | Dev e prod (env aware) | Logs estruturados, breadcrumbs, contexto | Sim — mesmo em dev, evita console espalhado |
 
-- "loglevel": Usada para tratamento de erros em ambiente de desenvolvimento, evitando uso de console
+- **loglevel**: Usada para tratamento de erros em ambiente de desenvolvimento, evitando uso de console
   log.
 
-- "loglevel-plugin-remote": Vou aplicar para que o meu backend receba os loggers de erros e
+- **loglevel-plugin-remote**: Apliquei para que o meu backend receba os loggers de erros e
   documente, já que tenho configurado a biblioteca winston na stacker.
 
-- "react-error-boundary": Erros de UI que quebram árvore de componentesComponente responsável por
+- **react-error-boundary**: Erros de UI que quebram árvore de componentesComponente responsável por
   limitar erros de quebra de componentes anteriores e lançar mensagens amigaveis ao usuário.
 
-- "@tanstack/react-query: Melhorar a performace da aplicação, delegando os estados dos componentes
-  visuais de tratamento de erros e loading, com enfâse em manter logíca caches.
+- **@tanstack/react-query**: Melhorar a performace da aplicação, delegando os estados dos componentes visuais de modo que tratamento de erros e loading receba status, podendo manter e acessar o status caches.

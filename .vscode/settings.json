@@ -17,4 +17,11 @@
   "editor.formatOnSave": true,
   "cSpell.enabledFileTypes": ["javascript"],
   "cSpell.language": ["en","pt","pt_BR"],
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/dist": true,
+    "**/.next": true
+  }
+  
 }

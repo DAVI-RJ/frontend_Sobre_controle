@@ -13,6 +13,7 @@ auth
 db.json
 
 #config
+.vscode/settings.json
 jsconfig.json
 
 # Build directories

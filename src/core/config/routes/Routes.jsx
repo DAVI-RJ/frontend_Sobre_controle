@@ -6,7 +6,7 @@ import Home from '@/pages/home/Home'
 //import ProductComponent from '@/components/molecules/productForm/ProductForm'
  //<Route path="/home/product/register" element={<ProductComponent />} />
 
-export default function AppRoutes() {
+export function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
