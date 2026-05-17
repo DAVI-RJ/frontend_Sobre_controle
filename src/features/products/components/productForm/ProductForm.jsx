@@ -1,6 +1,6 @@
-import Form from "../form/Form";
-import InputComponent from "../../atoms/inputs/Input";
-import ButtonComponent from "../../atoms/button/Button";
+import Form from "../../../../shared/components/molecules/form/Form";
+import InputComponent from "../../../../shared/components/atoms/inputs/Input";
+import ButtonComponent from "../../../../shared/components/atoms/button/Button";
 import { productModel } from "@/domain/models/productModel";
 
 import "./product-form.css";

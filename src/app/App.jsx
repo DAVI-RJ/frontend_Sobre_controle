@@ -4,7 +4,7 @@ import { AppRoutes } from "@/core/config/routes/Routes.jsx";
 
 const queryClient = new QueryClient();
 
-export default function App() {
+export function App() {
   return (
     <ErrorProvider>
       <QueryClientProvider client={queryClient}>

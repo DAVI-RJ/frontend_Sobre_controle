@@ -6,7 +6,7 @@ import useProducts from "@/features/products/hooks/useProducts";
 import HomeLayout from "@/shared/components/templates/HomeLayout";
 import CardComponent from "@/shared/components/molecules/cards/Card";
 import SidebarComponent from "@/shared/components/organisms/sidebar/Sidebar";
-import ProductComponent from "@/shared/components/molecules/productForm/ProductForm";
+import ProductComponent from "@/features/products/components/productForm/ProductForm";
 import CustomerComponent from "@/shared/components/molecules/customerForm/CustomerForm";
 import SupplierComponent from "@/shared/components/molecules/supplierForm/SupplierForm";
 import ListCustomersComponent from "@/features/customers/components/ListCustomers";

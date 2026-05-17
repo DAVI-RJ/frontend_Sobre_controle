@@ -7,13 +7,17 @@ dist
 dist-ssr
 *.local
 
+# variable environments
+.env
+.env.development.local
+
 # Security
 auth
-.env.development.local
 db.json
 
 #config
-.vscode/settings.json
+.vscode
+settings.json
 jsconfig.json
 
 # Build directories

@@ -1,19 +1,29 @@
 # 📂 Estrutura do Projeto
 
+## Indíce
+
+    1. core
+    2. domain
+    3. feature
+    4. shared
+    5. conclusão
+
+`Nota`: "Estruturar seu código corretamente não é tão fácil quando o chão está se movendo sob seus
+pés",
+[Clean Architecture in React](https://alexkondov.com/full-stack-tao-clean-architecture-react/).
+
+Quando estava lendo sobre estrutura de projeto me deparei com esse comentàrio do autor **Alex
+Kondov**, para o meu desespero, realmente é complexo entender que para separa um arquivo entre
+pasta, sua natureza deve ser compreendida, por mais simples que seja a minha aplicação isso me levou
+a criar novos arquivos. Um agradecimento aos devs que vieram antes de mim.
+
 ### Como está organizada a estruturada do projeto:
-
-Quando o assunto sobre DDD 
-
-- **[core](../src/core/)** : Configuração central, context, roteamento, store, http client, middleware. 
-- **[domain](../src/domain/)** : Modelos de dados e schemas.
-- **[feature](../src/features/)** : Features isoladas para manter as funcionalidades de cada grupo customers, products, companies e suppliers separadas. 
-- **[shared](../src/shared/)** : Componentes reutilizáveis (atoms, molecules, organisms).
 
 ```
 .
 ├── app
 │   └── App.jsx
-├── core 
+├── core
 │   ├── config
 │   │   └── routes
 │   │       └── Routes.jsx
@@ -38,7 +48,7 @@ Quando o assunto sobre DDD
 │   ├── store
 │   │   └── store.js
 │   └── utils
-├── domain 
+├── domain
 │   ├── models
 │   │   ├── addressModel.js
 │   │   ├── companyModel.js
@@ -50,7 +60,7 @@ Quando o assunto sobre DDD
 │   └── services
 │       └── addressApi
 │           └── AddressApi.js
-├── features 
+├── features
 │   ├── company
 │   │   ├── api
 │   │   │   ├── createCompany.js
@@ -71,7 +81,7 @@ Quando o assunto sobre DDD
 │   │   │   └── listProducts.js
 │   │   └── hooks
 │   │       └── useProducts.js
-│   └── supplirs
+│   └── suppliers
 ├── index.css
 ├── main.jsx
 ├── pages
@@ -84,7 +94,7 @@ Quando o assunto sobre DDD
 │   └── register
 │       ├── Register.jsx
 │       └── register-style.css
-└── shared 
+└── shared
     ├── assets
     │   └── bg-login.png
     ├── components
@@ -161,3 +171,107 @@ Quando o assunto sobre DDD
         └── useMultiStep.js
 
 ```
+
+### 1. **[Core](../src/core/)** :
+
+- Configuração central, context, roteamento, store, http client, middleware.
+
+```
+├── core
+│   ├── config
+│   ├── context
+│   ├── errors
+│   ├── http
+│   ├── logger
+│   ├── middlewares
+│   ├── store
+│   └── utils
+
+```
+
+### 2. **[Domain](../src/domain/)** :
+
+- O coração do software. Contém as regras de negócio puras, modelos de dados e schemas, sem
+  dependência de bibliotecas externas.
+
+```
+├── domain
+│   ├── models
+│   ├── schemas
+│   └── services
+
+```
+
+### 3. **[Feature](../src/features/)** :
+
+- Na pasta Features mantive as funcionalidades de cada grupo customers, products, companies e
+  suppliers separadas, e cada grupo possui suas proprias sub-pasta com componentes e logíca,
+  isoladas. Isso garante a escabilidade, teste unitários e legibilidade do código na aplicação.
+
+```
+features
+│   ├── company
+│   │   ├── api
+│   │   └── assets
+│   │   └── components
+│   │   └── hooks
+
+```
+
+#### 4. **[Shared](../src/shared/)** :
+
+- Componentes reutilizáveis (atoms, molecules, organisms).
+
+```
+shared
+    ├── assets
+    ├── components
+    │   ├── atoms
+    │   │   ├── button
+    │   │   ├── errors
+    │   │   ├── inputs
+    │   │   └── select
+    │   ├── molecules
+    │   │   ├── cards
+    │   │   ├── form
+    │   │   ├── stepsRegister
+    │   ├── organisms
+    │   │   ├── container
+    │   │   ├── dashboard
+    │   │   ├── footer
+    │   │   ├── header
+    │   │   ├── loading
+    │   │   ├── sidebar
+    │   │   └── wave
+    │   └── templates
+    └── hooks
+```
+
+### 5. Conclusão
+
+A adoção do Domain-Driven Design (DDD) combinado com a Clean Architecture neste projeto não foi
+apenas um exercício de organização de arquivos, mas uma decisão estratégica para garantir a saúde do
+software a longo prazo.
+
+Embora o processo de entender a natureza de cada arquivo e "mover o chão sob os pés" tenha
+adicionado uma camada inicial de complexidade e boilerplate, os benefícios colhidos justificam o
+esforço:
+
+- **Isolamento de Negócio:** Mudanças em APIs externas, bibliotecas de validação (como Zod) ou no
+  próprio framework (React) impactam apenas as camadas periféricas (`core`, `shared` ou
+  `infrastructure`), mantendo o `domain` intacto.
+
+- **Escalabilidade por Contextos:** O crescimento da aplicação ocorre de forma previsível dentro da
+  pasta `features`. Novos módulos (ex: vendas, relatórios) podem ser plugados sem interferir nos
+  existentes.
+
+- **Manutenibilidade Simplificada:** A separação visual baseada em Atomic Design dentro de `shared`
+  e a centralização de regras em `core` reduzem drasticamente o tempo gasto procurando onde corrigir
+  um bug ou implementar uma melhoria.
+
+  ![ilustra o fluxo DDD e Clean Architecture](image.png).
+
+Esta arquitetura transforma o React no que ele realmente deve ser: uma biblioteca de entrega de
+interface (UI), enquanto as regras que ditam o valor do software permanecem seguras, testáveis e
+independentes. O design de software é um processo vivo, e esta estrutura pavimenta o caminho para
+que o projeto evolua com segurança, sem medo das mudanças tecnológicas do futuro.
