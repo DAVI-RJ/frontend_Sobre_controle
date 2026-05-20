@@ -1,20 +1,11 @@
 import React from "react";
-import "./button.css"
+import style from "./button.module.css";
 
-function ButtonComponent({
-  onClick, 
-  type,
-  children,
-  className, 
-  }) {
+function ButtonComponent({ onClick, type, children, className }) {
   return (
-    <button 
-    className={`button-class ${className}`}
-    onClick={onClick}
-    type= {type}
-    >
+    <button className={`${style.button} ${className || ""}`} onClick={onClick} type={type}>
       {children}
-    </button>  
+    </button>
   );
 }
 

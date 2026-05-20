@@ -1,9 +1,9 @@
-import Form from "../form/Form";
-import Step1 from "../stepsRegister/Step1";
-import Step2 from "../stepsRegister/Step2";
-import ButtonComponent from "../../atoms/button/Button";
+import Form from "@/shared/components/molecules/form/Form";
+import Step1 from "@/shared/components/molecules/stepsRegister/Step1";
+import Step2 from "@/shared/components/molecules/stepsRegister/Step2";
+import ButtonComponent from "@/shared/components/atoms/button/Button";
 
-import { useMultiStep } from "@/shared/hooks/useMultiStep";
+import { useMultiStep } from "@/core/hooks/useMultiStep";
 
 import "./customer-form.css";
 
@@ -22,7 +22,7 @@ export default function CustomerComponent() {
     }
   };
   return (
-    <section className="custumer-class">
+    <section className="register-section">
       <h3>Cadastro de Clientes</h3>
       <Form onSubmit={handleRegister}>
         {currentStep()}

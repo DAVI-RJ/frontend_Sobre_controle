@@ -1,4 +1,4 @@
-.button-class{
+.button{
   cursor: pointer;
   appearance:none;
   padding: 8px 12px;
@@ -8,7 +8,7 @@
   background-color: var(--first-color);
 }
 
-.button-class:hover{
+.button:hover{
   transition: 0.2s;
   transform: scale(1.05) translateX(4px);
 }

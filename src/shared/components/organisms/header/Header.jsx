@@ -1,6 +1,6 @@
 import "react";
 
-import { useHeader } from "@/shared/hooks/useHeader";
+import { useHeader } from "@/core/hooks/useHeader";
 
 import { ErrorMessage } from "@/shared/components/atoms/errors/ErrorMessage";
 
@@ -12,7 +12,7 @@ export default function HeaderComponent() {
   return (
     <header className="header-class">
       <div className="logo-perfil">
-        {companyName ? <p>nome {companyName ?? "—"}</p> : <ErrorMessage /> }
+        {companyName ? <p>nome {companyName ?? "—"}</p> : <ErrorMessage />}
       </div>
       <div>
         <nav>

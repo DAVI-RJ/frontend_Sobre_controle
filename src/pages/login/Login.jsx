@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 // configuração de erro e autenticação
-import { useAuth } from "@/shared/hooks/useAuth";
+import { useAuth } from "@/core/hooks/useAuth";
 
 // componentes
 import Form from "@/shared/components/molecules/form/Form";

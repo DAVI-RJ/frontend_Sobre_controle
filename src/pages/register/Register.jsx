@@ -11,7 +11,7 @@ import ButtonComponent from "@/shared/components/atoms/button/Button";
 
 // Api backend
 import { createCompany } from "@/features/company/api/createCompany";
-import { useAddressServices } from "@/domain/services/addressApi/AddressApi";
+import { useAddressServices } from "@/features/address/api/addressApi";
 
 import "./register-style.css";
 

@@ -2,7 +2,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { useState, useContext } from "react";
 import { ErrorContext } from "./errorContext";
-import { mapErrorMessage } from "@/core/errors/mapErrorMessage";
+import mapErrorMessage from "@/core/errors/mapErrorMessage";
 
 export function ErrorProvider({ children }) {
   const [error, setError] = useState(null);

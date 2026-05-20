@@ -1,37 +1,27 @@
-import { useFormContext } from 'react-hook-form';
+import { useFormContext } from "react-hook-form";
 
-import "./input.css";
+import style from "./input.module.css";
 
-function InputComponent({ 
-    id,
-    label, 
-    name, 
-    type, 
-    className,
-    placeholder,
-    rules = {} 
-  }) {
-    
-  const { register, formState: { errors } } = useFormContext();
+function InputComponent({ id, label, name, type, className, placeholder, rules = {} }) {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
   return (
-    <div className={`input-class ${className}`}>
+    <div className={`${style.input} ${className}`}>
       {label && <label htmlFor={id}>{label}</label>}
-      <input 
+      <input
         {...register(name, {
           ...rules,
-          required: rules.required || false
+          required: rules.required || false,
         })}
         id={id}
         type={type}
         placeholder={placeholder}
       />
-      {errors[name] && (
-        <p className="error-message">
-          {errors[name].message }
-        </p>
-      )}
-    </div>    
+      {errors[name] && <p className={style.error}>{errors[name].message}</p>}
+    </div>
   );
 }
 

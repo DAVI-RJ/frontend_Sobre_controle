@@ -1,9 +1,8 @@
-import * as yup from 'yup';
+import * as zod from "zod";
 
+const LoginSchema = zod.object().shape({
+  email: zod.string().email().required(),
+  password: zod.string().password().required(),
+});
 
-const LoginSchema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().password().required()
-}); 
-
-export default LoginSchema; 
+export default LoginSchema;

@@ -1,6 +1,11 @@
 import { Component } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ErrorProvider } from "@/core/context/error/ErrorProvider.jsx";
+import AppRoutes from "@/core/config/routes/Routes.jsx";
 import log from "@/core/logger/logger";
 import "./error-boundary.css";
+
+const queryClient = new QueryClient();
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -20,6 +25,9 @@ class ErrorBoundary extends Component {
   }
 
   handleReset = () => {
+    if (this.props.onReset) {
+      this.props.onReset();
+    }
     this.setState({ hasError: false, error: null });
   };
 

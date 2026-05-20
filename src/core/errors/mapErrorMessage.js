@@ -1,4 +1,4 @@
-export function mapErrorMessage(status, error) {
+export default function mapErrorMessage(status, error) {
   if (!status || !error) {
     return "Network error";
   }

@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 
 import { createCustomer } from "../api/createCustomer";
 import { listCustomers } from "../api/listCustomers";
+import { deleteCustomer } from "../api/deleteCustomer";
 import log from "@/core/logger/logger";
 import { useError } from "@/core/context/error/ErrorProvider";
 
@@ -46,10 +47,25 @@ export function useCustomers() {
     [handleError]
   );
 
+  const onDeleteCustomer = useCallback(
+    async (idCustomer) => {
+      setLoading(true);
+      try {
+        deleteCustomer(idCustomer);
+      } catch (error) {
+        handleError(error);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [handleError]
+  );
+
   return {
     customer,
     loading,
     fetchListCustomers,
     submitRegisterCustomer,
+    onDeleteCustomer,
   };
 }

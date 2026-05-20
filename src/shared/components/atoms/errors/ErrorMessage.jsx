@@ -1,5 +1,5 @@
 import React from "react";
-import { useError } from "../../../../core/context/error/ErrorProvider";
+import { useError } from "@/core/context/error/ErrorProvider";
 
 export function ErrorMessage() {
   const { error } = useError();
