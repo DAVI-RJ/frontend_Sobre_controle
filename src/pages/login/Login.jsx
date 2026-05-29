@@ -8,7 +8,7 @@ import Form from "@/shared/components/molecules/form/Form";
 import LoginLayout from "@/shared/components/templates/loginLayout/LoginLayout";
 import ButtonComponent from "@/shared/components/atoms/button/Button";
 import InputComponent from "@/shared/components/atoms/inputs/Input";
-import { ErrorMessage } from "@/shared/components/atoms/errors/ErrorMessage";
+import ErrorMessage from "@/shared/components/atoms/errors/ErrorMessage";
 import LoadingComponent from "@/shared/components/organisms/loading/LoadingComponent";
 
 import "./login-style.css";

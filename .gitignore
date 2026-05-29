@@ -20,6 +20,12 @@ db.json
 settings.json
 jsconfig.json
 
+# Testes
+*.test.js
+*.test.jsx
+__tests__
+
+
 # Build directories
 vite.config.js
 package-lock.json

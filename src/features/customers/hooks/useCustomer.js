@@ -32,10 +32,10 @@ export function useCustomers() {
   }, [handleError]);
 
   const submitRegisterCustomer = useCallback(
-    async (dataCustomer) => {
+    async (customerData) => {
       setLoading(true);
       try {
-        const newCustomer = await createCustomer(dataCustomer);
+        const newCustomer = await createCustomer(customerData);
         setCustomer(newCustomer);
       } catch (error) {
         handleError(error);

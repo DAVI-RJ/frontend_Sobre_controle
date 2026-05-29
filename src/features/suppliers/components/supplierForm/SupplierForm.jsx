@@ -1,8 +1,8 @@
 // componentes
-import Form from "../../../../shared/components/molecules/form/Form";
-import Step1 from "../../../../shared/components/molecules/stepsRegister/Step1";
-import Step2 from "../../../../shared/components/molecules/stepsRegister/Step2";
-import ButtonComponent from "../../../../shared/components/atoms/button/Button";
+import Form from "@/shared/components/molecules/form/Form";
+import Step1 from "@/shared/components/molecules/stepsRegister/Step1";
+import Step2 from "@/shared/components/molecules/stepsRegister/Step2";
+import ButtonComponent from "@/shared/components/atoms/button/Button";
 // hooks
 import { useMultiStep } from "@/core/hooks/useMultiStep";
 

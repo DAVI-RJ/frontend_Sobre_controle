@@ -1,14 +1,35 @@
+import { useNavigate } from "react-router-dom";
+
 import Form from "@/shared/components/molecules/form/Form";
 import Step1 from "@/shared/components/molecules/stepsRegister/Step1";
 import Step2 from "@/shared/components/molecules/stepsRegister/Step2";
 import ButtonComponent from "@/shared/components/atoms/button/Button";
+import ErrorMessage from "@/shared/components/atoms/errors/ErrorMessage";
 
 import { useMultiStep } from "@/core/hooks/useMultiStep";
+import { useCustomers } from "../../hooks/useCustomer";
+
+import { createAddress } from "@/features/address/api/addressApi";
 
 import "./customer-form.css";
 
 export default function CustomerComponent() {
-  const { step, prevStep, handleRegister } = useMultiStep();
+  const { submitRegisterCustomer } = useCustomers();
+  const navigate = useNavigate();
+
+  const submitCustomer = async (allData) => {
+    const addressId = await createAddress(allData);
+
+    if (addressId) {
+      await submitRegisterCustomer({
+        ...allData,
+        address_id: addressId,
+      });
+      setTimeout(() => navigate("/home"), 1000);
+    }
+  };
+
+  const { step, prevStep, handleRegister } = useMultiStep(2, submitCustomer);
 
   // Verificar parte do furmulario e atualizar.
   const currentStep = () => {
@@ -24,6 +45,7 @@ export default function CustomerComponent() {
   return (
     <section className="register-section">
       <h3>Cadastro de Clientes</h3>
+      <ErrorMessage />
       <Form onSubmit={handleRegister}>
         {currentStep()}
 

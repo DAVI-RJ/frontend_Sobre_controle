@@ -1,13 +1,19 @@
-import Form from "../../../../shared/components/molecules/form/Form";
-import InputComponent from "../../../../shared/components/atoms/inputs/Input";
-import ButtonComponent from "../../../../shared/components/atoms/button/Button";
+import { useNavigate } from "react-router-dom";
+
+import Form from "@/shared/components/molecules/form/Form";
+import InputComponent from "@/shared/components/atoms/inputs/Input";
+import ButtonComponent from "@/shared/components/atoms/button/Button";
 import { productModel } from "@/domain/models/productModel";
 
 import "./product-form.css";
 
 export default function ProductComponent({ onAdd }) {
+  const navigate = useNavigate();
   const onSubmit = (data) => {
     onAdd(data);
+    setTime(() => {
+      navigate("/home");
+    }, 500);
   };
 
   return (

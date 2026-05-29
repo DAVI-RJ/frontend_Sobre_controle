@@ -8,7 +8,7 @@ import CardComponent from "@/shared/components/molecules/cards/Card";
 import SidebarComponent from "@/shared/components/organisms/sidebar/Sidebar";
 import ProductComponent from "@/features/products/components/productForm/ProductForm";
 import CustomerComponent from "@/features/customers/components/customerForm/CustomerForm";
-import SupplierComponent from "@/features/supplirs/components/supplierForm/SupplierForm";
+import SupplierComponent from "@/features/suppliers/components/supplierForm/SupplierForm";
 import ListCustomersComponent from "@/features/customers/components/ListCustomers";
 
 // CSS

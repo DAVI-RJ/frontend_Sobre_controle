@@ -1,9 +1,11 @@
 import { axiosInstance } from "@/core/http/axiosInstance";
+import { companySchema } from "@/domain/schemas/companySchema";
 import log from "@/core/logger/logger";
 
 export async function createCompany(data) {
   try {
-    const response = await axiosInstance.post("/company/register", data);
+    const companyData = companySchema.parse(data);
+    const response = await axiosInstance.post("/company/register", companyData);
     return response.data;
   } catch (error) {
     log.info(error);

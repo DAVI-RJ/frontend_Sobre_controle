@@ -1,7 +1,7 @@
 import React from "react";
 import { useError } from "@/core/context/error/ErrorProvider";
 
-export function ErrorMessage() {
+export default function ErrorMessage() {
   const { error } = useError();
   if (!error?.message) return null;
 

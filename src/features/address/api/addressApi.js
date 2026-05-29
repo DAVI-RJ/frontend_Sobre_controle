@@ -1,10 +1,12 @@
-import { useEffect } from "react";
-import { axiosInstance } from "../../../core/http/axiosInstance";
-import { useError } from "@/core/context/error/ErrorProvider";
+import { axiosInstance } from "@/core/http/axiosInstance";
+import { addressSchema } from "@/domain/schemas/addressSchema";
 
-export function useAddressServices() {
-  const { handleError } = useError();
-
+export async function createAddress(data) {
+  const validatedData = addressSchema.parse(data);
+  const response = await axiosInstance.post("/company/address", validatedData);
+  return response.data;
+}
+/*
   const AddressService = ({ setEstados }) => {
     useEffect(() => {
       fetch(import.meta.env.VITE_API_IBGE)
@@ -14,16 +16,4 @@ export function useAddressServices() {
     });
   };
 
-  const createAddress = async (dataAddress) => {
-    try {
-      const responseAddress = await axiosInstance.post("/company/address", dataAddress);
-      const addressId = responseAddress.data.id;
-
-      return addressId;
-    } catch (error) {
-      handleError(error);
-    }
-  };
-
-  return { AddressService, createAddress };
-}
+*/

@@ -4,6 +4,8 @@ import ListGroup from "@/shared/components/molecules/listComponent/ListGroup";
 import { useCustomers } from "../hooks/useCustomer";
 import LoadingComponent from "@/shared/components/organisms/loading/LoadingComponent";
 import { ErrorMessage } from "@/shared/components/atoms/errors/ErrorMessage";
+import DeleteIcon from "@mui/icons-material/Delete";
+//import InputComponent from "@/shared/components/atoms/inputs/Input";
 
 export default function ListCustomersComponent() {
   const { fetchListCustomers } = useCustomers();
@@ -28,7 +30,13 @@ export default function ListCustomersComponent() {
     <ListGroup>
       <ul>
         {customers && customers.length > 0 ? (
-          customers.map((customer) => <li key={customer.id}>{customer.name}</li>)
+          customers.map((customer) => (
+            <li key={customer.id}>
+              {customer.name}
+             
+              <DeleteIcon />
+            </li>
+          ))
         ) : (
           <p>Lista vazia</p>
         )}
