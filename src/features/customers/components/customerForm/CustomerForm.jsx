@@ -19,12 +19,14 @@ export default function CustomerComponent() {
 
   const submitCustomer = async (allData) => {
     const addressId = await createAddress(allData);
-
+    console.log("endereço: ", addressId);
     if (addressId) {
-      await submitRegisterCustomer({
+      const customer = {
         ...allData,
         address_id: addressId,
-      });
+      };
+      console.log("customer: ", customer);
+      await submitRegisterCustomer(customer);
       setTimeout(() => navigate("/home"), 1000);
     }
   };

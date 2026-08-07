@@ -1,8 +1,5 @@
-import "react";
-
 import { useHeader } from "@/core/hooks/useHeader";
-
-import { ErrorMessage } from "@/shared/components/atoms/errors/ErrorMessage";
+import ErrorMessage from "@/shared/components/atoms/errors/ErrorMessage";
 
 import "./header.css";
 

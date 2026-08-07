@@ -5,15 +5,30 @@
   --sidebar-color: #34495E; 
   --cards-box: #FFFFFF;
   --list-color: #EEEEEE;
-  --light-shadows: 0 4px 8px rgba(0,0,0,0.08);
-  --identification: #232a38;
-  --focus: lightblue;
+  --light-shadows: 0 0 18px rgba(79,123,255,.25);
+  --identification: #E5E7EB;
+  --focus: 1px solid #4F7BFF;
   --error: #D50000;
   --sidebar-width: 300px;
   --gap: 16px;
   --radius: 6px;
   --max-width: 1200px;
   --font-sans: "Inter", "Roboto", sans-serif;
+  --font-size-input: 16px; 
+  --font-size-button: 16px;
+  
+  --color-primary-500: #328cf3;
+  --color-primary-400: #4080f8;
+  --color-accent-500: #3971e9;
+  --color-secondary-500: #9B5CF7;
+  
+  --gradient-primary-button: linear-gradient(
+      90deg,
+      var(--color-primary-500) 0%,
+      var(--color-primary-400) 30%,
+      var(--color-accent-500) 70%,
+      var(--color-secondary-500) 100%
+  );
 }
 
 *{ 

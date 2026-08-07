@@ -4,7 +4,8 @@ import { addressSchema } from "@/domain/schemas/addressSchema";
 export async function createAddress(data) {
   const validatedData = addressSchema.parse(data);
   const response = await axiosInstance.post("/company/address", validatedData);
-  return response.data;
+  console.log("Resposta da API:", response);
+  return response;
 }
 /*
   const AddressService = ({ setEstados }) => {

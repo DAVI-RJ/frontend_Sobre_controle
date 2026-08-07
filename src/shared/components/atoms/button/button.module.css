@@ -3,9 +3,9 @@
   appearance:none;
   padding: 8px 12px;
   border-radius: 10px;
-  box-shadow: var(--light-shadows);
   border:1px solid rgba(0,0,0,0.08);
-  background-color: var(--first-color);
+  font-weight: 600;
+  font-size: var(--font-size-button);
 }
 
 .button:hover{

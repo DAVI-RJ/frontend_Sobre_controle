@@ -4,32 +4,101 @@
   padding: 50px;
   height: 80%;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 24px;
+  background: 
+  radial-gradient(circle at 38% 45%,
+  rgba(84, 89, 255, .35) 0%,
+  rgba(88, 56, 255, .18) 22%,
+  transparent 55%
+  ),
+  linear-gradient(135deg, #050816 0%, #091428 25%, #0d1b3d 55%, #0a1430 75%, #060b18 100%);
+  box-shadow: 0 0 60px rgba(59, 130, 246, .18), 
+  0 0 120px rgba(139, 92, 246, .12); 
+  border-radius: 5%;
+  border: 1px solid rgba(231, 233, 236, 0.72);
+
 }
-.login-class h1 {
+
+.login-info h1 {
+  font-size:40px;
+  font-weight:700;
+  line-height:52px;
+  color:white;
+  margin: 24px;
+}
+
+.login-info h3 {
+  max-width: 430px;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+  color: #F8FAFC;
+  margin: 24px;
+}
+
+.login-info h3 span{
+  background: linear-gradient(
+    90deg,
+    #4DA3FF 0%,
+    #4F7BFF 25%,
+    #6E63FF 60%,
+    #A855F7 85%,
+    #D8B4FE 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-info > p {
+  font-family: var(--font-sans);
+  max-width: 470px;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #94A3B8;
+  margin: 24px;
+}
+
+.login-class h2 {
   color: white;
+  font-size: 26px;
   text-align: center;
 }
+
 .login-class > p {
-  color: white;
-  font-family: Arial, sans-serif;
-  font-size: 16px; 
-  line-height: 1.5; 
-  text-align: center; 
+  font-size:20px;
+  line-height:1.2;
+  color: #94A3B8;
+  font-family: var(--font-sans);
+  text-align: center;
+}
+.input-login {
+  background: none;
 }
 
 .option-login {
   display: flex;
-  justify-content: space-between;
+  row-gap: 10px;
+  flex-direction: column;
+}
+
+
+.button-login {
+  width: 100%;
+  color: #ffffff;
+  background: var(--gradient-primary-button);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, .25), 0 0 32px rgba(139, 92, 246, .18);
 }
 
 .register-button {
   background: none;
+  color: #ffffff;
 }
 
 .register-button:hover {
   transition: 1s ease-in;
-  background: lightblue;
+  color: lightblue;
 }
 
 

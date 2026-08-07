@@ -26,14 +26,25 @@ export default function Login() {
 
   return (
     <LoginLayout>
-      <div className="login-class">
+      <div className="login-info">
         <h1>Sobre Controle</h1>
-        <p>Mantenha no seu alcançe dados importantes da sua empresa</p>
+        <h3>
+          Conecte sua empresa a um ecosistema de <span>oportunidades</span>
+        </h3>
+        <p>
+          Uma plataforma completa que integra fornecedores, clientes e produtos em uma rede
+          eficiente e inteligente
+        </p>
+      </div>
+      <div className="login-class">
+        <h2>Bem-vindo</h2>
+        <p>Acesse sua conta para continuar</p>
 
         <LoadingComponent isLoading={loading} />
 
         <Form onSubmit={onSuccessLogin}>
           <InputComponent
+            className="input-login"
             name="email"
             type="email"
             label="Email:"
@@ -48,6 +59,7 @@ export default function Login() {
           />
 
           <InputComponent
+            className="input-login"
             name="password"
             type="password"
             label="Senha:"
@@ -60,12 +72,14 @@ export default function Login() {
             }}
           />
           <nav className="option-login">
-            <ButtonComponent type="submit">Entrar</ButtonComponent>
+            <ButtonComponent className="button-login" type="submit">
+              Entrar
+            </ButtonComponent>
 
             <ButtonComponent
+              className="register-button"
               type="button"
               onClick={() => navigate("/register")}
-              className="register-button"
             >
               Não tenho cadastro
             </ButtonComponent>

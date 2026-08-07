@@ -9,9 +9,10 @@ function InputComponent({ id, label, name, type, className, placeholder, rules =
   } = useFormContext();
 
   return (
-    <div className={`${style.input} ${className}`}>
+    <div className={`${style.input} ${className || ""}`}>
       {label && <label htmlFor={id}>{label}</label>}
       <input
+        className={className || ""}
         {...register(name, {
           ...rules,
           required: rules.required || false,

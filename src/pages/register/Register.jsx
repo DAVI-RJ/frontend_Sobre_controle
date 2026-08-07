@@ -20,15 +20,15 @@ export default function Register() {
   const navigate = useNavigate();
   const submitCompany = async (allData) => {
     try {
-      const address = await createAddress(allData);
-      if (address) {
+      const addressId = await createAddress(allData);
+      if (addressId) {
         const companyPayload = {
           ...allData,
-          address_id: address,
+          address_id: addressId,
         };
 
         await createCompany(companyPayload);
-        log.info("Empresa: ", allData, "Address: ", address);
+        log.info("Empresa: ", allData, "Address: ", addressId);
         setTimeout(() => navigate("/"), 1000);
       }
     } catch (error) {

@@ -1,11 +1,21 @@
 .login-layout {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-image: url("../../../assets/bg-login.png");
+  display: grid;
+  grid-template-columns: 1fr 520px;
+  background-image: url("/assets/sobre-controle-bg.png");
   background-position: center;
   background-size: cover;
   min-height: 100vh;
-  width: 100%;
+  overflow: hidden;
 }
+/*
+display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/assets/bg-login.png");
+ 
+  min-height: 100vh;
+  width: 100%;
+ background-position: center;
+  background-size: cover;
+*/
