@@ -1,6 +1,6 @@
 # Sobre Controle
 
-## Introduction
+## Introdução
 
 Um aplicação fullstacker com o front-end em React, com formulários de cadastros multi-step, com
 layout complexos e regra de negocios bem definidas, o projeto abrange, conceitos claros de
