@@ -1,39 +1,18 @@
-.login-class {
-  display: grid;
-  grid-template-columns: minmax(300px, 500px);
-  padding: 50px;
-  height: 80%;
-  max-width: 100%;
-  margin: 24px;
-  background: 
-  radial-gradient(circle at 38% 45%,
-  rgba(84, 89, 255, .35) 0%,
-  rgba(88, 56, 255, .18) 22%,
-  transparent 55%
-  ),
-  linear-gradient(135deg, #050816 0%, #091428 25%, #0d1b3d 55%, #0a1430 75%, #060b18 100%);
-  box-shadow: 0 0 60px rgba(59, 130, 246, .18), 
-  0 0 120px rgba(139, 92, 246, .12); 
-  border-radius: 5%;
-  border: 1px solid rgba(231, 233, 236, 0.72);
-
-}
-
 .login-info h1 {
   font-size:40px;
   font-weight:700;
   line-height:52px;
-  color:white;
+  color: var(--color-text-login);
   margin: 24px;
 }
 
 .login-info h3 {
   max-width: 430px;
-  font-size: 36px;
+  font-size: 1.8em;
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -1.5px;
-  color: #F8FAFC;
+  color: var(--color-text-login);
   margin: 24px;
 }
 
@@ -54,20 +33,39 @@
 .login-info > p {
   font-family: var(--font-sans);
   max-width: 470px;
-  font-size: 20px;
+  font-size: var(--font-size-paragraph);
   line-height: 1.2;
   color: #94A3B8;
   margin: 24px;
 }
 
+.login-class {
+  display: grid;
+  width: 100%;
+  max-width: 520px;
+  justify-self: center;
+  padding: 50px;
+  height: 80%;
+  background: 
+    radial-gradient(circle at 38% 45%,
+    rgba(84, 89, 255, .35) 0%,
+    rgba(88, 56, 255, .18) 22%,
+    transparent 55%),
+    linear-gradient(135deg, #050816 0%, #091428 25%, #0d1b3d 55%, #0a1430 75%, #060b18 100%);
+  box-shadow: var(--box-shadows); 
+  border-radius: 5%;
+  border: 1px solid rgba(231, 233, 236, 0.72);
+
+}
+
 .login-class h2 {
-  color: white;
-  font-size: 26px;
+  color: var(--color-text-login);
+  font-size: 1.8em;
   text-align: center;
 }
 
 .login-class > p {
-  font-size:20px;
+  font-size: var(--font-size-paragraph);
   line-height:1.2;
   color: #94A3B8;
   font-family: var(--font-sans);
@@ -86,14 +84,14 @@
 
 .button-login {
   width: 100%;
-  color: #ffffff;
+  color: var(--color-text-login);
   background: var(--gradient-primary-button);
-  box-shadow: 0 8px 24px rgba(59, 130, 246, .25), 0 0 32px rgba(139, 92, 246, .18);
+  box-shadow: var(--box-shadows);
 }
 
 .register-button {
   background: none;
-  color: #ffffff;
+  color: var(--color-text-login);
 }
 
 .register-button:hover {
@@ -101,10 +99,9 @@
   color: lightblue;
 }
 
-
 @media (max-width: 768px) {
-  .login-class {
-    grid-template-columns: 1fr;
-    padding: 1rem;
+  .login-info {
+    display: none;
   }
 }
+
