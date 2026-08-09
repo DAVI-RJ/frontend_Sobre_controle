@@ -22,7 +22,7 @@ const menuItems = {
 // Alterna visibilidade da seção
 
 export default function SidebarComponent({ setView }) {
- 
+  
   const [openSections, setOpenSections] = useState({
     products: false,
     customers: false,

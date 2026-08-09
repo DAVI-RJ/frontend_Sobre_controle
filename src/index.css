@@ -2,7 +2,7 @@
   --bg: #F7F9FC;
   --first-color:  lightblue;
   --second-color: #00c853;
-  --sidebar-color: #34495E; 
+  
   --cards-box: #FFFFFF;
   --list-color: #EEEEEE;
   --box-shadows: 0 0 60px rgba(59, 130, 246, .18), 0 0 120px rgba(139, 92, 246, .12);
@@ -19,6 +19,20 @@
   --font-size-button: 16px;
   --font-size-paragraph: 20px;
   /* color*/
+  --siderbar-bg-color: 
+      linear-gradient(
+        180deg,
+        #080d1d 0%,
+        #0b1024 55%,
+        #101735 100%
+      );
+  --content-bg-color: 
+      linear-gradient(
+        135deg,
+        #070b18 0%,
+        #0b1024 45%,
+        #111936 100%
+      );
   --color-text-login: #F8FAFC; 
   --color-primary-500: #328cf3;
   --color-primary-400: #4080f8;

@@ -1,13 +1,11 @@
 .header-class {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  position: sticky;
-  top: 0; 
-  justify-content: space-between;
-  background: var(--cards-box);
-  box-shadow: var(--light-shadows);
-  text-align: center;
-  padding: 5px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 32px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  background: rgba(4, 8, 20, .72);
+  backdrop-filter: blur(20px)
 }
 
 .logo-perfil {

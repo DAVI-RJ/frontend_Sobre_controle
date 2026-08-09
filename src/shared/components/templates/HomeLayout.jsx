@@ -1,21 +1,30 @@
 import React from "react";
 
+import SidebarComponent from "../organisms/sidebar/Sidebar";
 import HeaderComponent from "../organisms/header/Header";
-import DashboardComponent from "../organisms/dashboard/Dashboard";
-import ContainerComponent from "../organisms/container/Container";
 import FooterComponent from "../organisms/footer/Footer";
 
 import "./home-layout.css";
 
-export default function HomeLayout({ children }) {
+export default function HomeLayout({ children, setView }) {
+
   return (
     <div className="home-layout">
-      <div>
-        <HeaderComponent className="header-layout" />
-        <DashboardComponent className="dashboard-layout" />
-        <ContainerComponent>{children}</ContainerComponent>
-        <FooterComponent className="footer-layout" />
+
+      <SidebarComponent setView={setView} />
+
+      <div className="home-content">
+
+        <HeaderComponent />
+
+        <main className="main-content">
+          {children}
+        </main>
+
+        <FooterComponent />
+
       </div>
+
     </div>
   );
 }

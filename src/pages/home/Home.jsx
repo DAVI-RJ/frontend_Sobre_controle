@@ -4,8 +4,9 @@ import useProducts from "@/features/products/hooks/useProducts";
 
 // COMPONENTES
 import HomeLayout from "@/shared/components/templates/HomeLayout";
+import ContentContainer from "@/shared/components/organisms/container/Container";
+import DashboardComponent from "@/shared/components/organisms/dashboard/Dashboard";
 import CardComponent from "@/shared/components/molecules/cards/Card";
-import SidebarComponent from "@/shared/components/organisms/sidebar/Sidebar";
 import ProductComponent from "@/features/products/components/productForm/ProductForm";
 import CustomerComponent from "@/features/customers/components/customerForm/CustomerForm";
 import SupplierComponent from "@/features/suppliers/components/supplierForm/SupplierForm";
@@ -15,8 +16,8 @@ import ListCustomersComponent from "@/features/customers/components/ListCustomer
 import "./home-style.css";
 
 export default function Home() {
-  const { products, addProduct, handleProducts } = useProducts();
   const [view, setView] = useState("list-products");
+  const { products, addProduct, handleProducts } = useProducts();
 
   // carrega a lista de products ao logar
   useEffect(() => {
@@ -30,17 +31,27 @@ export default function Home() {
       <p>Lista vazia</p>
     );
 
-  // ProductComponent = FormProduct
+  const renderContent = () => {
+    switch (view) {
+      case "list-products":
+        return renderProductList();
+      case "new-product":
+        return <ProductComponent addProduct={addProduct} />;
+      case "list-customer":
+        return <ListCustomersComponent />;
+      case "new-customer":
+        return <CustomerComponent />;
+      case "new-supplier":
+        return <SupplierComponent />;
+      default:
+        return renderProductList();
+    }
+  };
   return (
-    <HomeLayout>
-      <SidebarComponent setView={setView} />
-      <div className={`section-content ${view === "list-products" ? "list-products" : ""}`}>
-        {view === "new-product" && <ProductComponent onAdd={addProduct} />}
-        {view === "list-products" && renderProductList()}
-        {view === "list-customer" && <ListCustomersComponent />}
-        {view === "new-customer" && <CustomerComponent />}
-        {view === "new-supplier" && <SupplierComponent />}
-      </div>
+    <HomeLayout setView={setView}>
+      <DashboardComponent />
+
+      <ContentContainer>{renderContent()}</ContentContainer>
     </HomeLayout>
   );
 }

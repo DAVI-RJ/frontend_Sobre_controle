@@ -1,11 +1,19 @@
-.home-layout{
+.home-layout {
   display: grid;
-  grid-template-rows: auto 1fr auto; /* header | main | footer */
+  grid-template-columns: 260px 1fr;
   width: 100%;
   min-height: 100vh;
+  color: #ffffff;
 }
-.dashboard-layout {
-  height: 400px;
+.home-content {
+  display: grid;
+  grid-template-rows:
+    88px
+    minmax(0, 1fr)
+    auto;
+  min-width: 0;
+  min-height: 100vh;
+  padding: 20px;
 }
 
 .footer-layout {
