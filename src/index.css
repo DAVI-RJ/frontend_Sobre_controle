@@ -1,39 +1,44 @@
 :root{
-  --bg: #F7F9FC;
-  --first-color:  lightblue;
-  --second-color: #00c853;
+  /*background*/
+  --bg-aplication: 
+    radial-gradient(circle at 38% 45%,
+    rgba(84, 89, 255, .35) 0%,
+    rgba(88, 56, 255, .18) 22%,
+    transparent 55%),
+    linear-gradient(135deg, #050816 0%, #091428 25%, #0d1b3d 55%, #0a1430 75%, #060b18 100%);
   
-  --cards-box: #FFFFFF;
-  --list-color: #EEEEEE;
-  --box-shadows: 0 0 60px rgba(59, 130, 246, .18), 0 0 120px rgba(139, 92, 246, .12);
-  --identification: #E5E7EB;
-  --focus: 1px solid #4F7BFF;
-  --error: #D50000;
-  --sidebar-width: 300px;
-  --gap: 16px;
-  --radius: 6px;
-  --max-width: 1200px;
-  /* font */
-  --font-sans: "Inter", "Roboto", sans-serif;
-  --font-size-input: 16px; 
-  --font-size-button: 16px;
-  --font-size-paragraph: 20px;
-  /* color*/
-  --siderbar-bg-color: 
+  --bg-siderbar: 
       linear-gradient(
         180deg,
         #080d1d 0%,
         #0b1024 55%,
         #101735 100%
       );
-  --content-bg-color: 
+  --bg-header: 
       linear-gradient(
-        135deg,
-        #070b18 0%,
-        #0b1024 45%,
-        #111936 100%
-      );
-  --color-text-login: #F8FAFC; 
+      90deg,
+      #0b061c 0%,
+      #16082e 45%,
+      #10072b 100%
+    );
+
+  --box-shadows: 0 0 60px rgba(59, 130, 246, .18), 0 0 120px rgba(139, 92, 246, .12);
+
+  --label: #E5E7EB;
+  --focus: 1px solid #4F7BFF;
+  --error: #D50000;
+  --radius: 5%;
+  --max-width: 1200px;
+
+  /* font */
+  --font-sans: "Inter", "Roboto", sans-serif;
+  --font-size-input: 16px; 
+  --font-size-button: 16px;
+  --font-size-paragraph: 20px;
+
+  /* color*/ 
+  --color-text-login: #e5e7eb;
+  
   --color-primary-500: #328cf3;
   --color-primary-400: #4080f8;
   --color-accent-500: #3971e9;

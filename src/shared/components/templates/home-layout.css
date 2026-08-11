@@ -3,8 +3,8 @@
   grid-template-columns: 260px 1fr;
   width: 100%;
   min-height: 100vh;
-  color: #ffffff;
 }
+
 .home-content {
   display: grid;
   grid-template-rows:

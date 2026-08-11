@@ -38,8 +38,8 @@ export default function SidebarComponent({ setView }) {
 
   return (
     <aside className="sidebar">
-     
-      <nav className={`nav-button ${openSections.products ? "ativado" : ""}`}>
+      <h3 className="section-title">Gestão</h3>
+      <nav className={`nav-button ${openSections.products ? "ativated" : ""}`}>
         <ButtonComponent 
         onClick={() => toggleSection("products")}
         >
@@ -60,7 +60,7 @@ export default function SidebarComponent({ setView }) {
         )}
       </nav>
 
-      <nav className={`nav-button ${openSections.customers ? "ativado" : ""}`}>
+      <nav className={`nav-button ${openSections.customers ? "ativated" : ""}`}>
         <ButtonComponent onClick={() => toggleSection("customers")}>
           CLIENTES {openSections.customers ? "▼" : "▶"} 
         </ButtonComponent>
@@ -79,7 +79,7 @@ export default function SidebarComponent({ setView }) {
         )}
       </nav>
       
-      <nav className={`nav-button ${openSections.supplier ? "ativado" : ""}`}>
+      <nav className={`nav-button ${openSections.supplier ? "ativated" : ""}`}>
         <ButtonComponent onClick={() => toggleSection("supplier")}>
           FORNECEDORES {openSections.supplier ? "▼" : "▶"} 
         </ButtonComponent>

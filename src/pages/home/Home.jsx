@@ -1,8 +1,7 @@
-// HOOKS
 import React, { useEffect, useState } from "react";
 import useProducts from "@/features/products/hooks/useProducts";
 
-// COMPONENTES
+// componentes
 import HomeLayout from "@/shared/components/templates/HomeLayout";
 import ContentContainer from "@/shared/components/organisms/container/Container";
 import DashboardComponent from "@/shared/components/organisms/dashboard/Dashboard";
@@ -11,6 +10,8 @@ import ProductComponent from "@/features/products/components/productForm/Product
 import CustomerComponent from "@/features/customers/components/customerForm/CustomerForm";
 import SupplierComponent from "@/features/suppliers/components/supplierForm/SupplierForm";
 import ListCustomersComponent from "@/features/customers/components/ListCustomers";
+
+/*Página inicial da aplicação. O layout HomeLayout organiza os componentes e a navegação entre views é controlada pelo estado view.*/
 
 // CSS
 import "./home-style.css";
@@ -48,10 +49,13 @@ export default function Home() {
     }
   };
   return (
-    <HomeLayout setView={setView}>
-      <DashboardComponent />
+    // home-style é a estilização principal da página.
+    <div className="home-style">
+      <HomeLayout setView={setView}>
+        <DashboardComponent />
 
-      <ContentContainer>{renderContent()}</ContentContainer>
-    </HomeLayout>
+        <ContentContainer>{renderContent()}</ContentContainer>
+      </HomeLayout>
+    </div>
   );
 }

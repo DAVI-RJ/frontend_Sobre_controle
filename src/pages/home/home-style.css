@@ -1,7 +1,11 @@
+.home-style {
+  background: var(--bg-aplication);
+}
+
 .section-content {
   display: grid;
   width: 100%;
-  background: var(--surface);
+  background: var(--section-home-color);
   border-radius: var(--radius);
 }
 

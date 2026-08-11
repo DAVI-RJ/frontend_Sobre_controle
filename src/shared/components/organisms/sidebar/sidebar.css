@@ -1,36 +1,44 @@
 .sidebar{
   display: flex;
   flex-direction: column;
-
   width: 260px;
   min-width: 260px;
   height: 100vh;
-
   padding: 24px 16px;
-
   background: var(--siderbar-bg-color);
-    
-  border-right: 1px solid rgba(148, 163, 184, 0.12);
-
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  box-shadow: 2px 0 8px rgba(0,0,0,0.3);
   overflow-y: auto;
+}
+.section-title {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #9a86fd; /* roxo neon */
+  margin: 16px 0 8px;
+  text-transform: uppercase;
 }
 
 .nav-button {
   display: flex;
-  flex-direction: column;
-  padding: 10px;
-  border-bottom: 2px solid var(--first-color);
-  gap: 8px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: 
+    background 0.2s ease, transform 0.2s ease;
 }
 
-.nav-button h4 {
-  padding: 2px;
-  margin: 0;
+.nav-button:hover {
+  background: rgba(154, 134, 253, 0.2);
+  transform: translateX(4px);
 }
 
-.ativado {
-  transition: 0.2s;
-  transform: scale(1.05) translateX(2px);
+.ativated{
+  background: rgba(154, 134, 253, 0.4);
+  border-left: 3px solid #9a86fd;
 }
 
 @media (max-width:480px){

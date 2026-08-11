@@ -1,24 +1,55 @@
 import { useHeader } from "@/core/hooks/useHeader";
 import ErrorMessage from "@/shared/components/atoms/errors/ErrorMessage";
+import SearchIcon from "@mui/icons-material/Search";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+
+/* Cabeçalho da aplicação, exibe informações da empresa e ações relacionadas, como logout limpando o cache, utiliza icones do material UI
+ */
 
 import "./header.css";
 
 export default function HeaderComponent() {
   const { companyName, handleLogout } = useHeader();
 
+  /* tratando erros locais*/
+  const isError = <ErrorMessage />;
+
+  if (isError) {
+    return "error buscar dados da empresa";
+  }
+
   return (
-    <header className="header-class">
-      <div className="logo-perfil">
-        {companyName ? <p>nome {companyName ?? "—"}</p> : <ErrorMessage />}
+    <header className="header-layout">
+      <div className="header-search">
+        <SearchIcon className="search-icon" />
+
+        <input type="text" placeholder="Buscar produtos, clientes, pedidos..." />
       </div>
-      <div>
-        <nav>
-          <ul className="option-header">
-            <li>Suporte</li>
-            <li onClick={handleLogout}>Sair</li>
-          </ul>
-        </nav>
+      <div className="header-actions">
+        <button className="header-action">
+          <NotificationsNoneIcon />
+          <span className="notification-badge">{}</span>
+        </button>
+
+        <button className="header-action">
+          <CalendarMonthIcon />
+        </button>
+      </div>
+      <div className="header-profile">
+        <div className="profile-avatar">{companyName?.charAt(0).toUpperCase() || "U"}</div>
+        <div className="profile-info">
+          <strong>{companyName || isError}</strong>
+
+          <span>Administrador</span>
+        </div>
       </div>
     </header>
   );
 }
+/*
+
+  <div className="logo-perfil">
+    {companyName ? <p>{companyName ?? "—"}</p> : <ErrorMessage />}
+  </div>
+*/

@@ -46,12 +46,7 @@
   justify-self: center;
   padding: 50px;
   height: 80%;
-  background: 
-    radial-gradient(circle at 38% 45%,
-    rgba(84, 89, 255, .35) 0%,
-    rgba(88, 56, 255, .18) 22%,
-    transparent 55%),
-    linear-gradient(135deg, #050816 0%, #091428 25%, #0d1b3d 55%, #0a1430 75%, #060b18 100%);
+  background: var(--bg-aplication); 
   box-shadow: var(--box-shadows); 
   border-radius: 5%;
   border: 1px solid rgba(231, 233, 236, 0.72);
@@ -81,17 +76,10 @@
   flex-direction: column;
 }
 
-
 .button-login {
   width: 100%;
-  color: var(--color-text-login);
   background: var(--gradient-primary-button);
   box-shadow: var(--box-shadows);
-}
-
-.register-button {
-  background: none;
-  color: var(--color-text-login);
 }
 
 .register-button:hover {

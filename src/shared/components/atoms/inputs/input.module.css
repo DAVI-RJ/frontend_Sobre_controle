@@ -8,7 +8,7 @@
   font-size:14px;
   font-weight:500;
   padding: 2px 16px;
-  color:var(--identification);
+  color:var(--label);
 }
 
 .input::placeholder{
@@ -25,12 +25,13 @@
   box-shadow: var(--light-shadows);
   outline: none;
   transition: .2s;
+  color: #ffffff; 
 }
 
-.input input:focus{
+.input input:focus-within{
   outline-style: inset;
-  border: var(--focus);
   box-shadow: var(--light-shadows);
+  border-color: rgba(124, 92, 246, 0.75);
 }
 .error{ 
   color:var(--error);
