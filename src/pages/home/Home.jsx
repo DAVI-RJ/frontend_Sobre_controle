@@ -20,10 +20,10 @@ export default function Home() {
   const [view, setView] = useState("list-products");
   const { products, addProduct, handleProducts } = useProducts();
 
-  // carrega a lista de products ao logar
+  // carrega a lista de products ao logar. Obs o [] será atualizado a cada renderização do componente.
   useEffect(() => {
     handleProducts();
-  }, []);
+  }, [handleProducts]);
 
   const renderProductList = () =>
     products.length > 0 ? (

@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import { useCustomers } from "@/features/customers/hooks/useCustomer";
-
 import "./list-group.css"; 
 
 export default function ListComponent({ children }) {

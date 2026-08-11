@@ -21,7 +21,7 @@ const useProducts = () => {
     } finally {
       setLoading(false);
     }
-  }, [getProducts]);
+  }, [handleError]);
 
   // cadastro de produtos, POST/
   const addProduct = useCallback(
@@ -34,7 +34,7 @@ const useProducts = () => {
         handleError(error);
       }
     },
-    [createProduct]
+    [handleError]
   );
 
   return {

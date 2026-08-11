@@ -1,7 +1,5 @@
 import { Component } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ErrorProvider } from "@/core/context/error/ErrorProvider.jsx";
-import AppRoutes from "@/core/config/routes/Routes.jsx";
 import log from "@/core/logger/logger";
 import "./error-boundary.css";
 
@@ -50,8 +48,7 @@ class ErrorBoundary extends Component {
         </div>
       );
     }
-
-    return this.props.children;
+    return <QueryClientProvider client={queryClient}>{this.props.children}</QueryClientProvider>;
   }
 }
 

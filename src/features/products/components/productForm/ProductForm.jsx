@@ -11,7 +11,7 @@ export default function ProductComponent({ onAdd }) {
   const navigate = useNavigate();
   const onSubmit = (data) => {
     onAdd(data);
-    setTime(() => {
+    setTimeout(() => {
       navigate("/home");
     }, 500);
   };
