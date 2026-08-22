@@ -1,9 +1,9 @@
 import "./list-group.css"; 
 
-export default function ListComponent({ children }) {
+
+export default function ListGroup({ children }) {
   return (
     <div>
-      <h2>Lista de Clientes</h2>
       {children}
     </div>
   )

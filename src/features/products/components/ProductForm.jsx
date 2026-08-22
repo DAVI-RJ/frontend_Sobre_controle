@@ -5,9 +5,9 @@ import InputComponent from "@/shared/components/atoms/inputs/Input";
 import ButtonComponent from "@/shared/components/atoms/button/Button";
 import { productModel } from "@/domain/models/productModel";
 
-import "./product-form.css";
+import "./style-product.css";
 
-export default function ProductComponent({ onAdd }) {
+export default function ProductForm({ onAdd }) {
   const navigate = useNavigate();
   const onSubmit = (data) => {
     onAdd(data);

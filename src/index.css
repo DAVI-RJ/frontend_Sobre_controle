@@ -7,13 +7,13 @@
     transparent 55%),
     linear-gradient(135deg, #050816 0%, #091428 25%, #0d1b3d 55%, #0a1430 75%, #060b18 100%);
   
-  --bg-siderbar: 
-      linear-gradient(
-        180deg,
-        #080d1d 0%,
-        #0b1024 55%,
-        #101735 100%
-      );
+  --bg-siderbar:  
+    linear-gradient(
+      180deg,
+      rgba(12, 5, 35, 0.98) 0%,
+      rgba(18, 7, 48, 0.98) 100%
+    );
+    
   --bg-header: 
       linear-gradient(
       90deg,

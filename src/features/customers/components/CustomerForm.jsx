@@ -7,13 +7,13 @@ import ButtonComponent from "@/shared/components/atoms/button/Button";
 import ErrorMessage from "@/shared/components/atoms/errors/ErrorMessage";
 
 import { useMultiStep } from "@/core/hooks/useMultiStep";
-import { useCustomers } from "../../hooks/useCustomer";
+import { useCustomers } from "../hooks/useCustomer";
 
 import { createAddress } from "@/features/address/api/addressApi";
 
 import "./customer-form.css";
 
-export default function CustomerComponent() {
+export default function CustomerForm() {
   const { submitRegisterCustomer } = useCustomers();
   const navigate = useNavigate();
 

@@ -15,10 +15,6 @@ export default function HeaderComponent() {
   /* tratando erros locais*/
   const isError = <ErrorMessage />;
 
-  if (isError) {
-    return "error buscar dados da empresa";
-  }
-
   return (
     <header className="header-layout">
       <div className="header-search">
@@ -37,12 +33,18 @@ export default function HeaderComponent() {
         </button>
       </div>
       <div className="header-profile">
-        <div className="profile-avatar">{companyName?.charAt(0).toUpperCase() || "U"}</div>
-        <div className="profile-info">
-          <strong>{companyName || isError}</strong>
+        {isError ? (
+          <div className="profile-avatar">U</div>
+        ) : (
+          <div className="profile-avatar">{companyName?.charAt(0).toUpperCase() || "U"}</div>
+        )}
+        <strong>{companyName || "Empresa"}</strong>
 
-          <span>Administrador</span>
-        </div>
+        <span>Administrador</span>
+        <button className="logout-button" onClick={handleLogout}>
+          {" "}
+          sair
+        </button>
       </div>
     </header>
   );

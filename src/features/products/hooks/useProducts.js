@@ -11,7 +11,7 @@ const useProducts = () => {
   const { handleError } = useError();
 
   // requisição GET/
-  const handleProducts = useCallback(async () => {
+  const fetchListProducts = useCallback(async () => {
     setLoading(true);
     try {
       const data = await getProducts();
@@ -40,7 +40,7 @@ const useProducts = () => {
   return {
     products,
     loading,
-    handleProducts,
+    fetchListProducts,
     addProduct,
   };
 };

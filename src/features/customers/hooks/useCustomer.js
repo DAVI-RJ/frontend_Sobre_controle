@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import { createCustomer } from "../api/createCustomer";
 import { listCustomers } from "../api/listCustomers";
 import { deleteCustomer } from "../api/deleteCustomer";
+import { customerSchema } from "@/domain/schemas/customerSchema";
 import log from "@/core/logger/logger";
 import { useError } from "@/core/context/error/ErrorProvider";
 
@@ -34,9 +35,11 @@ export function useCustomers() {
   const submitRegisterCustomer = useCallback(
     async (customerData) => {
       setLoading(true);
+      customerSchema.parse(customerData);
       try {
         const newCustomer = await createCustomer(customerData);
-        setCustomer(newCustomer);
+        const validatedCustomer = customerSchema.parse(newCustomer);
+        setCustomer((prev) => [...prev, validatedCustomer]);
       } catch (error) {
         handleError(error);
         log.info("error ao carregar a lista, useCustomer");
@@ -51,7 +54,8 @@ export function useCustomers() {
     async (idCustomer) => {
       setLoading(true);
       try {
-        deleteCustomer(idCustomer);
+        await deleteCustomer(idCustomer);
+        setCustomer((prev) => prev.filter((c) => c.id !== idCustomer));
       } catch (error) {
         handleError(error);
       } finally {

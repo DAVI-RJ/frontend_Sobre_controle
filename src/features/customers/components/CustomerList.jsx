@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 
-import ListGroup from "@/shared/components/molecules/listComponent/ListGroup";
 import { useCustomers } from "../hooks/useCustomer";
+import ListGroup from "@/shared/components/molecules/listComponent/ListGroup";
+import DataTable from "@/shared/components/organisms/table/DataTable";
+import { setTableCustomer } from "@/domain/schemas/customerSchema";
 import LoadingComponent from "@/shared/components/organisms/loading/LoadingComponent";
 import ErrorMessage from "@/shared/components/atoms/errors/ErrorMessage";
-import DeleteIcon from "@mui/icons-material/Delete";
-//import InputComponent from "@/shared/components/atoms/inputs/Input";
 
-export default function ListCustomersComponent() {
+export default function CustomerList() {
   const { fetchListCustomers } = useCustomers();
   const {
     data: customers,
@@ -28,19 +28,11 @@ export default function ListCustomersComponent() {
 
   return (
     <ListGroup>
-      <ul>
-        {customers && customers.length > 0 ? (
-          customers.map((customer) => (
-            <li key={customer.id}>
-              {customer.name}
-
-              <DeleteIcon />
-            </li>
-          ))
-        ) : (
-          <p>Lista vazia</p>
-        )}
-      </ul>
+      <DataTable
+        columns={setTableCustomer}
+        data={customers || []}
+        getRowKey={(row) => row.id || row.cnpj}
+      />
     </ListGroup>
   );
 }

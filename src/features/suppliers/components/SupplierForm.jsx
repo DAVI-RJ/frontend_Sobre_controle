@@ -8,7 +8,7 @@ import { useMultiStep } from "@/core/hooks/useMultiStep";
 
 import "./supplier-form.css";
 
-export default function SupplierComponent() {
+export default function SupplierForm() {
   const { step, prevStep, handleRegister } = useMultiStep();
 
   // Verificar parte do furmulario e atualizar.

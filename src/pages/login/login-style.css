@@ -78,8 +78,14 @@
 
 .button-login {
   width: 100%;
+  max-width: 100%;
   background: var(--gradient-primary-button);
   box-shadow: var(--box-shadows);
+}
+
+.register-button {
+  width: 100%;
+  max-width: 100%;
 }
 
 .register-button:hover {
