@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useProducts } from "@/features/products/hooks/useProducts";
 
 // componentes
-import HomeLayout from "@/shared/components/templates/HomeLayout";
+import HomeLayout from "@/shared/components/templates/homeLayout/HomeLayout";
 import ContentContainer from "@/shared/components/organisms/container/Container";
 import DashboardComponent from "@/shared/components/organisms/dashboard/Dashboard";
 import CardComponent from "@/shared/components/molecules/cards/Card";
@@ -55,7 +55,6 @@ export default function Home() {
     // home-style é a estilização principal da página.
     <div className="home-style">
       <HomeLayout setView={setView}>
-       
         <ContentContainer>{renderContent()}</ContentContainer>
       </HomeLayout>
     </div>
