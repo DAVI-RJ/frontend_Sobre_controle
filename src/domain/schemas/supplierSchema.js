@@ -7,21 +7,25 @@ export const supplierSchema = z.object({
   phone: z.string().min(1, { message: "O telefone é obrigatório" }),
 });
 
-export const setTableSuppler = supplierSchema.map((culomns, status) => [
+export const setTableSuppler = [
   {
-    key: culomns.id,
-    label: culomns.name,
+    key: "id",
+    label: "ID",
   },
   {
-    key: culomns.cnpj,
-    label: culomns.cnpj,
+    key: "name",
+    label: "Nome",
   },
   {
-    key: culomns.email,
-    label: culomns.email,
+    key: "cnpj",
+    label: "CNPJ",
   },
   {
-    key: status,
-    label: status,
+    key: "email",
+    label: "E-mail",
   },
-]);
+  {
+    key: "phone",
+    label: "Telefone",
+  },
+];

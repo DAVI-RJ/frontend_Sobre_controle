@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { useProducts } from "../hooks/useProducts";
-import ListGroup from "@/shared/components/molecules/listComponent/ListGroup";
-import DataTable from "@/shared/components/organisms/table/DataTable";
-import setTableProduct from "@/domain/schemas/productSchema";
 import LoadingComponent from "@/shared/components/organisms/loading/LoadingComponent";
 import ErrorMessage from "@/shared/components/atoms/errors/ErrorMessage";
+import ListGroup from "@/shared/components/molecules/listComponent/ListGroup";
+import DataTable from "@/shared/components/organisms/table/DataTable";
+import { setTableProduct } from "@/domain/schemas/productSchema";
+
+import { useProducts } from "../hooks/useProducts";
 
 export default function ProductList() {
   const { fetchListProducts } = useProducts();

@@ -1,14 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { useCustomers } from "../hooks/useCustomer";
-import ListGroup from "@/shared/components/molecules/listComponent/ListGroup";
-import DataTable from "@/shared/components/organisms/table/DataTable";
-import { setTableCustomer } from "@/domain/schemas/customerSchema";
 import LoadingComponent from "@/shared/components/organisms/loading/LoadingComponent";
 import ErrorMessage from "@/shared/components/atoms/errors/ErrorMessage";
 
+import ListGroup from "@/shared/components/molecules/listComponent/ListGroup";
+import DataTable from "@/shared/components/organisms/table/DataTable";
+import { setTableCustomer } from "@/domain/schemas/customerSchema";
+
+import { useCustomer } from "../hooks/useCustomer";
+
 export default function CustomerList() {
-  const { fetchListCustomers } = useCustomers();
+  const { fetchListCustomers } = useCustomer();
   const {
     data: customers,
     isLoading,

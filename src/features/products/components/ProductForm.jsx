@@ -5,7 +5,7 @@ import InputComponent from "@/shared/components/atoms/inputs/Input";
 import ButtonComponent from "@/shared/components/atoms/button/Button";
 import { productModel } from "@/domain/models/productModel";
 
-import "./style-product.css";
+import "./product-style.css";
 
 export default function ProductForm({ onAdd }) {
   const navigate = useNavigate();

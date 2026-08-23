@@ -5,22 +5,14 @@ import { createProduct } from "../api/createProduct";
 import { useError } from "@/core/context/error/ErrorProvider";
 
 // hook responsável pela interface, erros e estado
-const useProducts = () => {
+export const useProducts = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
   const { handleError } = useError();
 
   // requisição GET/
   const fetchListProducts = useCallback(async () => {
-    setLoading(true);
-    try {
-      const data = await getProducts();
-      setProducts(data || []);
-    } catch (error) {
-      handleError(error);
-    } finally {
-      setLoading(false);
-    }
+    const data = await getProducts();
+    return data || [];
   }, [handleError]);
 
   // cadastro de produtos, POST/
@@ -39,10 +31,7 @@ const useProducts = () => {
 
   return {
     products,
-    loading,
     fetchListProducts,
     addProduct,
   };
 };
-
-export default useProducts;

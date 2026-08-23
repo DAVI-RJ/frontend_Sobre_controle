@@ -8,28 +8,15 @@ import log from "@/core/logger/logger";
 import { useError } from "@/core/context/error/ErrorProvider";
 
 // Ganchos uteis para intanciar o cliente
-export function useCustomers() {
-  const [customer, setCustomer] = useState([]); // Objeto ou Null
+export const useCustomer = () => {
+  const [customer, setCustomer] = useState(); // Objeto ou Null
   const [loading, setLoading] = useState(false);
   const { handleError } = useError();
 
-  // Metódo para usar a API de criação, lançar erros, UI.
+  // Metódo para usar a API de listagem, criação, lançar erros, UI.
   const fetchListCustomers = useCallback(async () => {
-    setLoading(true);
-    try {
-      const listCustomer = await listCustomers();
-      if (listCustomer) {
-        setCustomer(listCustomer);
-        log.info("sucesso ao carregar a lista, useCustomer");
-        return listCustomer;
-      }
-      return [];
-    } catch (error) {
-      log.info("error ao carregar a lista, useCustomer");
-      handleError(error);
-    } finally {
-      setLoading(false);
-    }
+    const data = await listCustomers();
+    return data || [];
   }, [handleError]);
 
   const submitRegisterCustomer = useCallback(
@@ -72,4 +59,4 @@ export function useCustomers() {
     submitRegisterCustomer,
     onDeleteCustomer,
   };
-}
+};

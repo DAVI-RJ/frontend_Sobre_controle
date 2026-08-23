@@ -12,7 +12,7 @@ import { useMultiStep } from "@/core/hooks/useMultiStep";
 
 // Api backend
 import { createCompany } from "@/features/company/api/createCompany";
-import { createAddress } from "@/features/address/api/addressApi";
+import { createAddress } from "@/features/address/api/createAddress";
 
 import "./register-style.css";
 

@@ -7,28 +7,25 @@ import ButtonComponent from "@/shared/components/atoms/button/Button";
 import ErrorMessage from "@/shared/components/atoms/errors/ErrorMessage";
 
 import { useMultiStep } from "@/core/hooks/useMultiStep";
-import { useCustomers } from "../hooks/useCustomer";
+import { useCustomer } from "../hooks/useCustomer";
+import { useAddress } from "@/features/address/hooks/useAddress";
 
-import { createAddress } from "@/features/address/api/addressApi";
-
-import "./customer-form.css";
+import "./customer-style.css";
 
 export default function CustomerForm() {
-  const { submitRegisterCustomer } = useCustomers();
+  const { submitRegisterCustomer } = useCustomer();
+  const { createAddressId } = useAddress();
   const navigate = useNavigate();
 
   const submitCustomer = async (allData) => {
-    const addressId = await createAddress(allData);
-    console.log("endereço: ", addressId);
-    if (addressId) {
-      const customer = {
-        ...allData,
-        address_id: addressId,
-      };
-      console.log("customer: ", customer);
-      await submitRegisterCustomer(customer);
-      setTimeout(() => navigate("/home"), 1000);
-    }
+    await createAddressId(allData);
+
+    const customer = {
+      ...allData,
+    };
+    console.log("customer: ", customer);
+    await submitRegisterCustomer(customer);
+    setTimeout(() => navigate("/home"), 1000);
   };
 
   const { step, prevStep, handleRegister } = useMultiStep(2, submitCustomer);

@@ -6,7 +6,7 @@ import ButtonComponent from "@/shared/components/atoms/button/Button";
 // hooks
 import { useMultiStep } from "@/core/hooks/useMultiStep";
 
-import "./supplier-form.css";
+import "./supplier-style.css";
 
 export default function SupplierForm() {
   const { step, prevStep, handleRegister } = useMultiStep();
