@@ -1,7 +1,9 @@
+import "./data-table.css";
+
 export default function DataTable({ columns, data, getRowKey }) {
   return (
-    <div>
-      <table>
+    <>
+      <table className="data-table">
         <thead>
           <tr>
             {columns.map((column) => (
@@ -28,6 +30,6 @@ export default function DataTable({ columns, data, getRowKey }) {
           )}
         </tbody>
       </table>
-    </div>
+    </>
   );
 }

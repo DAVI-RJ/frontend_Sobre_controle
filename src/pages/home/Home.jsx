@@ -55,8 +55,7 @@ export default function Home() {
     // home-style é a estilização principal da página.
     <div className="home-style">
       <HomeLayout setView={setView}>
-        <DashboardComponent />
-
+       
         <ContentContainer>{renderContent()}</ContentContainer>
       </HomeLayout>
     </div>

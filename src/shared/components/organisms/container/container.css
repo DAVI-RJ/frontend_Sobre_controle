@@ -1,6 +1,12 @@
 .container { 
-  display: grid;
-  grid-template-columns: 30% 70%;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
 }
 /* breakpoint: mobile -> collapse sidebar */
 @media (max-width: 480px){

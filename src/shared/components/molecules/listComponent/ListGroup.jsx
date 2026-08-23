@@ -1,10 +1,7 @@
-import "./list-group.css"; 
+import "./list-group.css";
 
+import "./list-group.css";
 
 export default function ListGroup({ children }) {
-  return (
-    <div>
-      {children}
-    </div>
-  )
+  return <section className="list-group">{children}</section>;
 }
