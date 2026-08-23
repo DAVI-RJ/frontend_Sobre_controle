@@ -38,15 +38,20 @@ export default function Home() {
   const renderContent = () => {
     switch (view) {
       case "list-products":
-        return <ProductList products={products} />;
+        return <ProductList products={products} setView={setView} />;
       case "new-product":
-        return <ProductForm addProduct={addProduct} />;
+        return <ProductForm addProduct={addProduct} setView={setView} />;
+
       case "list-customer":
         return <CustomerList />;
       case "new-customer":
         return <CustomerForm />;
+
+      case "list-supplier":
+        return <SupplierComponent />;
       case "new-supplier":
         return <SupplierComponent />;
+
       default:
         return renderProductList();
     }

@@ -9,6 +9,8 @@ import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PointOfSaleOutlinedIcon from "@mui/icons-material/PointOfSaleOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import AddIcon from "@mui/icons-material/Add";
 
 import "./sidebar.css";
 
@@ -20,20 +22,33 @@ const sidebarSections = [
       {
         id: "products",
         label: "Produtos",
-        view: "list-products",
         icon: <CardGiftcardIcon />,
+        subItems: [
+          { label: "Lista de Produtos", view: "list-products", icon: <FormatListBulletedIcon /> },
+          { label: "Novo Produto", view: "new-product", icon: <AddIcon /> },
+        ],
       },
       {
         id: "customers",
         label: "Clientes",
-        view: "list-customer",
         icon: <PeopleAltIcon />,
+        subItems: [
+          { label: "Lista de Cliente", view: "list-customer", icon: <FormatListBulletedIcon /> },
+          { label: "Novo Cliente", view: "new-customer", icon: <AddIcon /> },
+        ],
       },
       {
         id: "suppliers",
         label: "Fornecedores",
-        view: "list-supplier",
         icon: <GroupsIcon />,
+        subItems: [
+          {
+            label: "Lista de Fornecedores",
+            view: "list-supplier",
+            icon: <FormatListBulletedIcon />,
+          },
+          { label: "Novo Fornecedor", view: "new-supplier", icon: <AddIcon /> },
+        ],
       },
       {
         id: "orders",
@@ -119,11 +134,19 @@ export default function SidebarComponent({ setView }) {
     financial: false,
     settings: false,
   });
+  const [openItems, setOpenItems] = useState({});
 
   const toggleSection = (sectionId) => {
     setOpenSections((previous) => ({
       ...previous,
       [sectionId]: !previous[sectionId],
+    }));
+  };
+
+  const toggleItem = (itemId) => {
+    setOpenItems((previous) => ({
+      ...previous,
+      [itemId]: !previous[itemId],
     }));
   };
 
@@ -133,7 +156,7 @@ export default function SidebarComponent({ setView }) {
 
   return (
     <aside className="sidebar" aria-label="Menu principal">
-      {/* IDENTIDADE DA APLICAÇÃO */}
+      {/* Logotipo da aplicação saas*/}
       <header className="sidebar-header">
         <div className="sidebar-brand">
           <div className="sidebar-brand-icon">SC</div>
@@ -145,7 +168,7 @@ export default function SidebarComponent({ setView }) {
         </div>
       </header>
 
-      {/* NAVEGAÇÃO */}
+      {/* navegação entre as funcionalidade */}
       <nav className="sidebar-navigation" aria-label="Navegação principal">
         {sidebarSections.map((section) => {
           const isOpen = openSections[section.id];
@@ -167,18 +190,45 @@ export default function SidebarComponent({ setView }) {
 
               {isOpen && (
                 <ul id={`sidebar-${section.id}`} className="sidebar-menu">
-                  {section.items.map((item) => (
-                    <li key={item.id} className="sidebar-menu-item">
-                      <ButtonComponent
-                        type="button"
-                        className="sidebar-menu-button"
-                        onClick={() => handleViewChange(item.view)}
-                      >
-                        <span className="sidebar-menu-icon">{item.icon}</span>
-                        <span>{item.label}</span>
-                      </ButtonComponent>
-                    </li>
-                  ))}
+                  {section.items.map((item) => {
+                    const isItemOpen = openItems[item.id];
+                    const hasSubItems = item.subItems && item.subItems.length > 0;
+                    return (
+                      <li key={item.label} className="sidebar-menu-item">
+                        <ButtonComponent
+                          type="button"
+                          className="sidebar-menu-button"
+                          onClick={() => {
+                            if (hasSubItems) {
+                              toggleItem(item.id);
+                            } else if (item.view) {
+                              handleViewChange(item.view);
+                            }
+                          }}
+                        >
+                          <span className="sidebar-menu-icon">{item.icon}</span>
+                          <span>{isItemOpen}</span>
+                          {item.label}
+                        </ButtonComponent>
+                        {hasSubItems && isItemOpen && (
+                          <ul className="submenu-items">
+                            {item.subItems.map((subItem, index) => (
+                              <li key={index} className="submenu-item">
+                                <ButtonComponent
+                                  type="button"
+                                  className="submenu-button"
+                                  onClick={() => handleViewChange(subItem.view)}
+                                >
+                                  <i className="submenu-icon">{subItem.icon}</i>
+                                  {subItem.label}
+                                </ButtonComponent>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               )}
             </section>
@@ -218,4 +268,3 @@ export default function SidebarComponent({ setView }) {
     </aside>
   );
 }
-
