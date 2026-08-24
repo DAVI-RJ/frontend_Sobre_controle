@@ -6,7 +6,7 @@ export async function getProfileCompany() {
     const response = await axiosInstance.get("/company/profile");
     log.info(
       "Company profile loaded",
-      { name: response?.name },
+      { name: response?.data?.name },
       {
         feature: "header",
       }

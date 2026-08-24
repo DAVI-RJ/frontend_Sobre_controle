@@ -36,17 +36,17 @@ axiosInstance.interceptors.response.use(
     if (status === 401 && !originalRequest._retry && !isLoginRequest) {
       originalRequest._retry = true;
       try {
-        log.info("🔄 Tentando refresh token...");
+        log.info("Tentando refresh token...");
         const response = await axiosInstance.post("/refresh", {}, { withCredentials: true });
         // Cria um novo token e atualiza no headers
         const newToken = response?.accessToken;
         const user = response?.user;
         store.dispatch(setCredentials({ accessToken: newToken, user }));
-        log.info("✅ Token renovado com sucesso");
+        log.info("Token renovado com sucesso");
         originalRequest.headers["Authorization"] = `Bearer ${newToken}`;
         return axiosInstance(originalRequest);
       } catch (refreshError) {
-        log.error("❌ Falha ao renovar token - redirecionando para login", {
+        log.error("Falha ao renovar token - redirecionando para login", {
           feature: "axiosInterceptor",
           error: refreshError.message,
         });

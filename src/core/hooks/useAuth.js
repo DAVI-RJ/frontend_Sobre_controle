@@ -39,10 +39,10 @@ export function useAuth() {
     [handleError]
   );
 
-  const logout = useCallback(async () => {
+  const logout = useCallback(() => {
     setLoading(true);
     try {
-      await logoutService();
+      logoutService();
       store.dispatch(clearCredentials());
       log.info(" logout success");
     } catch (error) {
