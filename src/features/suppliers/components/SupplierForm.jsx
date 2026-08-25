@@ -1,15 +1,33 @@
+import { useNavigate } from "react-router-dom";
+
 // componentes
 import Form from "@/shared/components/molecules/form/Form";
 import Step1 from "@/shared/components/molecules/stepsRegister/Step1";
 import Step2 from "@/shared/components/molecules/stepsRegister/Step2";
 import ButtonComponent from "@/shared/components/atoms/button/Button";
 // hooks
+import { useSupplier } from "../hooks/useSupplier";
+import { useAddress } from "@/features/address/hooks/useAddress";
 import { useMultiStep } from "@/core/hooks/useMultiStep";
 
 import "./supplier-style.css";
 
 export default function SupplierForm() {
-  const { step, prevStep, handleRegister } = useMultiStep();
+  //primeiro crio o endereço, depois o fornecedor
+  const { createAddressId } = useAddress();
+  const { submitFormSupplier } = useSupplier();
+  const navigate = useNavigate();
+
+  const submitData = async (allData) => {
+    await createAddressId(allData);
+
+    const supplier = {
+      ...allData,
+    };
+    await submitFormSupplier(supplier);
+    setTimeout(() => navigate("/home"), 1000);
+  };
+  const { step, prevStep, handleRegister } = useMultiStep(2, submitData);
 
   // Verificar parte do furmulario e atualizar.
   const currentStep = () => {

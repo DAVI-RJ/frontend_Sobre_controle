@@ -19,7 +19,7 @@ export const useCustomer = () => {
     return data || [];
   }, [handleError]);
 
-  const submitRegisterCustomer = useCallback(
+  const submitFormCustomer = useCallback(
     async (customerData) => {
       setLoading(true);
       customerSchema.parse(customerData);
@@ -56,7 +56,7 @@ export const useCustomer = () => {
     customer,
     loading,
     fetchListCustomers,
-    submitRegisterCustomer,
+    submitFormCustomer,
     onDeleteCustomer,
   };
 };

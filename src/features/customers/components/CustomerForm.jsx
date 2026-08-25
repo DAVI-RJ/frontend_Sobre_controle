@@ -13,22 +13,22 @@ import { useAddress } from "@/features/address/hooks/useAddress";
 import "./customer-style.css";
 
 export default function CustomerForm() {
-  const { submitRegisterCustomer } = useCustomer();
   const { createAddressId } = useAddress();
+  const { submitFormCustomer } = useCustomer();
   const navigate = useNavigate();
 
-  const submitCustomer = async (allData) => {
+  const submitData = async (allData) => {
     await createAddressId(allData);
 
     const customer = {
       ...allData,
     };
     console.log("customer: ", customer);
-    await submitRegisterCustomer(customer);
+    await submitFormCustomer(customer);
     setTimeout(() => navigate("/home"), 1000);
   };
 
-  const { step, prevStep, handleRegister } = useMultiStep(2, submitCustomer);
+  const { step, prevStep, handleRegister } = useMultiStep(2, submitData);
 
   // Verificar parte do furmulario e atualizar.
   const currentStep = () => {
