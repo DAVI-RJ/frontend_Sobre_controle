@@ -8,7 +8,7 @@ export const customerSchema = z.object({
   address_id: z.number().int().positive(),
 });
 
-export const setTableCustomer =[
+export const setTableCustomers =[
   {
     key: "id",
     label: "ID",

@@ -5,7 +5,7 @@ import ErrorMessage from "@/shared/components/atoms/errors/ErrorMessage";
 
 import ListGroup from "@/shared/components/molecules/listComponent/ListGroup";
 import DataTable from "@/shared/components/organisms/table/DataTable";
-import { setTableCustomer } from "@/domain/schemas/customerSchema";
+import { setTableCustomers } from "@/domain/schemas/customerSchema";
 
 import { useCustomer } from "../hooks/useCustomer";
 
@@ -31,9 +31,9 @@ export default function CustomerList() {
   return (
     <ListGroup>
       <DataTable
-        columns={setTableCustomer}
+        columns={setTableCustomers}
         data={customers || []}
-        getRowKey={(row) => row.id || row.cnpj}
+        getRowKey={(row) => row.id}
       />
     </ListGroup>
   );

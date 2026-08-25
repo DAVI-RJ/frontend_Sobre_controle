@@ -21,7 +21,7 @@ export function ErrorProvider({ children }) {
 
   function clearError() {
     setTimeout(() => {
-      clearError(null);
+      setError(null);
     }, 5000);
   }
 

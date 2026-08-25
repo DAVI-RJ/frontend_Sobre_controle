@@ -1,4 +1,5 @@
 import { axiosInstance } from "@/core/http/axiosInstance";
+import log from "@/core/logger/logger";
 
 //carrega a lista de produtos
 export async function getProducts() {
@@ -6,7 +7,7 @@ export async function getProducts() {
     const response = await axiosInstance.get("/company/:companyId/products");
     return response;
   } catch (error) {
-    console.log(error);
+    log.info(error);
     throw error;
   }
 }

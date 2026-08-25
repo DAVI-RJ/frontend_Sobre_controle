@@ -16,7 +16,8 @@ import CustomerForm from "@/features/customers/components/CustomerForm";
 import CustomerList from "@/features/customers/components/CustomerList";
 
 // SUPLLIER
-import SupplierComponent from "@/features/suppliers/components/SupplierForm";
+import SupplierForm from "@/features/suppliers/components/SupplierForm";
+import SupplierList from "@/features/suppliers/components/SupplierList";
 
 /*Página inicial da aplicação. O layout HomeLayout organiza os componentes e a navegação entre views é controlada pelo estado view.*/
 
@@ -48,9 +49,9 @@ export default function Home() {
         return <CustomerForm />;
 
       case "list-supplier":
-        return <SupplierComponent />;
+        return <SupplierList />;
       case "new-supplier":
-        return <SupplierComponent />;
+        return <SupplierForm />;
 
       default:
         return renderProductList();

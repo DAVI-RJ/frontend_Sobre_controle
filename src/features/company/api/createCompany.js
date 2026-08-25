@@ -6,7 +6,7 @@ export async function createCompany(data) {
   try {
     const companyData = companySchema.parse(data);
     const response = await axiosInstance.post("/company/register", companyData);
-    return response.data;
+    return response;
   } catch (error) {
     log.info(error);
     throw error;

@@ -7,7 +7,7 @@ export const supplierSchema = z.object({
   phone: z.string().min(1, { message: "O telefone é obrigatório" }),
 });
 
-export const setTableSuppler = [
+export const setTableSuppliers = [
   {
     key: "id",
     label: "ID",
