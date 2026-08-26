@@ -5,7 +5,7 @@ import "./steps.css";
 
 const Step2 = () => {
   return (
-    <div className="step-class">
+    <div className="step-class" data-testid="step-2">
       <h2>Endereço</h2>
       {addressFields.map((field) => (
         // Formulario organizado lado a lado
