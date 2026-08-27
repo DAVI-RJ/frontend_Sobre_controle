@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import log from "@/core/logger/logger";
 
 import { getProducts } from "../api/listProducts";
 import { createProduct } from "../api/createProduct";
@@ -12,6 +13,7 @@ export const useProducts = () => {
   // requisição GET/
   const fetchListProducts = useCallback(async () => {
     const data = await getProducts();
+    log.info("data: ", data);
     return data || [];
   }, [handleError]);
 

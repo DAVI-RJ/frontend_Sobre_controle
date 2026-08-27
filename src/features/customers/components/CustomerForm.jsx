@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import log from "@/core/logger/logger";
 
 import Form from "@/shared/components/molecules/form/Form";
 import Step1 from "@/shared/components/molecules/stepsRegister/Step1";
@@ -23,7 +24,7 @@ export default function CustomerForm() {
     const customer = {
       ...allData,
     };
-    console.log("customer: ", customer);
+    log.info("customer: ", customer);
     await submitFormCustomer(customer);
     setTimeout(() => navigate("/home"), 1000);
   };

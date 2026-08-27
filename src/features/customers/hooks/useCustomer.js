@@ -17,7 +17,7 @@ export const useCustomer = () => {
   const fetchListCustomers = useCallback(async () => {
     const data = await listCustomers();
     return data || [];
-  }, [handleError]);
+  }, []);
 
   const submitFormCustomer = useCallback(
     async (customerData) => {

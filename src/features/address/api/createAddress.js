@@ -1,8 +1,9 @@
 import { axiosInstance } from "@/core/http/axiosInstance";
+import log from "@/core/logger/logger";
 
 export async function createAddress(data) {
   const response = await axiosInstance.post("/company/address", data);
-  console.log("Resposta da API:", response);
+  log.info("Resposta da API:", response);
   return response;
 }
 /*
