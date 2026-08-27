@@ -17,7 +17,7 @@ atuais.
 
 ⚙️ [Padrões do Projeto](./docs/designer-pattener.md);
 
-🗄️ [Estrutura do Projeto](./docs/project-infro.md); 
+🗄️ [Estrutura do Projeto](./docs/project-infro.md);
 
 🧱 Componentes e Estilo
 
@@ -31,11 +31,11 @@ Fluxos principais
 
 ⚠️ [Tratamento de erros](./docs/error-handling-guide.md)
 
-🔐 [Segurança](./docs/security.md);
+🔐 [Segurança](./docs/security.md),
 
 🌐 Implantação
 
-📚 Aprendizados e Desafios
+📚 [Aprendizados e Desafios](./docs/become-professional.md).
 
 ## 📌 Principais arquivos
 
