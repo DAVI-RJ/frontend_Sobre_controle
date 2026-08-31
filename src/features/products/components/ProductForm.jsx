@@ -1,43 +1,77 @@
-import { useNavigate } from "react-router-dom";
-
 import Form from "@/shared/components/molecules/form/Form";
 import InputComponent from "@/shared/components/atoms/inputs/Input";
 import ButtonComponent from "@/shared/components/atoms/button/Button";
+import AddIcon from "@mui/icons-material/Add";
+import CancelIcon from "@mui/icons-material/Cancel";
+
 import { productModel } from "@/domain/models/productModel";
+import { useProducts } from "../hooks/useProducts";
 
 import "./product-style.css";
 
-export default function ProductForm({ onAdd }) {
-  const navigate = useNavigate();
-  const onSubmit = (data) => {
-    onAdd(data);
-    setTimeout(() => {
-      navigate("/home");
-    }, 500);
+import CardComponent from "@/shared/components/molecules/cards/Card";
+
+export default function ProductForm() {
+  const { submitProductForm } = useProducts();
+
+  const submitData = async (data) => {
+    await submitProductForm(data);
+    
   };
 
   return (
-    <section className="form-product">
-      <h3>Cadastro de Produtos</h3>
-      <Form onSubmit={onSubmit}>
-        {productModel.map((field) => (
-          <InputComponent
-            key={field.id}
-            name={field.name}
-            type={field.type}
-            label={field.label}
-            placeholder={field.placeholder}
-            rules={{
-              required: `${field.label} is required`,
-              minLength: field.minLength && {
-                value: field.minLength,
-                message: `Minimum of ${field.minLength} characters required`,
-              },
-            }}
-          />
-        ))}
-        <ButtonComponent type="submit">Adicionar</ButtonComponent>
-      </Form>
+    <section className="product-form">
+      <header className="product-form-header">
+        {/**Titulo */}
+        <h1>Cadastro de Produtos</h1>
+        <p> Cadastre novos produtos no catalago</p>
+      </header>
+
+      <div className="product-form-body">
+        {/** tudo que sera salvo no banco */}
+        <Form onSubmit={submitData}>
+          <div className="product-form-media">
+            <img className="product-form-image" />
+          </div>
+          <div className="product-form-fields">
+            {productModel.map((field) => (
+              <InputComponent
+                key={field.id}
+                name={field.name}
+                type={field.type}
+                label={field.label}
+                placeholder={field.placeholder}
+                rules={{
+                  required: `${field.label} is required`,
+                  minLength: field.minLength && {
+                    value: field.minLength,
+                    message: `Minimum of ${field.minLength} characters required`,
+                  },
+                }}
+                className={field.type == "textarea" ? "textarea" : ""}
+              />
+            ))}
+          </div>
+          <nav className="product-form-option">
+            <ButtonComponent type="submit" className={"cancelar-button"}>
+              
+              <CancelIcon />
+              cancelar
+            </ButtonComponent>
+            <ButtonComponent type="submit" className={"new-product"}>
+              <AddIcon />
+              Adicionar
+            </ButtonComponent>
+          </nav>
+        </Form>
+
+        {/**Suporte no cadastro, pretendo passa dados analisados, como melhor preço, percentual avaliativo*/}
+        <aside className="product-form-analytics">
+          <h2>Análise do produto</h2>
+          {/*<CardComponent />*/}
+          {/* informações calculadas */}
+        </aside>
+      </div>
     </section>
   );
 }

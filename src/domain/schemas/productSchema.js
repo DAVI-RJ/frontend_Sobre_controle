@@ -25,4 +25,9 @@ export const setTableProduct = [
     label: "Preço",
     render: (product) => `R$ ${Number(product.price).toFixed(2)}`,
   },
+  {
+    key: "options",
+    label: "opções",
+    type: "actions",
+  },
 ];

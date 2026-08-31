@@ -1,7 +1,177 @@
-.form-product {
+.product-form {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px;
+  
+  color: var(--text-primary);
+
+  height: 100%;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.product-form-header {
+  margin-bottom: 28px;
+}
+.product-form-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+}
+.product-form-header p {
+  margin-top: 6px;
+  font-size: 0.9rem;
+}
+
+.product-form-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 24px;
+  align-items: start;
+}
+.product-form-fields {
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+  background: rgba(20, 8, 50, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 12px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.product-form-media {
+  margin-bottom: 20px;
+}
+
+.product-form-image {
+  width: 180px;
+  height: 180px;
+
   display: flex;
-  flex-direction: column;
-  padding: 20px;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(124, 0, 255, 0.25),
+      rgba(31, 41, 91, 0.35)
+    );
+
+  border: 1px dashed rgba(139, 92, 246, 0.6);
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.product-form-image:hover{
+  border-color: #8b5cf6;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(124, 0, 255, 0.35),
+      rgba(31, 41, 91, 0.45)
+    );
+}
+
+
+.textarea { 
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.product-form-analytics {
+  min-height: 260px;
+
+  padding: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(25, 10, 55, 0.9),
+      rgba(13, 5, 35, 0.95)
+    );
+
+  border: 1px solid rgba(139, 92, 246, 0.25);
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25);
+
+}
+
+.product-form-analytics h2 {
+  margin: 0 0 20px;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  color: var(--text-primary);
+}
+.product-form-option {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.cancelar-button {  
+  display: flex;
+  align-items: center;
+  background: rebeccapurple;
+}
+.cancelar-button:hover {
+  background: red;
+  transition: 0.2s ease-in;
+}
+
+.new-product {
+  display: flex;
+  align-items: center;
+  background:rebeccapurple;
+}
+
+.new-product:hover {
+  background:green;
+  transition: 0.2s ease-in;
+}
+/* Midia queries */
+@media (max-width: 900px) {
+
+  .product-form-body {
+    grid-template-columns: 1fr;
+  }
+
+  .product-form-analytics{ 
+    min-height: auto;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .product-form {
+    padding: 16px;
+  }
+
+  .product-form-fields {
+    padding: 16px;
+  }
+
+  .product-form-image {
+    width: 140px;
+    height: 140px;
+  }
 }

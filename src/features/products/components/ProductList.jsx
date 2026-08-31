@@ -9,7 +9,7 @@ import { setTableProduct } from "@/domain/schemas/productSchema";
 import { useProducts } from "../hooks/useProducts";
 
 export default function ProductList() {
-  const { fetchListProducts } = useProducts();
+  const { loadProducts, deleteProduct } = useProducts();
 
   const {
     data: products,
@@ -17,7 +17,7 @@ export default function ProductList() {
     error,
   } = useQuery({
     queryKey: ["products"],
-    queryFn: fetchListProducts,
+    queryFn: loadProducts,
   });
 
   if (isLoading) {
@@ -34,6 +34,9 @@ export default function ProductList() {
         columns={setTableProduct}
         data={products || []}
         getRowKey={(product) => product.id}
+        actions={{
+          delete: deleteProduct,
+        }}
       />
     </ListGroup>
   );
