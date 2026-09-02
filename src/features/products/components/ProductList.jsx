@@ -7,9 +7,14 @@ import DataTable from "@/shared/components/organisms/table/DataTable";
 import { setTableProduct } from "@/domain/schemas/productSchema";
 
 import { useProducts } from "../hooks/useProducts";
+import EditProductForm from "./EditProductForm";
+import { useState } from "react";
+
+import "./product-style.css";
 
 export default function ProductList() {
   const { loadProducts, deleteProduct } = useProducts();
+  const [editingItem, setEditingItem] = useState(null);
 
   const {
     data: products,
@@ -28,6 +33,10 @@ export default function ProductList() {
     return <ErrorMessage />;
   }
 
+  const handleEditProduct = (item) => {
+    setEditingItem(item);
+  };
+
   return (
     <ListGroup>
       <DataTable
@@ -36,8 +45,10 @@ export default function ProductList() {
         getRowKey={(product) => product.id}
         actions={{
           delete: deleteProduct,
+          edit: handleEditProduct,
         }}
       />
+      {editingItem && (<div className="product-edit-ovelay"><EditProductForm item={editingItem} onClose={() => setEditingItem(null)} /></div>)}
     </ListGroup>
   );
 }

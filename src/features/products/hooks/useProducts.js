@@ -6,20 +6,14 @@ import { createProduct } from "../api/createProduct";
 import { destroyProduct } from "../api/deleteProduct";
 
 import { useError } from "@/core/context/error/ErrorProvider";
+import { updateProduct } from "../api/updateProduct";
 
-// hook responsável pela interface, erros e estado
+// hook responsável pela interface, erros, chamadas api e estado globais da feature
 export const useProducts = () => {
   const [products, setProducts] = useState([]);
   const { handleError } = useError();
 
-  // requisição GET/
-  const loadProducts = useCallback(async () => {
-    const data = await getProducts();
-    log.info("data: ", data);
-    return data || [];
-  }, [handleError]);
-
-  // cadastro de produtos, POST/
+  // Cadastro, requisição POST/
   const saveProduct = useCallback(
     async (data) => {
       try {
@@ -33,6 +27,23 @@ export const useProducts = () => {
     [handleError]
   );
 
+  // Listagem, requisição GET/
+  const loadProducts = useCallback(async () => {
+    const data = await getProducts();
+    log.info("data: ", data);
+    return data || [];
+  }, [handleError]);
+
+  // Atualização, requisição UPDATE/
+  const mutateProduct = async (data) => {
+    try {
+      await updateProduct(data);
+    } catch (error) {
+      handleError(error);
+    }
+  };
+
+  // Exclusão, requisição DELETE/
   const deleteProduct = async (data) => {
     log.info("primeira chamada");
 
@@ -51,5 +62,6 @@ export const useProducts = () => {
     loadProducts,
     saveProduct,
     deleteProduct,
+    mutateProduct,
   };
 };

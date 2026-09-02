@@ -12,10 +12,10 @@ import "./product-style.css";
 import CardComponent from "@/shared/components/molecules/cards/Card";
 
 export default function ProductForm() {
-  const { submitProductForm } = useProducts();
+  const { saveProduct } = useProducts();
 
-  const submitData = async (data) => {
-    await submitProductForm(data);
+  const handleSaveProduct = async (data) => {
+    await saveProduct(data);
     
   };
 
@@ -29,7 +29,7 @@ export default function ProductForm() {
 
       <div className="product-form-body">
         {/** tudo que sera salvo no banco */}
-        <Form onSubmit={submitData}>
+        <Form onSubmit={handleSaveProduct}>
           <div className="product-form-media">
             <img className="product-form-image" />
           </div>
@@ -58,7 +58,7 @@ export default function ProductForm() {
               <CancelIcon />
               cancelar
             </ButtonComponent>
-            <ButtonComponent type="submit" className={"new-product"}>
+            <ButtonComponent type="submit" className={"confirm-button"}>
               <AddIcon />
               Adicionar
             </ButtonComponent>

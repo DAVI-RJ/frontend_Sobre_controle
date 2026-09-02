@@ -4,7 +4,6 @@ export const productSchema = z.object({
   name: z.string().min(1, { message: "Product name is required" }),
   description: z.string().optional(),
   price: z.number().positive({ message: "Price must be a positive number" }),
-  category: z.string().min(1, { message: "Category is required" }),
 });
 
 export const setTableProduct = [
@@ -13,11 +12,7 @@ export const setTableProduct = [
     label: "Produto",
   },
   {
-    key: "category",
-    label: "Categoria",
-  },
-  {
-    key: "stock",
+    key: "quantity",
     label: "Quantidade",
   },
   {
