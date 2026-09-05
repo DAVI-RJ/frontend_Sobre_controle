@@ -1,6 +1,9 @@
+import TableAction from "../../molecules/tableActions/TableAction";
+
 import "./data-table.css";
 
-export default function DataTable({ columns, data, getRowKey }) {
+/**Esse componente tem uma reposabilidade clara, não conhecer nada sobre os dados, mas orquestrar e organizar visualmente os mesmo */
+export default function DataTable({ columns, data, getRowKey, actions }) {
   return (
     <>
       <table className="data-table">
@@ -17,7 +20,15 @@ export default function DataTable({ columns, data, getRowKey }) {
             data.map((item, index) => (
               <tr key={getRowKey(item, index)}>
                 {columns.map((column) => (
-                  <td key={column.key}>{column.render ? column.render(item) : item[column.key]}</td>
+                  <td key={column.key}>
+                    {column.type === "actions" ? (
+                      <TableAction item={item} actions={actions}></TableAction>
+                    ) : column.render ? (
+                      column.render(item)
+                    ) : (
+                      item[column.key]
+                    )}{" "}
+                  </td>
                 ))}
               </tr>
             ))

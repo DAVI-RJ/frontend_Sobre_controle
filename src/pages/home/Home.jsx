@@ -26,7 +26,7 @@ import "./home-style.css";
 
 export default function Home() {
   const [view, setView] = useState("list-products");
-  const { products, addProduct } = useProducts();
+  const { products } = useProducts();
 
   /* carrega a lista de products ao logar. Obs o [] será atualizado a cada renderização do componente ou handleProducts sera chamado. */
   const renderProductList = () =>
@@ -39,9 +39,9 @@ export default function Home() {
   const renderContent = () => {
     switch (view) {
       case "list-products":
-        return <ProductList products={products} setView={setView} />;
+        return <ProductList />;
       case "new-product":
-        return <ProductForm addProduct={addProduct} setView={setView} />;
+        return <ProductForm />;
 
       case "list-customer":
         return <CustomerList />;

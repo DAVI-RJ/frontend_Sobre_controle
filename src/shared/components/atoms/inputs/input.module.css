@@ -12,7 +12,7 @@
 }
 
 .input::placeholder{
-    color:#94A3B8;
+  color:#94A3B8;
 }
 
 .input input,
@@ -23,6 +23,7 @@
   border-radius: 12px;
   font-size: var(--font-size-input);
   box-shadow: var(--light-shadows);
+  background: var(--surface-input);
   outline: none;
   transition: .2s;
   color: #ffffff; 
