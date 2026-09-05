@@ -96,7 +96,6 @@
 
 .product-form-image:hover{
   border-color: #8b5cf6;
-
   background:
     linear-gradient(
       145deg,
@@ -105,14 +104,25 @@
     );
 }
 
-
-.textarea { 
-  width: 100%;
-  min-height: 120px;
+.textarea textarea {
+  padding: 8px 18px;
+  border: var(--focus);
+  border-radius: 12px;
+  font-size: var(--font-size-input);
+  box-shadow: var(--light-shadows);
+  background: var(--surface-input);
+  outline: none;
+  color: #ffffff; 
+  transition: .2s;
   resize: vertical;
-  color: var(--text-primary);
   font-family: inherit;
-  font-size: 0.9rem;
+  min-height: 120px;
+}
+
+.textarea textarea:focus{
+  outline-style: inset;
+  box-shadow: var(--light-shadows);
+  border-color: rgba(124, 92, 246, 0.75);
 }
 
 .product-form-analytics {
@@ -150,12 +160,12 @@
   padding: 10px 0;
 }
 
-.cancelar-button {  
+.cancel-button {  
   display: flex;
   align-items: center;
   background: rebeccapurple;
 }
-.cancelar-button:hover {
+.cancel-button:hover {
   background: red;
   transition: 0.2s ease-in;
 }

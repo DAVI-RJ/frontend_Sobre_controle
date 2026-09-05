@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import log from "@/core/logger/logger";
 
 import { getProducts } from "../api/listProducts";
@@ -8,60 +8,65 @@ import { destroyProduct } from "../api/deleteProduct";
 import { useError } from "@/core/context/error/ErrorProvider";
 import { updateProduct } from "../api/updateProduct";
 
-// hook responsável pela interface, erros, chamadas api e estado globais da feature
-export const useProducts = () => {
-  const [products, setProducts] = useState([]);
-  const { handleError } = useError();
+// hook responsável pela interface, erros, chamadas api e estado globais da feature com carregamento em cache
 
-  // Cadastro, requisição POST/
-  const saveProduct = useCallback(
-    async (data) => {
+export const useProducts = () => {
+  const { handleError } = useError();
+  const queryClient = useQueryClient();
+
+  // Listagem, requisição GET/
+  const {
+    data: products = [],
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
       try {
-        const newProduct = await createProduct(data);
-        setProducts((prev) => [newProduct, ...prev]);
-        return newProduct;
+        return (await getProducts()) || [];
       } catch (error) {
         handleError(error);
       }
     },
-    [handleError]
-  );
+  });
 
-  // Listagem, requisição GET/
-  const loadProducts = useCallback(async () => {
-    const data = await getProducts();
-    log.info("data: ", data);
-    return data || [];
-  }, [handleError]);
+  // Cadastro, requisição POST/
+  const saveProduct = useMutation({
+    mutationFn: createProduct,
+    onSuccess: (newProduct) => {
+      queryClient.invalidateQueries({ queryKey: ["products"] });
+      return newProduct;
+    },
+    onError: (error) => handleError(error),
+  });
 
   // Atualização, requisição UPDATE/
-  const mutateProduct = async (data) => {
-    try {
-      await updateProduct(data);
-    } catch (error) {
-      handleError(error);
-    }
-  };
+  const mutateProduct = useMutation({
+    mutationFn: updateProduct,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["products"] });
+    },
+    onError: (error) => handleError(error),
+  });
 
   // Exclusão, requisição DELETE/
-  const deleteProduct = async (data) => {
-    log.info("primeira chamada");
-
-    try {
-      const deleteProductId = await destroyProduct(data);
-      if (deleteProductId) {
+  const deleteProduct = useMutation({
+    mutationFn: destroyProduct,
+    onSuccess: (productId) => {
+      if (productId) {
         log.info({ feature: "produto", action: "deleted" });
       }
-    } catch (error) {
-      handleError(error);
-    }
-  };
+      queryClient.invalidateQueries({ queryKey: ["products"] });
+    },
+    onError: (error) => handleError(error),
+  });
 
   return {
     products,
-    loadProducts,
-    saveProduct,
-    deleteProduct,
-    mutateProduct,
+    isLoading,
+    error,
+    saveProduct: saveProduct.mutateAsync,
+    mutateProduct: mutateProduct.mutateAsync,
+    deleteProduct: deleteProduct.mutateAsync,
   };
 };

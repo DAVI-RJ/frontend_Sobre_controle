@@ -1,29 +1,18 @@
-import { useQuery } from "@tanstack/react-query";
-
 import LoadingComponent from "@/shared/components/organisms/loading/LoadingComponent";
 import ErrorMessage from "@/shared/components/atoms/errors/ErrorMessage";
 import ListGroup from "@/shared/components/molecules/listComponent/ListGroup";
 import DataTable from "@/shared/components/organisms/table/DataTable";
+import EditProductForm from "./EditProductForm";
 import { setTableProduct } from "@/domain/schemas/productSchema";
 
 import { useProducts } from "../hooks/useProducts";
-import EditProductForm from "./EditProductForm";
 import { useState } from "react";
 
 import "./product-style.css";
 
 export default function ProductList() {
-  const { loadProducts, deleteProduct } = useProducts();
+  const { products, isLoading, error, deleteProduct } = useProducts();
   const [editingItem, setEditingItem] = useState(null);
-
-  const {
-    data: products,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["products"],
-    queryFn: loadProducts,
-  });
 
   if (isLoading) {
     return <LoadingComponent isLoading={isLoading} />;
@@ -32,6 +21,10 @@ export default function ProductList() {
   if (error) {
     return <ErrorMessage />;
   }
+
+  const handleDeleteProduct = (productId) => {
+    deleteProduct(productId);
+  };
 
   const handleEditProduct = (item) => {
     setEditingItem(item);
@@ -44,11 +37,15 @@ export default function ProductList() {
         data={products || []}
         getRowKey={(product) => product.id}
         actions={{
-          delete: deleteProduct,
+          delete: handleDeleteProduct,
           edit: handleEditProduct,
         }}
       />
-      {editingItem && (<div className="product-edit-ovelay"><EditProductForm item={editingItem} onClose={() => setEditingItem(null)} /></div>)}
+      {editingItem && (
+        <div className="product-edit-ovelay">
+          <EditProductForm item={editingItem} onClose={() => setEditingItem(null)} />
+        </div>
+      )}
     </ListGroup>
   );
 }

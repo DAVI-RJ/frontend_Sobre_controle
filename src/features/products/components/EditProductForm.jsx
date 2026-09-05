@@ -3,22 +3,20 @@ import InputComponent from "@/shared/components/atoms/inputs/Input";
 import ButtonComponent from "@/shared/components/atoms/button/Button";
 import CancelIcon from "@mui/icons-material/Cancel";
 
-import { useState } from "react";
+import { productSchema } from "@/domain/schemas/productSchema";
 import { useProducts } from "../hooks/useProducts";
 
 import "./product-style.css";
 
 export default function EditProductForm({ item, onClose }) {
   const { mutateProduct } = useProducts();
-  const [formData, setFormData] = useState(item);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleSubmit = async (data) => {
+    await mutateProduct({
+      ...data,
+      id: item.id,
+    });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    mutateProduct(formData);
     onClose();
   };
 
@@ -30,19 +28,23 @@ export default function EditProductForm({ item, onClose }) {
         <p> Atualize as informações do produto.</p>
       </header>
       {/** Formulário suspenso*/}
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} defaultValues={item} schema={productSchema}>
         <div className="product-form-fields">
           <label>Nome</label>
-          <InputComponent name="name" value={formData.name} onChange={handleChange} />
+          <InputComponent name="name" />
 
           <label>Preço</label>
-          <InputComponent name="price" value={formData.price} onChange={handleChange} />
+          <InputComponent name="price" />
 
           <label>Quantidade</label>
-          <InputComponent name="quantity" value={formData.quantity} onChange={handleChange} />
+          <InputComponent name="quantity" />
+
+          <label>Descrição</label>
+          <InputComponent name="description" type="textarea" />
         </div>
         <nav className="product-form-option">
-          <ButtonComponent type="button" onClick={onClose} className={"cancelar-button"}>
+          <ButtonComponent type="button" onClick={onClose} className={"cancel-button"}>
+            <CancelIcon />
             Cancelar
           </ButtonComponent>
 

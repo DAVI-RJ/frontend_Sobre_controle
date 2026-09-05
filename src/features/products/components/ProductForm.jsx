@@ -4,6 +4,7 @@ import ButtonComponent from "@/shared/components/atoms/button/Button";
 import AddIcon from "@mui/icons-material/Add";
 import CancelIcon from "@mui/icons-material/Cancel";
 
+import { productSchema } from "@/domain/schemas/productSchema";
 import { productModel } from "@/domain/models/productModel";
 import { useProducts } from "../hooks/useProducts";
 
@@ -16,7 +17,6 @@ export default function ProductForm() {
 
   const handleSaveProduct = async (data) => {
     await saveProduct(data);
-    
   };
 
   return (
@@ -29,32 +29,24 @@ export default function ProductForm() {
 
       <div className="product-form-body">
         {/** tudo que sera salvo no banco */}
-        <Form onSubmit={handleSaveProduct}>
+        <Form onSubmit={handleSaveProduct} schema={productSchema}>
           <div className="product-form-media">
-            <img className="product-form-image" />
+            <img className="product-form-image" src="" alt="" />
           </div>
           <div className="product-form-fields">
             {productModel.map((field) => (
               <InputComponent
-                key={field.id}
+                key={field.name}
                 name={field.name}
                 type={field.type}
                 label={field.label}
                 placeholder={field.placeholder}
-                rules={{
-                  required: `${field.label} is required`,
-                  minLength: field.minLength && {
-                    value: field.minLength,
-                    message: `Minimum of ${field.minLength} characters required`,
-                  },
-                }}
                 className={field.type == "textarea" ? "textarea" : ""}
               />
             ))}
           </div>
           <nav className="product-form-option">
-            <ButtonComponent type="submit" className={"cancelar-button"}>
-              
+            <ButtonComponent type="button" className={"cancel-button"}>
               <CancelIcon />
               cancelar
             </ButtonComponent>
