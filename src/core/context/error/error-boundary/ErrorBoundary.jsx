@@ -1,9 +1,7 @@
 import { Component } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import log from "@/core/logger/logger";
-import "./error-boundary.css";
 
-const queryClient = new QueryClient();
+import "./error-boundary.css";
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -35,7 +33,7 @@ class ErrorBoundary extends Component {
         <div className="error-boundary-container">
           <div className="error-boundary-content">
             <h2>Oops! Algo deu errado</h2>
-            <p className="error-message">{this.state.error?.message}</p>
+            <p className="error-message">Desculpa ocorreu um erro inesperado</p>
             <div className="error-actions">
               <button onClick={this.handleReset} className="btn-primary">
                 Tentar Novamente
@@ -48,7 +46,7 @@ class ErrorBoundary extends Component {
         </div>
       );
     }
-    return <QueryClientProvider client={queryClient}>{this.props.children}</QueryClientProvider>;
+    return this.props.children;
   }
 }
 

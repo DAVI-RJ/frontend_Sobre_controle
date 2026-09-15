@@ -1,6 +1,6 @@
 // linha para impedir que o eslint reclame sobre a regra de exportação.
 /* eslint-disable react-refresh/only-export-components */
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { ErrorContext } from "./errorContext";
 import mapErrorMessage from "@/core/errors/mapErrorMessage";
 
@@ -9,7 +9,7 @@ export function ErrorProvider({ children }) {
 
   function handleError(error, context = {}) {
     const status = error?.response?.status ?? null;
-    const message = mapErrorMessage(status, error);
+    const message = mapErrorMessage(error);
 
     setError({
       message,
@@ -19,17 +19,21 @@ export function ErrorProvider({ children }) {
     });
   }
 
-  function clearError() {
-    setTimeout(() => {
+  // controlando o tempo de componentes visuais
+  useEffect(() => {
+    if (!error) {
+      return;
+    }
+
+    const time = setTimeout(() => {
       setError(null);
     }, 5000);
-  }
 
-  return (
-    <ErrorContext.Provider value={{ error, handleError, clearError }}>
-      {children}
-    </ErrorContext.Provider>
-  );
+    // limpando o time, evitando memory leks
+    return () => clearTimeout(time);
+  }, [error]);
+
+  return <ErrorContext.Provider value={{ error, handleError }}>{children}</ErrorContext.Provider>;
 }
 
 export function useError() {

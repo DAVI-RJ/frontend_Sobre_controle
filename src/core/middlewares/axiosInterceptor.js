@@ -23,33 +23,46 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
   (response) => {
-    return response.data;
+    return response;
   },
 
   async (error) => {
-    const status = error?.response?.status;
+    const status = error.response?.status;
     const originalRequest = error?.config;
+
+    // evita loops para chamada refresh 401
+    const isRefreshRequest = originalRequest?.url?.includes("/refresh");
 
     // logica de refresh token
     const isLoginRequest = originalRequest?.url?.includes("/login");
-
-    if (status === 401 && !originalRequest._retry && !isLoginRequest) {
+    
+    // condicionais
+    if (status === 401 && !originalRequest._retry && !isLoginRequest && !isRefreshRequest) {
       originalRequest._retry = true;
+
       try {
         log.info("Tentando refresh token...");
         const response = await axiosInstance.post("/refresh", {}, { withCredentials: true });
+
         // Cria um novo token e atualiza no headers
-        const newToken = response?.accessToken;
-        const user = response?.user;
+        const refreshData = response.data;
+
+        const newToken = refreshData?.accessToken;
+        const user = refreshData.user;
+
         store.dispatch(setCredentials({ accessToken: newToken, user }));
+
         log.info("Token renovado com sucesso");
+
         originalRequest.headers["Authorization"] = `Bearer ${newToken}`;
+
         return axiosInstance(originalRequest);
       } catch (refreshError) {
         log.error("Falha ao renovar token - redirecionando para login", {
           feature: "axiosInterceptor",
           error: refreshError.message,
         });
+
         store.dispatch(clearCredentials());
         return Promise.reject(error);
       }

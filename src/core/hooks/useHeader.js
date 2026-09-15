@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 
 import { useAuth } from "./useAuth";
 import { getCompanyProfileQueryOptions } from "@/features/company/api/__queryOptions";
-import log from "@/core/logger/logger";
 
 export function useHeader() {
   const navigate = useNavigate();
@@ -12,9 +11,8 @@ export function useHeader() {
   // Usa queryOptions centralizado
   const profileQuery = useQuery(getCompanyProfileQueryOptions());
 
-  const handleLogout = useCallback(() => {
-    log.info("User logout initiated", null, { feature: "header" });
-    logout();
+  const handleLogout = useCallback(async () => {
+    await logout();
     navigate("/");
   }, [logout, navigate]);
 

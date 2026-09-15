@@ -14,15 +14,15 @@ export function useAuth() {
     async (credentials) => {
       setLoading(true);
       try {
-        const data = await loginService(credentials);
+        const payload = await loginService(credentials);
 
         store.dispatch(
           setCredentials({
-            accessToken: data.accessToken,
-            user: data.user,
+            accessToken: payload.accessToken,
+            user: payload.user,
           })
         );
-        return data;
+        return payload;
       } catch (error) {
         handleError(error);
         log.error(
@@ -39,14 +39,14 @@ export function useAuth() {
     [handleError]
   );
 
-  const logout = useCallback(() => {
+  const logout = useCallback( async () => {
     setLoading(true);
     try {
-      logoutService();
+      await logoutService();
       store.dispatch(clearCredentials());
       log.info(" logout success");
     } catch (error) {
-      handleError(error, { action: "logout" });
+      handleError(error);
       log.error(error, { action: "logout" });
       throw error;
     } finally {
