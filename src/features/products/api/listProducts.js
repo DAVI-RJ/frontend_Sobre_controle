@@ -5,7 +5,7 @@ import log from "@/core/logger/logger";
 export async function getProducts() {
   try {
     const response = await axiosInstance.get("/company/:companyId/products");
-    return response;
+    return response.data;
   } catch (error) {
     log.info(error);
     throw error;
