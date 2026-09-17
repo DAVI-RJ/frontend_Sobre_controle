@@ -26,6 +26,7 @@ export const useProducts = () => {
         return (await getProducts()) || [];
       } catch (error) {
         handleError(error);
+        throw error
       }
     },
   });
