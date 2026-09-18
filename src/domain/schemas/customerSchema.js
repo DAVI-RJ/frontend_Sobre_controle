@@ -5,7 +5,7 @@ export const customerSchema = z.object({
   cnpj: z.string().min(14, "O CNPJ é obrigatório"),
   email: z.string().email("O email deve ser válido"),
   phone: z.string().min(10, "Telefone inválido"),
-  address_id: z.number().int().positive(),
+  addressId: z.number().int().positive(),
 });
 
 export const setTableCustomers =[
