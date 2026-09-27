@@ -8,13 +8,22 @@ export const customerSchema = z.object({
   address_id: z.number().int().positive(),
 });
 
-export const setTableCustomers =[
+export const setTableCustomers = [
   {
-    key: "id",
-    label: "ID",
+    key: "cnpj",
+    label: "CNPJ",
   },
   {
     key: "name",
     label: "Nome",
+  },
+  {
+    key: "pedidos",
+    label: "Nº de Pedidios"
+  },
+  {
+    key: "options",
+    label: "opções",
+    type: "actions",
   },
 ];
