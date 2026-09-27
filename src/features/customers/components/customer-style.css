@@ -1,7 +1,41 @@
-/* .custumer-class {
+.customer-form {
+  display: grid;
+  grid-template-columns: minmax(1fr) 300px;
+  gap: 24px;
+  align-items: start;
+}
+
+.customer-form-header {
+  margin-bottom: 28px;
+}
+
+.customer-form-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.customer-form-body {  
   display: flex;
-  flex-direction: column;
-  padding: 20px;
-  justify-content: center;
-  align-items: center;
-} */
+  
+  
+}  
+.customer-form-fields{
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+  background: rgba(20, 8, 50, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 12px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25);
+
+}
+
+.customer-form-option {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
