@@ -1,32 +1,42 @@
-import { useNavigate } from "react-router-dom";
-import log from "@/core/logger/logger";
-
 import Form from "@/shared/components/molecules/form/Form";
 import Step1 from "@/shared/components/molecules/stepsRegister/Step1";
 import Step2 from "@/shared/components/molecules/stepsRegister/Step2";
 import ButtonComponent from "@/shared/components/atoms/button/Button";
 import ErrorMessage from "@/shared/components/atoms/errors/ErrorMessage";
+import TransitionWrapper from "@/shared/components/atoms/transitionWrapper/TransitionWrapper";
+import LoadingComponent from "@/shared/components/organisms/loading/LoadingComponent";
 
 import { useMultiStep } from "@/core/hooks/useMultiStep";
 import { useCustomer } from "../hooks/useCustomer";
 import { useAddress } from "@/features/address/hooks/useAddress";
 
+import log from "@/core/logger/logger";
+
 import "./customer-style.css";
 
-export default function CustomerForm() {
+export default function CustomerForm({ onSuccess }) {
   const { createAddressId } = useAddress();
-  const { submitFormCustomer } = useCustomer();
-  const navigate = useNavigate();
+  const { loading, submitFormCustomer } = useCustomer();
 
   const submitData = async (allData) => {
-    await createAddressId(allData);
+    try {
+      const addressId = await createAddressId(allData);
 
-    const customer = {
-      ...allData,
-    };
-    log.info("customer: ", customer);
-    await submitFormCustomer(customer);
-    setTimeout(() => navigate("/home"), 1000);
+      const customer = {
+        ...allData,
+        customer: {
+          ...allData.customer,
+          addressId,
+        },
+      };
+
+      log.info("customer: ", customer);
+
+      await submitFormCustomer(customer);
+      onSuccess();
+    } catch (error) {
+      log.info("erro ao cadastrar o cliente", error);
+    }
   };
 
   const { step, prevStep, handleRegister } = useMultiStep(2, submitData);
@@ -43,17 +53,37 @@ export default function CustomerForm() {
     }
   };
   return (
-    <section className="register-section">
-      <h3>Cadastro de Clientes</h3>
-      <ErrorMessage />
-      <Form onSubmit={handleRegister}>
-        {currentStep()}
+    <section >
+      <header className="customer-form-header">
+        <h1>Cadastro de Clientes</h1>
+      </header>
 
-        <ButtonComponent type="submit">
-          {step === 2 ? "Finalizar Cadastro" : "Próximo"}
-        </ButtonComponent>
-        {step > 1 && <ButtonComponent onClick={prevStep}>Voltar</ButtonComponent>}
-      </Form>
+      <ErrorMessage />
+      <div className="customer-form-body">
+        <Form onSubmit={handleRegister}>
+          <TransitionWrapper stateKey={step}>
+            <div key={step} className="customer-form-fields">
+              {currentStep()}
+            </div>
+          </TransitionWrapper>
+
+          <nav className="customer-form-option">
+            {step > 1 && (
+              <ButtonComponent className=".cancel-button" onClick={prevStep}>
+                Voltar
+              </ButtonComponent>
+            )}
+
+            <ButtonComponent className="confirm-button" type="submit">
+              {step === 2 ? "Finalizar Cadastro" : "Próximo"}
+            </ButtonComponent>
+          </nav>
+
+          <div>
+            <LoadingComponent isLoading={loading}></LoadingComponent>
+          </div>
+        </Form>
+      </div>
     </section>
   );
 }

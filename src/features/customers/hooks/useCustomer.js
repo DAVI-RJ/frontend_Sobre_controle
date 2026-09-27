@@ -1,62 +1,64 @@
-import { useCallback, useState } from "react";
-
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createCustomer } from "../api/createCustomer";
-import { listCustomers } from "../api/listCustomers";
-import { deleteCustomer } from "../api/deleteCustomer";
-import { customerSchema } from "@/domain/schemas/customerSchema";
+import { getCustomers } from "../api/listCustomers";
+import { destroyCustomer } from "../api/deleteCustomer";
 import log from "@/core/logger/logger";
 import { useError } from "@/core/context/error/ErrorProvider";
 
 // Ganchos uteis para intanciar o cliente
 export const useCustomer = () => {
-  const [customer, setCustomer] = useState(); // Objeto ou Null
-  const [loading, setLoading] = useState(false);
   const { handleError } = useError();
+  const queryClient = useQueryClient();
 
   // Metódo para usar a API de listagem, criação, lançar erros, UI.
-  const fetchListCustomers = useCallback(async () => {
-    const data = await listCustomers();
-    return data || [];
-  }, []);
-
-  const submitFormCustomer = useCallback(
-    async (customerData) => {
-      setLoading(true);
-      customerSchema.parse(customerData);
+  const {
+    data: customer = [],
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["customers"],
+    queryFn: async () => {
       try {
-        const newCustomer = await createCustomer(customerData);
-        const validatedCustomer = customerSchema.parse(newCustomer);
-        setCustomer((prev) => [...prev, validatedCustomer]);
+        return (await getCustomers()) || [];
       } catch (error) {
         handleError(error);
-        log.info("error ao carregar a lista, useCustomer");
-      } finally {
-        setLoading(false);
+        throw error;
       }
     },
-    [handleError]
-  );
+  });
 
-  const onDeleteCustomer = useCallback(
-    async (idCustomer) => {
-      setLoading(true);
-      try {
-        await deleteCustomer(idCustomer);
-        setCustomer((prev) => prev.filter((c) => c.id !== idCustomer));
-      } catch (error) {
-        handleError(error);
-      } finally {
-        setLoading(false);
-      }
+  const saveCustomer = useMutation({
+    mutationFn: createCustomer,
+    onSuccess: (newCustomer) => {
+      queryClient.invalidateQueries({
+        queryKey: ["customers"],
+      });
+
+      return newCustomer;
     },
-    [handleError]
-  );
+
+    onError: (error) => handleError(error),
+  });
+
+  const deleteCustomer = useMutation({
+    mutationFn: destroyCustomer,
+    onSuccess: (customerId) => {
+      if (customerId) {
+        log.info({ feature: "customer", action: "deleted" });
+      }
+      queryClient.invalidateQueries({
+        queryKey: ["customer"],
+      });
+    },
+
+    onError: (error) => handleError(error),
+  });
 
   return {
     customer,
-    loading,
-    fetchListCustomers,
-    submitFormCustomer,
-    onDeleteCustomer,
+    isLoading,
+    error,
+    saveCustomer: saveCustomer.mutateAsync,
+    deleteCustomer: deleteCustomer.mutateAsync,
   };
 };
