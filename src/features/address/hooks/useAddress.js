@@ -5,8 +5,7 @@ export function useAddress() {
     const addressId = await createAddress(allData);
     console.log("endereço: ", addressId);
     if (addressId) {
-      allData.customer.addressId = addressId;
-      return addressId;
+      return (allData.customer.addressId = addressId);
     }
   };
   return { createAddressId };

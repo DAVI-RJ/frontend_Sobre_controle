@@ -1,9 +1,15 @@
 import { axiosInstance } from "@/core/http/axiosInstance";
 
 export async function createAddress(data) {
+
   const response = await axiosInstance.post("/company/address", data);
+<<<<<<< Updated upstream
   console.log("Resposta da API:", response);
   return response;
+=======
+  log.info("Resposta da API:", response.data);
+  return response.data;
+>>>>>>> Stashed changes
 }
 /*
   const AddressService = ({ setEstados }) => {
