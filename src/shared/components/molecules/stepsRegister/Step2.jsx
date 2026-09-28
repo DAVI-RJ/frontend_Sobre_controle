@@ -3,7 +3,7 @@ import addressFields from "@/domain/models/addressModel";
 
 import "./steps.css";
 
-const Step2 = () => {
+export default function Step2() {
   return (
     <div className="step-class" data-testid="step-2">
       <h2>Endereço</h2>
@@ -39,6 +39,4 @@ const Step2 = () => {
       ))}
     </div>
   );
-};
-
-export default Step2;
+}
