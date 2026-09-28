@@ -4,7 +4,7 @@ import { companyFields } from "@/domain/models/companyModel";
 import { customersFildes } from "@/domain/models/customersModel";
 import { supplierFildes } from "@/domain/models/supplierModel";
 
-const Step1 = ({ formType }) => {
+export default function Step1({ formType }) {
   const [formFields, setFormFields] = useState([]);
 
   useEffect(() => {
@@ -37,4 +37,3 @@ const Step1 = ({ formType }) => {
   );
 };
 
-export default Step1;
