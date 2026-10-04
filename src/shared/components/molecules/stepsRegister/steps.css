@@ -1,3 +1,13 @@
+.step-one {
+  display: grid;
+  gap: 18px;
+}
+
+.step-one h2 {
+  color: var(--text-primary);
+  text-align: center;
+}
+
 .step-class {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -7,6 +17,7 @@
 .step-class h2 {
   grid-column: span 2;
   text-align: center;
+  color: var(--text-primary);
 }
 
 .span-2 {
