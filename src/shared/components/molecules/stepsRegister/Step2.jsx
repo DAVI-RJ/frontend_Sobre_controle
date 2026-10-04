@@ -29,12 +29,7 @@ export default function Step2() {
           type={field.type}
           placeholder={field.placeholder}
           label={field.label}
-          rules={{
-            required: {
-              value: true,
-              message: `${field.label} field is required`,
-            },
-          }}
+          
         />
       ))}
     </div>

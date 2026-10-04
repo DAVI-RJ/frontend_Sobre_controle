@@ -16,24 +16,21 @@ export default function Step1({ formType }) {
   }, [formType]);
 
   return (
-    <>
+    <div className="step-one">
+      <h2>Dados</h2>
+      
       {formFields.map((field) => (
         <InputComponent
           key={field.name}
           id={field.name}
           name={field.name}
           type={field.type}
-          placeholder={field.placeholder}
           label={field.label}
-          rules={{
-            required: {
-              value: true,
-              message: `${field.label} field is required`,
-            },
-          }}
+          placeholder={field.placeholder}
+          
         />
       ))}
-    </>
+    </div>
   );
 };
 
