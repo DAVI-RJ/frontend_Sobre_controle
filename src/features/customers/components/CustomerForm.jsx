@@ -6,6 +6,7 @@ import ErrorMessage from "@/shared/components/atoms/errors/ErrorMessage";
 import TransitionWrapper from "@/shared/components/atoms/transitionWrapper/TransitionWrapper";
 import LoadingComponent from "@/shared/components/organisms/loading/LoadingComponent";
 
+import { customerSchema } from "@/domain/schemas/customerSchema";
 import { useMultiStep } from "@/core/hooks/useMultiStep";
 import { useCustomer } from "../hooks/useCustomer";
 import { useAddress } from "@/features/address/hooks/useAddress";
@@ -13,26 +14,27 @@ import { useAddress } from "@/features/address/hooks/useAddress";
 import log from "@/core/logger/logger";
 
 import "./customer-style.css";
+import { addressSchema } from "@/domain/schemas/addressSchema";
 
 export default function CustomerForm({ onSuccess }) {
   const { createAddressId } = useAddress();
-  const { loading, submitFormCustomer } = useCustomer();
+  const { isLoading, saveCustomer } = useCustomer();
 
   const submitData = async (allData) => {
     try {
       const addressId = await createAddressId(allData);
 
       const customer = {
-        ...allData,
-        customer: {
-          ...allData.customer,
-          addressId,
-        },
+        name: allData.name,
+        cnpj: allData.cnpj,
+        email: allData.email,
+        phone: allData.phone,
+        address_id: addressId,
       };
 
       log.info("customer: ", customer);
 
-      await submitFormCustomer(customer);
+      await saveCustomer(customer);
       onSuccess();
     } catch (error) {
       log.info("erro ao cadastrar o cliente", error);
@@ -53,14 +55,14 @@ export default function CustomerForm({ onSuccess }) {
     }
   };
   return (
-    <section >
+    <section className="customer-form">
       <header className="customer-form-header">
         <h1>Cadastro de Clientes</h1>
       </header>
 
       <ErrorMessage />
       <div className="customer-form-body">
-        <Form onSubmit={handleRegister}>
+        <Form onSubmit={handleRegister} schema={step == 1 ? customerSchema : addressSchema}>
           <TransitionWrapper stateKey={step}>
             <div key={step} className="customer-form-fields">
               {currentStep()}
@@ -80,7 +82,7 @@ export default function CustomerForm({ onSuccess }) {
           </nav>
 
           <div>
-            <LoadingComponent isLoading={loading}></LoadingComponent>
+            <LoadingComponent isLoading={isLoading}></LoadingComponent>
           </div>
         </Form>
       </div>
