@@ -1,8 +1,5 @@
 .customer-form {
-  display: grid;
-  grid-template-columns: minmax(1fr) 300px;
-  gap: 24px;
-  align-items: start;
+  overflow-y: auto;
 }
 
 .customer-form-header {
@@ -18,10 +15,9 @@
 }
 
 .customer-form-body {  
-  display: flex;
-  
-  
+  display: flex;  
 }  
+
 .customer-form-fields{
   display: grid;
   gap: 18px;
