@@ -7,24 +7,27 @@
     transparent 55%),
     linear-gradient(135deg, #050816 0%, #091428 25%, #0d1b3d 55%, #0a1430 75%, #060b18 100%);
   
-  --bg-siderbar:  
+  --bg-siderbar: 
     linear-gradient(
       180deg,
-      rgba(12, 5, 35, 0.98) 0%,
-      rgba(18, 7, 48, 0.98) 100%
+      #0c0620 0%,
+      #15093a 60%,
+      #0b061d 100%
     );
     
   --bg-header: 
       linear-gradient(
       90deg,
-      #0b061c 0%,
-      #16082e 45%,
-      #10072b 100%
+      #0c0620 0%,
+      #15093a 60%,
+      #0b061d 100%
     );
 
   --box-shadows: 0 0 60px rgba(59, 130, 246, .18), 0 0 120px rgba(139, 92, 246, .12);
-
+  
   --label: #E5E7EB;
+
+  --hover: #
   --focus: 1px solid #4F7BFF;
   --error: #D50000;
   --radius: 5%;
@@ -53,6 +56,20 @@
       var(--color-accent-500) 70%,
       var(--color-secondary-500) 100%
   );
+}
+
+::-webkit-scrollbar {
+  width: 10px;               /* Largura da barra vertical */
+  height: 10px;              /* Altura da barra horizontal */
+}
+::-webkit-scrollbar-track {
+  background: #1e1233;       /* Roxo bem escuro para o fundo */
+  border-radius: 8px;
+}
+ ::-webkit-scrollbar-thumb {
+  background: #6a1b9a;       /* Roxo principal */
+  border-radius: 8px;        /* Bordas arredondadas */
+  border: 2px solid #1e1233; /* Cria um espaçamento visual ao redor do thumb */
 }
 
 *{ 

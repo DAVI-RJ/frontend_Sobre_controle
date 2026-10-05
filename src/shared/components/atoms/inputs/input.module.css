@@ -1,7 +1,6 @@
 .input {
   display:flex; 
-  flex-direction:column; 
-  margin-bottom: 8px;
+  flex-direction:column;
 }
 
 .input label {
@@ -22,8 +21,8 @@
   border: var(--focus);
   border-radius: 12px;
   font-size: var(--font-size-input);
-  box-shadow: var(--light-shadows);
-  background: var(--surface-input);
+  box-shadow: var(--box-shadows);
+  background: none;
   outline: none;
   transition: .2s;
   color: #ffffff; 
