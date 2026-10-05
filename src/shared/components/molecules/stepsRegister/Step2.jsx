@@ -29,7 +29,6 @@ export default function Step2() {
           type={field.type}
           placeholder={field.placeholder}
           label={field.label}
-          
         />
       ))}
     </div>
