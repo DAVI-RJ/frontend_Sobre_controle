@@ -1,6 +1,6 @@
 import { axiosInstance } from "@/core/http/axiosInstance";
 
-export async function listSuppliers() {
+export async function getSuppliers() {
   const response = await axiosInstance.get("/company/supplier/list");
-  return response;
+  return response.data;
 }
